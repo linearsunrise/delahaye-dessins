@@ -22,6 +22,7 @@ library
       , Dessins.Utils.Scene
       , Dessins.Figures
       , Dessins.Figures.PolygonesReguliers
+      , Dessins.Figures.EtoilesRegulieres
     build-depends:
         base >=4 && <5
       , diagrams-lib
