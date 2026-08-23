@@ -1,1 +1,4 @@
 packages: .
+
+package *
+  ghc-options: -haddock

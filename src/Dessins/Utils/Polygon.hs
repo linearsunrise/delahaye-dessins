@@ -24,7 +24,8 @@ yAxis x = axis x cos
 polygonRegulier :: (Enum p, Floating p) => p -> p -> [P2 p]
 polygonRegulier vertices phi = [f x | x <- [1 .. vertices]]
   where
-    f x = p2 (xAxis x vertices phi, yAxis x vertices phi)
+    point x = (xAxis x vertices phi, yAxis x vertices phi)
+    f x = p2 (point x)
 
 polygonEtoile :: (Enum p, Floating p) => p -> p -> [P2 p]
 polygonEtoile vertices step = [f x | x <- [1 .. vertices]]

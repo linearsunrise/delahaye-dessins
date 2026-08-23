@@ -12,7 +12,6 @@ import Diagrams.Prelude
   , N
   , V
   , V2
-  , alignTR
   , fontSize
   , hcat'
   , local
@@ -39,11 +38,11 @@ ver ::
   -> a
 ver gapss = vcat' (with & sep .~ gapss)
 
-group :: (ConstraintRender n b) => String -> [TDiagram n b] -> TDiagram n b
+group ::
+  (ConstraintRender n b) => String -> [TDiagram n b] -> TDiagram n b
 group title ct =
   ver
     (getRemSizeDiv (/ 2))
-    [ text title # fontSize (local (getRemSizeDiv (/ 4))) # alignTR
+    [ text title # fontSize (local (getRemSizeDiv (/ 4)))
     , hor (getRemSizeDiv (/ 2)) ct
     ]
-    # alignTR
