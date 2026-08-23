@@ -1,15 +1,29 @@
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE TypeOperators #-}
+
 module Dessins.Utils.Grid (hor, ver, group) where
 
-import           Diagrams.Prelude
-import           Diagrams.Backend.SVG.CmdLine
+import           Diagrams.Prelude (V2, HasOrigin, Juxtaposable, N, V, (&), local
+                                 , sep, alignTR, hcat', vcat', fontSize, text
+                                 , ( # ), with, (.~))
+import           Dessins.Const (getRemSizeDiv)
+import           Dessins.Types (TDiagram, ConstraintRender)
 
-hor :: [Diagram B] -> Diagram B
-hor = hcat' (with & sep .~ 0.5)
+hor :: (V a ~ V2, Floating (N a), Juxtaposable a, HasOrigin a, Monoid a)
+    => N a
+    -> [a]
+    -> a
+hor gapss = hcat' (with & sep .~ gapss)
 
-ver :: [Diagram B] -> Diagram B
-ver = vcat' (with & sep .~ 0.5)
+ver :: (V a ~ V2, Floating (N a), Juxtaposable a, HasOrigin a, Monoid a)
+    => N a
+    -> [a]
+    -> a
+ver gapss = vcat' (with & sep .~ gapss)
 
-group :: String -> [Diagram B] -> Diagram B
+group :: ConstraintRender n b => String -> [TDiagram n b] -> TDiagram n b
 group title ct = ver
-  [text title # fontSize (local 0.25) # alignL, hor ct # frame 0.25]
-  # frame 0.5
+  (getRemSizeDiv (/ 2))
+  [ text title # fontSize (local (getRemSizeDiv (/ 4))) # alignTR
+  , hor (getRemSizeDiv (/ 2)) ct]
+  # alignTR

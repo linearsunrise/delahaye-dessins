@@ -20,6 +20,8 @@ library
       , Dessins.Utils.Grid
       , Dessins.Utils.Polygon
       , Dessins.Utils.Scene
+      , Dessins.Const
+      , Dessins.Types
       , Dessins.Figures
       , Dessins.Figures.PolygonesReguliers
       , Dessins.Figures.EtoilesRegulieres

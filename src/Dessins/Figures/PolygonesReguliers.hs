@@ -8,30 +8,24 @@ module Dessins.Figures.PolygonesReguliers
     , figure05
     , figure06) where
 
-import           Data.Typeable (Typeable)
-import           Diagrams.Prelude hiding (polygon)
-import           Dessins.Utils
+import           Dessins.Utils.Polygon (polygonRegulier)
+import           Dessins.Utils.Scene (renderSquareFrame)
+import           Dessins.Types (ConstraintRender, TDiagram)
 
-figure01 :: (Typeable n, RealFloat n, Enum n, Renderable (Path V2 n) b)
-         => QDiagram b V2 n Any
-figure01 = renderSquareFrame (polygon 4 (pi / 4))
+figure01 :: ConstraintRender n b => TDiagram n b
+figure01 = renderSquareFrame (polygonRegulier 4 (pi / 4))
 
-figure02 :: (Typeable n, RealFloat n, Enum n, Renderable (Path V2 n) b)
-         => QDiagram b V2 n Any
-figure02 = renderSquareFrame (polygon 3 (pi / 2))
+figure02 :: ConstraintRender n b => TDiagram n b
+figure02 = renderSquareFrame (polygonRegulier 3 (pi / 2))
 
-figure03 :: (Typeable n, RealFloat n, Enum n, Renderable (Path V2 n) b)
-         => QDiagram b V2 n Any
-figure03 = renderSquareFrame (polygon 3 0)
+figure03 :: ConstraintRender n b => TDiagram n b
+figure03 = renderSquareFrame (polygonRegulier 3 0)
 
-figure04 :: (Typeable n, RealFloat n, Enum n, Renderable (Path V2 n) b)
-         => QDiagram b V2 n Any
-figure04 = renderSquareFrame (polygon 5 0)
+figure04 :: ConstraintRender n b => TDiagram n b
+figure04 = renderSquareFrame (polygonRegulier 5 0)
 
-figure05 :: (Typeable n, RealFloat n, Enum n, Renderable (Path V2 n) b)
-         => QDiagram b V2 n Any
-figure05 = renderSquareFrame (polygon 8 0)
+figure05 :: ConstraintRender n b => TDiagram n b
+figure05 = renderSquareFrame (polygonRegulier 8 0)
 
-figure06 :: (Typeable n, RealFloat n, Enum n, Renderable (Path V2 n) b)
-         => QDiagram b V2 n Any
-figure06 = renderSquareFrame (polygon 20 0)
+figure06 :: ConstraintRender n b => TDiagram n b
+figure06 = renderSquareFrame (polygonRegulier 20 0)
