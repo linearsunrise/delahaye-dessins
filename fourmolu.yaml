@@ -22,7 +22,8 @@ import-grouping:
       - scope: local
         qualified: yes
   - name: "The rest"
-    rules: []
+    rules:
+      - priority: 100
 import-export-style: leading
 indent-wheres: true
 record-brace-space: true
