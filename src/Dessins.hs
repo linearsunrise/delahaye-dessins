@@ -1,4 +1,4 @@
 module Dessins (module Dessins.Utils, module Dessins.Figures) where
 
-import           Dessins.Utils
-import           Dessins.Figures
+import Dessins.Figures
+import Dessins.Utils

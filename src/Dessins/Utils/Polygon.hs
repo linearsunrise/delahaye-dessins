@@ -1,21 +1,24 @@
 module Dessins.Utils.Polygon
-    ( axis
-    , xAxis
-    , yAxis
-    , polygonRegulier
-    , polygonEtoile) where
+  ( axis
+  , xAxis
+  , yAxis
+  , polygonRegulier
+  , polygonEtoile
+  )
+where
 
-import           Diagrams.Prelude hiding (polygon)
-import           Dessins.Const (remSize)
+import Dessins.Const (remSize)
 
-axis :: Floating a => a -> (a -> a) -> a -> a -> a
+import Diagrams.Prelude (P2, p2)
+
+axis :: (Floating a) => a -> (a -> a) -> a -> a -> a
 axis x fn vertices phi =
   (3 / 2) * fromInteger remSize * fn (x * 2 * pi / vertices + phi)
 
-xAxis :: Floating a => a -> a -> a -> a
+xAxis :: (Floating a) => a -> a -> a -> a
 xAxis x = axis x sin
 
-yAxis :: Floating a => a -> a -> a -> a
+yAxis :: (Floating a) => a -> a -> a -> a
 yAxis x = axis x cos
 
 polygonRegulier :: (Enum p, Floating p) => p -> p -> [P2 p]
