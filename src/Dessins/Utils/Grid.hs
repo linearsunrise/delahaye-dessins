@@ -12,6 +12,7 @@ import Diagrams.Prelude
   , N
   , V
   , V2
+  , alignL
   , fontSize
   , hcat'
   , local
@@ -43,6 +44,6 @@ group ::
 group title ct =
   ver
     (getRemSizeDiv (/ 2))
-    [ text title # fontSize (local (getRemSizeDiv (/ 4)))
+    [ text title # alignL # fontSize (local (getRemSizeDiv (/ 4)))
     , hor (getRemSizeDiv (/ 2)) ct
     ]

@@ -13,9 +13,10 @@ import Diagrams.Prelude (Diagram, frame, (#))
 
 scene :: Diagram B
 scene =
-  ver
-    (getRemSizeDiv (/ 2))
-    [polygonesReguliers, etoilesRegulieres, composition]
+  ( ver
+      (getRemSizeDiv (/ 2))
+      [polygonesReguliers, etoilesRegulieres, composition]
+  )
     # frame (getRemSizeDiv (/ 2))
 
 main :: IO ()

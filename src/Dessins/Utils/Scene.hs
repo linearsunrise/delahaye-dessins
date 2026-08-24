@@ -2,7 +2,7 @@
 
 module Dessins.Utils.Scene (renderTrail, squareFrame, renderSquareFrame) where
 
-import Dessins.Const (remSize)
+import Dessins.Const (getRemSizeDiv, remSize)
 import Dessins.Types (ConstraintRender, TDiagram)
 
 import Diagrams.Prelude
@@ -33,4 +33,4 @@ squareFrame s content =
 
 renderSquareFrame ::
   (ConstraintRender n b) => [Point V2 n] -> TDiagram n b
-renderSquareFrame = squareFrame (4 * fromInteger remSize) . renderTrail
+renderSquareFrame = squareFrame (getRemSizeDiv (* 4)) . renderTrail
