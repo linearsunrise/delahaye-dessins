@@ -56,10 +56,25 @@ joligones :: (ConstraintRender n b) => TDiagram n b
 joligones =
   group
     "JOLIGONES"
-    [ figure26
-    , figure27
-    , figure28
-    , figure29
-    , figure30
-    , figure31
+    [ ver
+        (getRemSizeDiv (/ 2))
+        [ row1
+        , row2
+        ]
     ]
+  where
+    row1 =
+      hor
+        (getRemSizeDiv (/ 2))
+        [ figure26
+        , figure27
+        , figure28
+        , figure29
+        , figure30
+        , figure31
+        ]
+    row2 =
+      hor
+        (getRemSizeDiv (/ 2))
+        [ figure32
+        ]
