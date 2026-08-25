@@ -66,9 +66,8 @@ renderFigure params =
       createFigure v = star # translate v
 
       figures = map createFigure shiftPoints
-   in ( mconcat figures
-          # scale (2 * similarityCoefficient)
-      )
+   in mconcat figures
+        # scale (2 * similarityCoefficient)
         # squareFrame (getRemSizeDiv (* 4))
 
 figure13 :: (ConstraintRender n b, Enum n) => TDiagram n b

@@ -2,7 +2,7 @@
 
 module Dessins.Utils.Scene (renderTrail, squareFrame, renderSquareFrame) where
 
-import Dessins.Const (getRemSizeDiv, remSize)
+import Dessins.Const (getRemSizeDiv)
 import Dessins.Types (ConstraintRender, TDiagram)
 
 import Diagrams.Prelude
