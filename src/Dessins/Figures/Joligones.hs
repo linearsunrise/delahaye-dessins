@@ -101,5 +101,5 @@ figure28 =
       , fineAngle = 0
       , rate = 0.98
       , pointsCount = 200
-      , phase = 0
+      , phase = pi/8
       }
