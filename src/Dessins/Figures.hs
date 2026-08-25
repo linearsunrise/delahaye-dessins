@@ -5,6 +5,7 @@ module Dessins.Figures
   , etoilesRegulieres
   , composition1
   , composition2
+  , joligones
   )
 where
 
@@ -12,6 +13,7 @@ import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.Composition1
 import Dessins.Figures.Composition2
 import Dessins.Figures.EtoilesRegulieres
+import Dessins.Figures.Joligones
 import Dessins.Figures.PolygonesReguliers
 import Dessins.Types (ConstraintRender, TDiagram)
 import Dessins.Utils.Grid (group, hor, ver)
@@ -49,3 +51,9 @@ composition2 =
   group
     "COMPOSITION 2"
     [figure20, figure21, figure22, figure23, figure24, figure25]
+
+joligones :: (ConstraintRender n b) => TDiagram n b
+joligones =
+  group
+    "JOLIGONES"
+    [figure26, figure27]

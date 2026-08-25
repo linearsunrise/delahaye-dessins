@@ -5,6 +5,7 @@ import Dessins.Figures
   ( composition1
   , composition2
   , etoilesRegulieres
+  , joligones
   , polygonesReguliers
   )
 import Dessins.Utils.Grid (ver)
@@ -16,7 +17,12 @@ scene :: Diagram B
 scene =
   ver
     (getRemSizeDiv (/ 2))
-    [polygonesReguliers, etoilesRegulieres, composition1, composition2]
+    [ polygonesReguliers
+    , etoilesRegulieres
+    , composition1
+    , composition2
+    , joligones
+    ]
     # frame (getRemSizeDiv (/ 2))
 
 main :: IO ()
