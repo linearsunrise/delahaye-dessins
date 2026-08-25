@@ -11,6 +11,7 @@ type ConstraintRender n b =
   ( Typeable n
   , RealFloat n
   , Enum n
+  , Num n
   , Renderable (Path V2 n) b
   , Renderable (Text n) b
   )

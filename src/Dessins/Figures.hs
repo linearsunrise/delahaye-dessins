@@ -1,9 +1,9 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module Dessins.Figures (polygonesReguliers, etoilesRegulieres, composition) where
+module Dessins.Figures (polygonesReguliers, etoilesRegulieres, composition1) where
 
 import Dessins.Const (getRemSizeDiv)
-import Dessins.Figures.Composition
+import Dessins.Figures.Composition1
 import Dessins.Figures.EtoilesRegulieres
 import Dessins.Figures.PolygonesReguliers
 import Dessins.Types (ConstraintRender, TDiagram)
@@ -21,10 +21,10 @@ etoilesRegulieres =
     "ÉTOILES RÉGULIÈRES"
     [figure07, figure08, figure09, figure10, figure11, figure12]
 
-composition :: (ConstraintRender n b) => TDiagram n b
-composition =
+composition1 :: (ConstraintRender n b) => TDiagram n b
+composition1 =
   group
-    "COMPOSITION"
+    "COMPOSITION 1"
     [ ver
         (getRemSizeDiv (/ 2))
         [ row13to18

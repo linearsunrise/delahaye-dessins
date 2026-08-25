@@ -25,7 +25,7 @@ library
       , Dessins.Figures
       , Dessins.Figures.PolygonesReguliers
       , Dessins.Figures.EtoilesRegulieres
-      , Dessins.Figures.Composition
+      , Dessins.Figures.Composition1
     build-depends:
         base >=4 && <5
       , diagrams-lib

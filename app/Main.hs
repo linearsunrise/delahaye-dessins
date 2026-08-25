@@ -2,7 +2,8 @@ module Main (main) where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures
-  ( composition
+  ( composition1
+  , composition2
   , etoilesRegulieres
   , polygonesReguliers
   )
@@ -15,7 +16,7 @@ scene :: Diagram B
 scene =
   ( ver
       (getRemSizeDiv (/ 2))
-      [polygonesReguliers, etoilesRegulieres, composition]
+      [polygonesReguliers, etoilesRegulieres, composition1, composition2]
   )
     # frame (getRemSizeDiv (/ 2))
 
