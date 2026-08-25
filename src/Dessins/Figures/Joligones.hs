@@ -9,6 +9,7 @@ module Dessins.Figures.Joligones
   , figure28
   , figure29
   , figure30
+  , figure31
   )
 where
 
@@ -71,8 +72,8 @@ figure26 ::
 figure26 =
   renderFigure
     FigureParams
-      { vertices = 4
-      , fineAngle = (1 * pi) / 31
+      { vertices = 2 * 31 / 15
+      , fineAngle = 0
       , rate = 0.98
       , pointsCount = 200
       , phase = 0
@@ -85,7 +86,7 @@ figure27 ::
 figure27 =
   renderFigure
     FigureParams
-      { vertices = 30 / (29 / 2)
+      { vertices = 2 * 30 / 29
       , fineAngle = 0
       , rate = 0.98
       , pointsCount = 120
@@ -132,4 +133,18 @@ figure30 =
       , rate = 0.99
       , pointsCount = 200
       , phase = pi / 4
+      }
+
+figure31 ::
+  (ConstraintRender n b, Enum n) =>
+  (ConstraintRender n b, Enum n) =>
+  TDiagram n b
+figure31 =
+  renderFigure
+    FigureParams
+      { vertices = 2 * 7 / 6
+      , fineAngle = 0.0
+      , rate = 0.98
+      , pointsCount = 100
+      , phase = -(pi / 4)
       }

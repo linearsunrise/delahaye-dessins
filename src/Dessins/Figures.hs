@@ -61,4 +61,5 @@ joligones =
     , figure28
     , figure29
     , figure30
+    , figure31
     ]
