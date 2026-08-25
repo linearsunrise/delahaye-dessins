@@ -11,6 +11,7 @@ module Dessins.Figures.Joligones
   , figure30
   , figure31
   , figure32
+  , figure33
   )
 where
 
@@ -25,6 +26,7 @@ import Diagrams
   , lw
   , p2
   , scaleUToX
+  , scaleX
   , strokeTrail
   , trailFromVertices
   , ultraThin
@@ -62,12 +64,17 @@ renderFigure params =
           # strokeTrail
           # lw ultraThin
    in figure
-        # centerXY
-        # scaleUToX (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+
+renderPipe ::
+  (ConstraintRender n b, Enum n) =>
+  TDiagram n b -> TDiagram n b
+renderPipe v =
+  v
+    # centerXY
+    # scaleUToX (getRemSizeDiv (* 3))
+    # squareFrame (getRemSizeDiv (* 4))
 
 figure26 ::
-  (ConstraintRender n b, Enum n) =>
   (ConstraintRender n b, Enum n) =>
   TDiagram n b
 figure26 =
@@ -79,9 +86,9 @@ figure26 =
       , pointsCount = 200
       , phase = 0
       }
+    # renderPipe
 
 figure27 ::
-  (ConstraintRender n b, Enum n) =>
   (ConstraintRender n b, Enum n) =>
   TDiagram n b
 figure27 =
@@ -93,9 +100,9 @@ figure27 =
       , pointsCount = 120
       , phase = -(pi / 4)
       }
+    # renderPipe
 
 figure28 ::
-  (ConstraintRender n b, Enum n) =>
   (ConstraintRender n b, Enum n) =>
   TDiagram n b
 figure28 =
@@ -107,9 +114,9 @@ figure28 =
       , pointsCount = 200
       , phase = pi / 8
       }
+    # renderPipe
 
 figure29 ::
-  (ConstraintRender n b, Enum n) =>
   (ConstraintRender n b, Enum n) =>
   TDiagram n b
 figure29 =
@@ -121,9 +128,9 @@ figure29 =
       , pointsCount = 2000
       , phase = pi / 4
       }
+    # renderPipe
 
 figure30 ::
-  (ConstraintRender n b, Enum n) =>
   (ConstraintRender n b, Enum n) =>
   TDiagram n b
 figure30 =
@@ -135,9 +142,9 @@ figure30 =
       , pointsCount = 200
       , phase = pi / 4
       }
+    # renderPipe
 
 figure31 ::
-  (ConstraintRender n b, Enum n) =>
   (ConstraintRender n b, Enum n) =>
   TDiagram n b
 figure31 =
@@ -149,17 +156,35 @@ figure31 =
       , pointsCount = 100
       , phase = -(pi / 4)
       }
+    # renderPipe
 
 figure32 ::
-  (ConstraintRender n b, Enum n) =>
   (ConstraintRender n b, Enum n) =>
   TDiagram n b
 figure32 =
   renderFigure
     FigureParams
-      { vertices = 5
-      , fineAngle = 0.01
+      { vertices = 5 - 0.03
+      , fineAngle = 0
       , rate = 0.993
       , pointsCount = 300
+      , phase = 0
+      }
+    # renderPipe
+
+figure33 ::
+  (ConstraintRender n b, Enum n) =>
+  TDiagram n b
+figure33 =
+  renderFigure
+    FigureParams
+      { vertices = 2 * 60 / 19
+      , fineAngle = 0
+      , rate = 0.996
+      , pointsCount = 400
       , phase = -(pi / 4)
       }
+    # scaleX 1.7
+    # centerXY
+    # scaleUToX (getRemSizeDiv (* 3))
+    # squareFrame (getRemSizeDiv (* 4))

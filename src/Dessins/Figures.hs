@@ -77,4 +77,5 @@ joligones =
       hor
         (getRemSizeDiv (/ 2))
         [ figure32
+        , figure33
         ]
