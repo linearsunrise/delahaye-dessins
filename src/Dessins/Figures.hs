@@ -56,4 +56,4 @@ joligones :: (ConstraintRender n b) => TDiagram n b
 joligones =
   group
     "JOLIGONES"
-    [figure26, figure27, figure28]
+    [figure26, figure27, figure28, figure29]

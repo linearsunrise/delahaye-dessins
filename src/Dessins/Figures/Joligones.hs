@@ -7,13 +7,14 @@ module Dessins.Figures.Joligones
   ( figure26
   , figure27
   , figure28
+  , figure29
   )
 where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Types (ConstraintRender, TDiagram)
 import Dessins.Utils.Polygon (xAxis, yAxis)
-import Dessins.Utils.Scene (renderTrail, squareFrame)
+import Dessins.Utils.Scene (squareFrame)
 
 import Data.Function ((&))
 import Diagrams
@@ -102,4 +103,18 @@ figure28 =
       , rate = 0.98
       , pointsCount = 200
       , phase = pi/8
+      }
+
+figure29 ::
+  (ConstraintRender n b, Enum n) =>
+  (ConstraintRender n b, Enum n) =>
+  TDiagram n b
+figure29 =
+  renderFigure
+    FigureParams
+      { vertices = 20
+      , fineAngle = 0
+      , rate = 0.998
+      , pointsCount = 2000
+      , phase = pi / 4
       }
