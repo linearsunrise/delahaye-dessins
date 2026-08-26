@@ -6,24 +6,32 @@ import Dessins.Const (getRemSizeDiv)
 import Dessins.Types (ConstraintRender, TDiagram)
 
 import Diagrams.Prelude
-  ( Point
+  ( Path (Path)
+  , Point
   , V2
-  , centerXY
   , closeTrail
   , fc
   , fromVertices
+  , located
   , lw
   , none
+  , over
   , sRGB24read
   , square
-  , strokeTrail
+  , strokePath
   , ultraThin
   , (#)
   )
 
+closePath :: Path v n -> Path v n
+closePath (Path ts) = Path (map (over located closeTrail) ts)
+
 renderTrail :: (ConstraintRender n b) => [Point V2 n] -> TDiagram n b
 renderTrail v =
-  strokeTrail (closeTrail (fromVertices v)) # lw ultraThin # centerXY
+    fromVertices v
+    # closePath
+    # strokePath
+    # lw ultraThin
 
 squareFrame ::
   (ConstraintRender n b) => n -> TDiagram n b -> TDiagram n b

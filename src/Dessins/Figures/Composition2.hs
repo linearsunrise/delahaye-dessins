@@ -20,7 +20,7 @@ import Dessins.Utils.Scene (renderTrail, squareFrame)
 
 import Data.Function ((&))
 import Diagrams
-  ( centerX
+  ( centerXY
   , r2
   , scale
   , scaleUToX
@@ -74,7 +74,7 @@ renderFigure params =
           )
           vertices
    in mconcat figures
-        # centerX
+        # centerXY
         # scaleUToX (getRemSizeDiv (* 3))
         # squareFrame (getRemSizeDiv (* 4))
 
