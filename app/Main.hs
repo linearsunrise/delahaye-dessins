@@ -2,7 +2,8 @@ module Main (main) where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures
-  ( composition1
+  ( cheval
+  , composition1
   , composition2
   , etoilesRegulieres
   , joligones
@@ -22,6 +23,7 @@ scene =
     , composition1
     , composition2
     , joligones
+    , cheval
     ]
     # frame (getRemSizeDiv (/ 2))
 

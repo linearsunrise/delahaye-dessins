@@ -6,10 +6,12 @@ module Dessins.Figures
   , composition1
   , composition2
   , joligones
+  , cheval
   )
 where
 
 import Dessins.Const (getRemSizeDiv)
+import Dessins.Figures.Cheval
 import Dessins.Figures.Composition1
 import Dessins.Figures.Composition2
 import Dessins.Figures.EtoilesRegulieres
@@ -79,3 +81,11 @@ joligones =
         [ figure32
         , figure33
         ]
+
+cheval :: (ConstraintRender n b) => TDiagram n b
+cheval =
+  group
+    "CHEVAL"
+    [ figure34
+    , figure35
+    ]

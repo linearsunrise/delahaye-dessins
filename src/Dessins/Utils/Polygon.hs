@@ -7,13 +7,13 @@ module Dessins.Utils.Polygon
   )
 where
 
-import Dessins.Const (remSize)
+import Dessins.Const (getRemSizeDiv)
 
 import Diagrams.Prelude (P2, p2)
 
 axis :: (Floating a) => a -> (a -> a) -> a -> a -> a
 axis x fn vertices phi =
-  (3 / 2) * fromInteger remSize * fn (x * 2 * pi / vertices + phi)
+  getRemSizeDiv (* (3 / 2)) * fn (x * 2 * pi / vertices + phi)
 
 xAxis :: (Floating a) => a -> a -> a -> a
 xAxis x = axis x sin
