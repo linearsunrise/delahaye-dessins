@@ -5,7 +5,12 @@
 {-# OPTIONS_GHC -Wno-overlapping-patterns #-}
 {-# OPTIONS_GHC -Wno-unused-matches #-}
 
-module Dessins.Figures.Cheval (figure34, figure35, bonus) where
+module Dessins.Figures.Cheval
+  ( figure34
+  , figure35
+  , figure36
+  , bonus
+  ) where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Types (ConstraintRender, TDiagram)
@@ -23,7 +28,7 @@ import Diagrams
   , scaleUToY
   , strokePath
   , ultraThin
-  , (#)
+  , (#), scaleUToX
   )
 import Diagrams.Prelude (Bifunctor (bimap), red)
 
@@ -223,6 +228,30 @@ figure35 =
               # scaleBy (1 / divideBy, 1 / divideBy)
 
           f t = map (map (transform t)) chevalData
+   in chevals
+        # getTrailsList
+        # centerXY
+        # scaleUToY (getRemSizeDiv (* 3))
+        # squareFrame (getRemSizeDiv (* 4))
+
+figure36 :: (ConstraintRender n b) => TDiagram n b
+figure36 =
+  let stages = 6
+      flips = 2
+
+      chevals = mconcat [f x y | 
+          x <- [0 .. (flips - 1)]
+        , y <- [0 .. (stages - 1)]]
+        where
+          transform i j dt = 
+            (if even i then dt
+                       else dt # flipX
+            )
+              # scaleBy (0.5 ** j, 0.5 ** j)
+              # translate (0, -(80 * 0.5 ** j))
+
+          f t u = map (map (transform t u)) chevalData
+      
    in chevals
         # getTrailsList
         # centerXY
