@@ -89,4 +89,5 @@ cheval =
     [ figure34
     , figure35
     , figure36
+    , figure37
     ]

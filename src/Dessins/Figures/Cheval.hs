@@ -9,6 +9,7 @@ module Dessins.Figures.Cheval
   ( figure34
   , figure35
   , figure36
+  , figure37
   , bonus
   ) where
 
@@ -252,6 +253,30 @@ figure36 =
 
           f t u = map (map (transform t u)) chevalData
       
+   in chevals
+        # getTrailsList
+        # centerXY
+        # scaleUToY (getRemSizeDiv (* 3))
+        # squareFrame (getRemSizeDiv (* 4))
+
+figure37 :: (ConstraintRender n b) => TDiagram n b
+figure37 =
+  let vertices = 6
+      phi = pi / 12
+      rr = 0.87
+      pointsCount = 16
+
+      chevals = mconcat [f x | x <- [0 .. (pointsCount - 1)]]
+        where
+          ax i = (2 * i * pi / vertices + phi)
+          transform i v = v
+              # translate (0.15, 0.15)
+              # scaleBy (3 / 110, 3 / 110)
+              # translate (0.5, 0.5)
+              # rotateBy (ax i)
+              # scaleBy (rr ** i / 2, rr ** i / 2)
+
+          f t = map (map (transform t)) chevalData
    in chevals
         # getTrailsList
         # centerXY
