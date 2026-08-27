@@ -246,14 +246,12 @@ figure40 =
   let iCount = 4
       chevals = mconcat [f x y |
           x <- [-iCount .. iCount]
-        , y <- [-iCount .. iCount]]
+        , y <- [-abs x .. abs x]]
         where
           transform i j v = v
               # U.translate (fromIntegral i * 20, fromIntegral j * 20)
 
-          filterFigure i j = filter (\_ -> abs j >= abs i)
-
-          f i j = map (filterFigure i j . map (transform i j)) chevalData
+          f j i = map (map (transform i j)) chevalData
    in chevals
         # getTrailsList
         # D.centerXY
