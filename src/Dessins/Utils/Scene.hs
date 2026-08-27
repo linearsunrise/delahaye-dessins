@@ -25,8 +25,7 @@ import Diagrams.Prelude
   , sRGB24read
   , square
   , strokePath
-  , ultraThin
-  , (#)
+  , (#), global
   )
 
 closePath :: Path v n -> Path v n
@@ -37,7 +36,7 @@ renderTrail v =
   fromVertices v
     # closePath
     # strokePath
-    # lw ultraThin
+    # lw (global 0.045)
 
 squareFrame ::
   (HasStyle a, Semigroup a, TrailLike a, Typeable (N a), V a ~ V2) =>

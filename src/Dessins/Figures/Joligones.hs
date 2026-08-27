@@ -31,7 +31,7 @@ import Diagrams
   , strokeTrail
   , trailFromVertices
   , ultraThin
-  , (#)
+  , (#), global
   )
 
 data FigureParams n = FigureParams
@@ -62,7 +62,7 @@ renderFigure params =
         map calcVectors vectors
           # trailFromVertices
           # strokeTrail
-          # lw ultraThin
+          # lw (global 0.045)
    in figure
 
 renderPipe ::

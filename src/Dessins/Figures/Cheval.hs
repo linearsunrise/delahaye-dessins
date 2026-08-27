@@ -11,6 +11,7 @@ module Dessins.Figures.Cheval
   , figure39
   , figure40
   , figure41
+  , figure42
   , bonus
   ) where
 
@@ -113,8 +114,9 @@ createPath x =
   pointsListToTrail x
     # D.fromVertices
     # D.strokePath
-    # D.lw D.ultraThin
+    # D.lw (D.global 0.045)
     # D.fc DP.red
+    # D.lineJoin D.LineJoinBevel
 
 getTrailsList ::
   (ConstraintRender n b) =>
@@ -272,6 +274,39 @@ figure41 =
                 where
                   by t = (fromIntegral t - 1) * 20
                   warp x = x * abs x
+
+          f j i = map (map (transform i j)) chevalData
+   in chevals
+        # getTrailsList
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
+        # squareFrame (getRemSizeDiv (* 4))
+
+figure42 :: (ConstraintRender n b) => TDiagram n b
+figure42 =
+  let iCount = 4
+      chevals = mconcat [f x y |
+          x <- [-iCount .. iCount]
+        , y <- [-iCount .. iCount]]
+        where
+          warp (x,y) = 
+            let 
+              an = if x ==0
+                    then pi / 2 * signum y
+                    else atan(y / x) + pi * (1 - signum x)/2
+
+              di = sqrt (x**2 + y**2)
+                    # \t -> t / (1 + t) * 0.65
+             in (di * cos an, di * sin an)
+
+          transform i j v = v
+              # U.translate (by i, by j)
+              # U.scaleBy (aspect, aspect)
+              # warp
+                where
+                  by t = (fromIntegral t - 1) * 20
+                  aspect = 2 / 80
+                  
 
           f j i = map (map (transform i j)) chevalData
    in chevals
