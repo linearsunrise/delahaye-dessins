@@ -305,7 +305,7 @@ figure41 =
 
 figure42 :: (ConstraintRender n b) => TDiagram n b
 figure42 =
-  let iCount = 12
+  let iCount = 4
       chevals =
         mconcat
           [ f x y
@@ -332,7 +332,7 @@ figure42 =
               # warp
             where
               by t = (fromIntegral t - 1) * 20
-              aspect = 4 / 80
+              aspect = 2 / 80
 
           f j i = map (map (transform i j)) chevalData
    in chevals
