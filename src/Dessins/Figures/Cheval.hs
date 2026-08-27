@@ -1,9 +1,6 @@
 {-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-{-# OPTIONS_GHC -Wno-simplifiable-class-constraints #-}
-{-# OPTIONS_GHC -Wno-overlapping-patterns #-}
-{-# OPTIONS_GHC -Wno-unused-matches #-}
 
 module Dessins.Figures.Cheval
   ( figure34
@@ -11,6 +8,7 @@ module Dessins.Figures.Cheval
   , figure36
   , figure37
   , figure38
+  , figure39
   , bonus
   ) where
 
@@ -30,9 +28,10 @@ import Diagrams
   , scaleUToY
   , strokePath
   , ultraThin
-  , (#), scaleUToX
+  , (#)
+  , scaleUToX, fillColor
   )
-import Diagrams.Prelude (Bifunctor (bimap), red)
+import Diagrams.Prelude (Bifunctor (bimap), red, black, white)
 
 data Matrix2x2 a = Matrix2x2
   { a11 :: a, a12 :: a
@@ -296,6 +295,24 @@ figure38 =
               # translate (j, 0)
               # scaleBy (0.5 ** i, 0.5 ** i)
               # translate (0, 2 - 2* 0.5**i)
+
+          f i j = map (map (transform i j)) chevalData
+   in chevals
+        # getTrailsList
+        # centerXY
+        # scaleUToY (getRemSizeDiv (* 3))
+        # squareFrame (getRemSizeDiv (* 4))
+
+figure39 :: (ConstraintRender n b) => TDiagram n b
+figure39 =
+  let iCount = 3
+      jCount = 3
+      chevals = mconcat [f x y |
+          x <- [0 .. (iCount - 1)]
+        , y <- [0 .. (jCount - 1)]]
+        where
+          transform i j v = v
+              # translate (i * 20, j * 20)
 
           f i j = map (map (transform i j)) chevalData
    in chevals
