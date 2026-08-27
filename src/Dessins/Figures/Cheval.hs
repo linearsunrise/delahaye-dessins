@@ -9,6 +9,7 @@ module Dessins.Figures.Cheval
   , figure37
   , figure38
   , figure39
+  , figure40
   , bonus
   ) where
 
@@ -17,93 +18,12 @@ import Dessins.Types (ConstraintRender, TDiagram)
 import Dessins.Utils.Polygon (xAxis, yAxis)
 import Dessins.Utils.Scene (squareFrame)
 
-import Diagrams
-  ( Point
-  , V2
-  , centerXY
-  , fc
-  , fromVertices
-  , lw
-  , p2
-  , scaleUToY
-  , strokePath
-  , ultraThin
-  , (#)
-  , scaleUToX, fillColor
-  )
-import Diagrams.Prelude (Bifunctor (bimap), red, black, white)
+import qualified Dessins.Utils as U
 
-data Matrix2x2 a = Matrix2x2
-  { a11 :: a, a12 :: a
-  , a21 :: a, a22 :: a
-  }
-  deriving (Eq, Show)
-  
-data Matrix3x3 a = Matrix3x3
-  { b11 :: a, b12 :: a, b13 :: a
-  , b21 :: a, b22 :: a, b23 :: a
-  , b31 :: a, b32 :: a, b33 :: a
-  }
-  deriving (Eq, Show)
+import Diagrams ((#))
 
-applyMatrixToPoint :: Num b => Matrix2x2 b -> (b, b) -> (b, b)
-applyMatrixToPoint
-  (Matrix2x2 m11 m12
-             m21 m22)
-  (x, y) =
-    (m11 * x + m12 * y, m21 * x + m22 * y)
-
-applyMatrix3x3ToPoint :: Num b => Matrix3x3 b -> (b, b) -> (b, b)
-applyMatrix3x3ToPoint
-  (Matrix3x3 m11 m12 m13
-             m21 m22 m23
-             m31 m32 m33)
-  (x, y) =
-    (m11 * x + m12 * y + m13, m21 * x + m22 * y + m23)
-
-rotateBy :: (Floating a) => a -> (a, a) -> (a, a)
-rotateBy theta =
-  applyMatrixToPoint
-    ( Matrix2x2
-        { a11 = cos theta, a12 = -sin theta
-        , a21 = sin theta, a22 = cos theta
-        }
-    )
-
-scaleBy :: (Num a) => (a, a) -> (a, a) -> (a, a)
-scaleBy (x, y) =
-  applyMatrixToPoint
-    ( Matrix2x2
-        { a11 = x, a12 = 0
-        , a21 = 0, a22 = y
-        }
-    )
-
-scaleByX :: (Num a) => a -> (a, a) -> (a, a)
-scaleByX x = scaleBy (x, 1)
-
-scaleByY :: (Num a) => a -> (a, a) -> (a, a)
-scaleByY y = scaleBy (1, y)
-
-flipX :: (Num a) => (a, a) -> (a, a)
-flipX = scaleBy (-1, 1)
-
-flipY :: (Num a) => (a, a) -> (a, a)
-flipY = 
-  scaleBy (1, -1)
-
-flipXY :: (Num a) => (a, a) -> (a, a)
-flipXY = scaleBy (-1, -1)
-
-translate :: Num b => (b, b) -> (b, b) -> (b, b)
-translate (x, y) =
-  applyMatrix3x3ToPoint 
-    ( Matrix3x3 
-        { b11 = 1, b12 = 0, b13 = x
-        , b21 = 0, b22 = 1, b23 = y
-        , b31 = 0, b32 = 0, b33 = 1
-        }
-    )
+import qualified Diagrams as D
+import Diagrams.Prelude as DP (Bifunctor (bimap), red)
 
 chevalData :: (RealFloat n) => [[(n, n)]]
 chevalData =
@@ -190,10 +110,10 @@ chevalData =
 createPath :: (ConstraintRender n b) => [(n, n)] -> TDiagram n b
 createPath x =
   pointsListToTrail x
-    # fromVertices
-    # strokePath
-    # lw ultraThin
-    # fc red
+    # D.fromVertices
+    # D.strokePath
+    # D.lw D.ultraThin
+    # D.fc DP.red
 
 getTrailsList ::
   (ConstraintRender n b) =>
@@ -202,15 +122,15 @@ getTrailsList =
   mconcat
     . map createPath
 
-pointsListToTrail :: [(n, n)] -> [Point V2 n]
-pointsListToTrail = map p2
+pointsListToTrail :: [(n, n)] -> [D.Point D.V2 n]
+pointsListToTrail = map D.p2
 
 figure34 :: (ConstraintRender n b) => TDiagram n b
 figure34 =
   chevalData
     # getTrailsList
-    # centerXY
-    # scaleUToY (getRemSizeDiv (* 3))
+    # D.centerXY
+    # D.scaleUToY (getRemSizeDiv (* 3))
     # squareFrame (getRemSizeDiv (* 4))
 
 figure35 :: (ConstraintRender n b) => TDiagram n b
@@ -224,15 +144,15 @@ figure35 =
         where
           ax i = (2 * i * pi / vertices + phi)
           transform t v = v
-              # translate (0.5, 0.5)
-              # rotateBy (ax t)
-              # scaleBy (1 / divideBy, 1 / divideBy)
+              # U.translate (0.5, 0.5)
+              # U.rotateBy (ax t)
+              # U.scaleBy (1 / divideBy, 1 / divideBy)
 
           f t = map (map (transform t)) chevalData
    in chevals
         # getTrailsList
-        # centerXY
-        # scaleUToY (getRemSizeDiv (* 3))
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
         # squareFrame (getRemSizeDiv (* 4))
 
 figure36 :: (ConstraintRender n b) => TDiagram n b
@@ -246,17 +166,17 @@ figure36 =
         where
           transform i j dt = 
             (if even i then dt
-                       else dt # flipX
+                       else dt # U.flipX
             )
-              # scaleBy (0.5 ** j, 0.5 ** j)
-              # translate (0, -(80 * 0.5 ** j))
+              # U.scaleBy (0.5 ** j, 0.5 ** j)
+              # U.translate (0, -(80 * 0.5 ** j))
 
           f t u = map (map (transform t u)) chevalData
       
    in chevals
         # getTrailsList
-        # centerXY
-        # scaleUToY (getRemSizeDiv (* 3))
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
         # squareFrame (getRemSizeDiv (* 4))
 
 figure37 :: (ConstraintRender n b) => TDiagram n b
@@ -270,17 +190,17 @@ figure37 =
         where
           ax i = (2 * i * pi / vertices + phi)
           transform i v = v
-              # translate (0.15, 0.15)
-              # scaleBy (3 / 110, 3 / 110)
-              # translate (0.5, 0.5)
-              # rotateBy (ax i)
-              # scaleBy (rr ** i / 2, rr ** i / 2)
+              # U.translate (0.15, 0.15)
+              # U.scaleBy (3 / 110, 3 / 110)
+              # U.translate (0.5, 0.5)
+              # U.rotateBy (ax i)
+              # U.scaleBy (rr ** i / 2, rr ** i / 2)
 
           f t = map (map (transform t)) chevalData
    in chevals
         # getTrailsList
-        # centerXY
-        # scaleUToY (getRemSizeDiv (* 3))
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
         # squareFrame (getRemSizeDiv (* 4))
 
 figure38 :: (ConstraintRender n b) => TDiagram n b
@@ -291,16 +211,16 @@ figure38 =
         , y <- [0 .. ((2 ** x) - 1)]]
         where
           transform i j v = v
-              # scaleBy (1 / 40, 1 / 40)
-              # translate (j, 0)
-              # scaleBy (0.5 ** i, 0.5 ** i)
-              # translate (0, 2 - 2* 0.5**i)
+              # U.scaleBy (1 / 40, 1 / 40)
+              # U.translate (j, 0)
+              # U.scaleBy (0.5 ** i, 0.5 ** i)
+              # U.translate (0, 2 - 2* 0.5**i)
 
           f i j = map (map (transform i j)) chevalData
    in chevals
         # getTrailsList
-        # centerXY
-        # scaleUToY (getRemSizeDiv (* 3))
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
         # squareFrame (getRemSizeDiv (* 4))
 
 figure39 :: (ConstraintRender n b) => TDiagram n b
@@ -312,13 +232,32 @@ figure39 =
         , y <- [0 .. (jCount - 1)]]
         where
           transform i j v = v
-              # translate (i * 20, j * 20)
+              # U.translate (i * 20, j * 20)
 
           f i j = map (map (transform i j)) chevalData
    in chevals
         # getTrailsList
-        # centerXY
-        # scaleUToY (getRemSizeDiv (* 3))
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
+        # squareFrame (getRemSizeDiv (* 4))
+
+figure40 :: (ConstraintRender n b) => TDiagram n b
+figure40 =
+  let iCount = 4
+      chevals = mconcat [f x y |
+          x <- [-iCount .. iCount]
+        , y <- [-iCount .. iCount]]
+        where
+          transform i j v = v
+              # U.translate (fromIntegral i * 20, fromIntegral j * 20)
+
+          filterFigure i j = filter (\_ -> abs j >= abs i)
+
+          f i j = map (filterFigure i j . map (transform i j)) chevalData
+   in chevals
+        # getTrailsList
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
         # squareFrame (getRemSizeDiv (* 4))
 
 bonus :: (ConstraintRender n b) => TDiagram n b
@@ -329,7 +268,7 @@ bonus =
       warp :: (RealFloat a) => (a, a) -> (a, a) -> (a, a)
       warp (x1, y1) (x2, y2) =
         (co * x - si * y, si * x - co * y)
-          # bimap add add
+          # DP.bimap add add
         where
           (x, y) = (x2, y2)
           (co, si) = (x1, y1)
@@ -342,6 +281,6 @@ bonus =
               # \point -> map (map (warp point)) chevalData
    in chevals
         # getTrailsList
-        # centerXY
-        # scaleUToY (getRemSizeDiv (* 3))
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
         # squareFrame (getRemSizeDiv (* 4))
