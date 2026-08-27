@@ -2,8 +2,10 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -Wno-simplifiable-class-constraints #-}
+{-# OPTIONS_GHC -Wno-overlapping-patterns #-}
+{-# OPTIONS_GHC -Wno-unused-matches #-}
 
-module Dessins.Figures.Cheval (figure34, figure35) where
+module Dessins.Figures.Cheval (figure34, figure35, bonus) where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Types (ConstraintRender, TDiagram)
@@ -11,22 +13,92 @@ import Dessins.Utils.Polygon (xAxis, yAxis)
 import Dessins.Utils.Scene (squareFrame)
 
 import Diagrams
-  ( P2
-  , Point
+  ( Point
   , V2
   , centerXY
+  , fc
   , fromVertices
   , lw
   , p2
-  , scale
   , scaleUToY
   , strokePath
   , ultraThin
-  , (#), fillColor, fc
+  , (#)
   )
-import Diagrams.Prelude (Bifunctor (bimap), white, red)
+import Diagrams.Prelude (Bifunctor (bimap), red)
 
--- chevalData :: (ConstraintRender n b) => TDiagram n b
+data Matrix2x2 a = Matrix2x2
+  { a11 :: a, a12 :: a
+  , a21 :: a, a22 :: a
+  }
+  deriving (Eq, Show)
+  
+data Matrix3x3 a = Matrix3x3
+  { b11 :: a, b12 :: a, b13 :: a
+  , b21 :: a, b22 :: a, b23 :: a
+  , b31 :: a, b32 :: a, b33 :: a
+  }
+  deriving (Eq, Show)
+
+applyMatrixToPoint :: Num b => Matrix2x2 b -> (b, b) -> (b, b)
+applyMatrixToPoint
+  (Matrix2x2 m11 m12
+             m21 m22)
+  (x, y) =
+    (m11 * x + m12 * y, m21 * x + m22 * y)
+
+applyMatrix3x3ToPoint :: Num b => Matrix3x3 b -> (b, b) -> (b, b)
+applyMatrix3x3ToPoint
+  (Matrix3x3 m11 m12 m13
+             m21 m22 m23
+             m31 m32 m33)
+  (x, y) =
+    (m11 * x + m12 * y + m13, m21 * x + m22 * y + m23)
+
+rotateBy :: (Floating a) => a -> (a, a) -> (a, a)
+rotateBy theta =
+  applyMatrixToPoint
+    ( Matrix2x2
+        { a11 = cos theta, a12 = -sin theta
+        , a21 = sin theta, a22 = cos theta
+        }
+    )
+
+scaleBy :: (Num a) => (a, a) -> (a, a) -> (a, a)
+scaleBy (x, y) =
+  applyMatrixToPoint
+    ( Matrix2x2
+        { a11 = x, a12 = 0
+        , a21 = 0, a22 = y
+        }
+    )
+
+scaleByX :: (Num a) => a -> (a, a) -> (a, a)
+scaleByX x = scaleBy (x, 1)
+
+scaleByY :: (Num a) => a -> (a, a) -> (a, a)
+scaleByY y = scaleBy (1, y)
+
+flipX :: (Num a) => (a, a) -> (a, a)
+flipX = scaleBy (-1, 1)
+
+flipY :: (Num a) => (a, a) -> (a, a)
+flipY = 
+  scaleBy (1, -1)
+
+flipXY :: (Num a) => (a, a) -> (a, a)
+flipXY = scaleBy (-1, -1)
+
+translate :: Num b => (b, b) -> (b, b) -> (b, b)
+translate (x, y) =
+  applyMatrix3x3ToPoint 
+    ( Matrix3x3 
+        { b11 = 1, b12 = 0, b13 = x
+        , b21 = 0, b22 = 1, b23 = y
+        , b31 = 0, b32 = 0, b33 = 1
+        }
+    )
+
 chevalData :: (RealFloat n) => [[(n, n)]]
 chevalData =
   [ [(10, 10), (8, 12), (9, 16), (12, 17), (13, 18), (14, 20)]
@@ -138,29 +210,19 @@ figure34 =
 figure35 :: (ConstraintRender n b) => TDiagram n b
 figure35 =
   let vertices = 6
-      phi = 0
+      phi = pi / 12
 
-      divider :: (Num a) => a
-      divider = 12
-
-      warp :: (RealFloat a) => (a, a) -> (a, a) -> (a, a)
-      warp (x1, y1) (x2, y2) =
-        (co * x - si * y, si * x + co * y)
-          # bimap add add
-        where
-          (x, y)   = (x1 / divider, y1 / divider)
-          (co, si) = (x2, y2)
-          add      = (+ 0)
-
+      divideBy = 90
 
       chevals = mconcat [f x | x <- [0 .. (vertices - 1)]]
         where
-          ax fn i = fn (2 * i * pi / vertices + phi)
-          f t =
-            ( ax cos t
-            , ax sin t
-            ) # \point -> map (map (warp point)) chevalData
+          ax i = (2 * i * pi / vertices + phi)
+          transform t v = v
+              # translate (0.5, 0.5)
+              # rotateBy (ax t)
+              # scaleBy (1 / divideBy, 1 / divideBy)
 
+          f t = map (map (transform t)) chevalData
    in chevals
         # getTrailsList
         # centerXY
