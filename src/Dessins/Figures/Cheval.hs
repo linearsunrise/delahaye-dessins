@@ -10,6 +10,7 @@ module Dessins.Figures.Cheval
   , figure38
   , figure39
   , figure40
+  , figure41
   , bonus
   ) where
 
@@ -250,6 +251,27 @@ figure40 =
         where
           transform i j v = v
               # U.translate (fromIntegral i * 20, fromIntegral j * 20)
+
+          f j i = map (map (transform i j)) chevalData
+   in chevals
+        # getTrailsList
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
+        # squareFrame (getRemSizeDiv (* 4))
+
+figure41 :: (ConstraintRender n b) => TDiagram n b
+figure41 =
+  let iCount = 4
+      chevals = mconcat [f x y |
+          x <- [-iCount .. iCount]
+        , y <- [-iCount .. iCount]]
+        where
+          transform i j v = v
+              # U.translate (by i, by j)
+              # DP.bimap warp warp
+                where
+                  by t = (fromIntegral t - 1) * 20
+                  warp x = x * abs x
 
           f j i = map (map (transform i j)) chevalData
    in chevals
