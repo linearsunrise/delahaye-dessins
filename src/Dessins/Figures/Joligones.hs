@@ -24,6 +24,7 @@ import Data.Bifunctor (Bifunctor (bimap))
 import Data.Function ((&))
 import Diagrams
   ( centerXY
+  , global
   , lw
   , p2
   , scaleUToX
@@ -31,7 +32,7 @@ import Diagrams
   , strokeTrail
   , trailFromVertices
   , ultraThin
-  , (#), global
+  , (#)
   )
 
 data FigureParams n = FigureParams

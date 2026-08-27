@@ -13,17 +13,16 @@ module Dessins.Figures.Cheval
   , figure41
   , figure42
   , bonus
-  ) where
+  )
+where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Types (ConstraintRender, TDiagram)
+import qualified Dessins.Utils as U
 import Dessins.Utils.Polygon (xAxis, yAxis)
 import Dessins.Utils.Scene (squareFrame)
 
-import qualified Dessins.Utils as U
-
 import Diagrams ((#))
-
 import qualified Diagrams as D
 import Diagrams.Prelude as DP (Bifunctor (bimap), red)
 
@@ -146,7 +145,8 @@ figure35 =
       chevals = mconcat [f x | x <- [0 .. (vertices - 1)]]
         where
           ax i = (2 * i * pi / vertices + phi)
-          transform t v = v
+          transform t v =
+            v
               # U.translate (0.5, 0.5)
               # U.rotateBy (ax t)
               # U.scaleBy (1 / divideBy, 1 / divideBy)
@@ -163,19 +163,23 @@ figure36 =
   let stages = 6
       flips = 2
 
-      chevals = mconcat [f x y | 
-          x <- [0 .. (flips - 1)]
-        , y <- [0 .. (stages - 1)]]
+      chevals =
+        mconcat
+          [ f x y
+          | x <- [0 .. (flips - 1)]
+          , y <- [0 .. (stages - 1)]
+          ]
         where
-          transform i j dt = 
-            (if even i then dt
-                       else dt # U.flipX
+          transform i j dt =
+            ( if even i then
+                dt
+              else
+                dt # U.flipX
             )
               # U.scaleBy (0.5 ** j, 0.5 ** j)
               # U.translate (0, -(80 * 0.5 ** j))
 
           f t u = map (map (transform t u)) chevalData
-      
    in chevals
         # getTrailsList
         # D.centerXY
@@ -192,7 +196,8 @@ figure37 =
       chevals = mconcat [f x | x <- [0 .. (pointsCount - 1)]]
         where
           ax i = (2 * i * pi / vertices + phi)
-          transform i v = v
+          transform i v =
+            v
               # U.translate (0.15, 0.15)
               # U.scaleBy (3 / 110, 3 / 110)
               # U.translate (0.5, 0.5)
@@ -209,15 +214,19 @@ figure37 =
 figure38 :: (ConstraintRender n b) => TDiagram n b
 figure38 =
   let pointsCount = 6
-      chevals = mconcat [f x y |
-          x <- [0 .. (pointsCount - 1)]
-        , y <- [0 .. ((2 ** x) - 1)]]
+      chevals =
+        mconcat
+          [ f x y
+          | x <- [0 .. (pointsCount - 1)]
+          , y <- [0 .. ((2 ** x) - 1)]
+          ]
         where
-          transform i j v = v
+          transform i j v =
+            v
               # U.scaleBy (1 / 40, 1 / 40)
               # U.translate (j, 0)
               # U.scaleBy (0.5 ** i, 0.5 ** i)
-              # U.translate (0, 2 - 2* 0.5**i)
+              # U.translate (0, 2 - 2 * 0.5 ** i)
 
           f i j = map (map (transform i j)) chevalData
    in chevals
@@ -230,11 +239,15 @@ figure39 :: (ConstraintRender n b) => TDiagram n b
 figure39 =
   let iCount = 3
       jCount = 3
-      chevals = mconcat [f x y |
-          x <- [0 .. (iCount - 1)]
-        , y <- [0 .. (jCount - 1)]]
+      chevals =
+        mconcat
+          [ f x y
+          | x <- [0 .. (iCount - 1)]
+          , y <- [0 .. (jCount - 1)]
+          ]
         where
-          transform i j v = v
+          transform i j v =
+            v
               # U.translate (i * 20, j * 20)
 
           f i j = map (map (transform i j)) chevalData
@@ -247,11 +260,15 @@ figure39 =
 figure40 :: (ConstraintRender n b) => TDiagram n b
 figure40 =
   let iCount = 4
-      chevals = mconcat [f x y |
-          x <- [-iCount .. iCount]
-        , y <- [-abs x .. abs x]]
+      chevals =
+        mconcat
+          [ f x y
+          | x <- [-iCount .. iCount]
+          , y <- [-abs x .. abs x]
+          ]
         where
-          transform i j v = v
+          transform i j v =
+            v
               # U.translate (fromIntegral i * 20, fromIntegral j * 20)
 
           f j i = map (map (transform i j)) chevalData
@@ -264,16 +281,20 @@ figure40 =
 figure41 :: (ConstraintRender n b) => TDiagram n b
 figure41 =
   let iCount = 4
-      chevals = mconcat [f x y |
-          x <- [-iCount .. iCount]
-        , y <- [-iCount .. iCount]]
+      chevals =
+        mconcat
+          [ f x y
+          | x <- [-iCount .. iCount]
+          , y <- [-iCount .. iCount]
+          ]
         where
-          transform i j v = v
+          transform i j v =
+            v
               # U.translate (by i, by j)
               # DP.bimap warp warp
-                where
-                  by t = (fromIntegral t - 1) * 20
-                  warp x = x * abs x
+            where
+              by t = (fromIntegral t - 1) * 20
+              warp x = x * abs x
 
           f j i = map (map (transform i j)) chevalData
    in chevals
@@ -284,29 +305,34 @@ figure41 =
 
 figure42 :: (ConstraintRender n b) => TDiagram n b
 figure42 =
-  let iCount = 4
-      chevals = mconcat [f x y |
-          x <- [-iCount .. iCount]
-        , y <- [-iCount .. iCount]]
+  let iCount = 12
+      chevals =
+        mconcat
+          [ f x y
+          | x <- [-iCount .. iCount]
+          , y <- [-iCount .. iCount]
+          ]
         where
-          warp (x,y) = 
-            let 
-              an = if x ==0
-                    then pi / 2 * signum y
-                    else atan(y / x) + pi * (1 - signum x)/2
+          warp (x, y) =
+            let an =
+                  if x == 0 then
+                    pi / 2 * signum y
+                  else
+                    atan (y / x) + pi * (1 - signum x) / 2
 
-              di = sqrt (x**2 + y**2)
+                di =
+                  sqrt (x ** 2 + y ** 2)
                     # \t -> t / (1 + t) * 0.65
              in (di * cos an, di * sin an)
 
-          transform i j v = v
+          transform i j v =
+            v
               # U.translate (by i, by j)
               # U.scaleBy (aspect, aspect)
               # warp
-                where
-                  by t = (fromIntegral t - 1) * 20
-                  aspect = 2 / 80
-                  
+            where
+              by t = (fromIntegral t - 1) * 20
+              aspect = 4 / 80
 
           f j i = map (map (transform i j)) chevalData
    in chevals

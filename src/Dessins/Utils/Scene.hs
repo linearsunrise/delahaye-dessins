@@ -18,6 +18,7 @@ import Diagrams.Prelude
   , closeTrail
   , fc
   , fromVertices
+  , global
   , located
   , lw
   , none
@@ -25,7 +26,7 @@ import Diagrams.Prelude
   , sRGB24read
   , square
   , strokePath
-  , (#), global
+  , (#)
   )
 
 closePath :: Path v n -> Path v n
