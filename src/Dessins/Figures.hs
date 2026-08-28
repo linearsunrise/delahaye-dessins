@@ -16,6 +16,7 @@ import Dessins.Figures.Composition1
 import Dessins.Figures.Composition2
 import Dessins.Figures.EtoilesRegulieres
 import Dessins.Figures.Joligones
+import Dessins.Figures.Lion
 import Dessins.Figures.PolygonesReguliers
 import Dessins.Types (ConstraintRender, TDiagram)
 import Dessins.Utils.Grid (group, hor, ver)
@@ -96,4 +97,5 @@ cheval =
     , figure41
     , figure42
     , figure43
+    , figure44
     ]

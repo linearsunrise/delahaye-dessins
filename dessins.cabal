@@ -29,6 +29,7 @@ library
       , Dessins.Figures.Composition2
       , Dessins.Figures.Joligones
       , Dessins.Figures.Cheval
+      , Dessins.Figures.Lion
     build-depends:
         base >=4 && <5
       , diagrams-lib
