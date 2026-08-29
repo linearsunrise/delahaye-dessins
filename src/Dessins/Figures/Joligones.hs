@@ -31,7 +31,6 @@ import Diagrams
   , scaleX
   , strokeTrail
   , trailFromVertices
-  , ultraThin
   , (#)
   )
 
