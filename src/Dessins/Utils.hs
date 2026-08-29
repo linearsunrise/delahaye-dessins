@@ -1,7 +1,5 @@
 module Dessins.Utils
-  ( module Dessins.Utils.Grid
-  , module Dessins.Utils.Polygon
-  , module Dessins.Utils.Scene
+  ( module U
   , Matrix2x2
   , applyMatrixToPoint
   , applyMatrix3x3ToPoint
@@ -17,9 +15,19 @@ module Dessins.Utils
   )
 where
 
-import Dessins.Utils.Grid
-import Dessins.Utils.Polygon
-import Dessins.Utils.Scene
+import Dessins.Utils.Grid as U (group, hor, ver)
+import Dessins.Utils.Polygon as U
+  ( axis
+  , polygonEtoile
+  , polygonRegulier
+  , xAxis
+  , yAxis
+  )
+import Dessins.Utils.Scene as U
+  ( renderSquareFrame
+  , renderTrail
+  , squareFrame
+  )
 
 data Matrix2x2 a = Matrix2x2
   { a11 :: a

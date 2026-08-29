@@ -9,9 +9,8 @@ module Dessins.Figures.Lion
 where
 
 import Dessins.Const (getRemSizeDiv)
-import Dessins.Types (ConstraintRender, TDiagram)
+import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
-import Dessins.Utils.Scene (squareFrame)
 
 import qualified Diagrams as D
 import Diagrams.Prelude as DP
@@ -125,7 +124,7 @@ lionWidth = 18.5
 lionHeight :: (RealFloat n) => n
 lionHeight = 14
 
-createPath :: (ConstraintRender n b) => [(n, n)] -> TDiagram n b
+createPath :: (T.Render n b) => [(n, n)] -> T.TDiagram n b
 createPath x =
   pointsListToTrail x
     # D.fromVertices
@@ -135,8 +134,8 @@ createPath x =
     # D.lineJoin D.LineJoinBevel
 
 getTrailsList ::
-  (ConstraintRender n b) =>
-  [[(n, n)]] -> TDiagram n b
+  (T.Render n b) =>
+  [[(n, n)]] -> T.TDiagram n b
 getTrailsList =
   mconcat
     . map createPath
@@ -144,15 +143,15 @@ getTrailsList =
 pointsListToTrail :: [(n, n)] -> [D.Point D.V2 n]
 pointsListToTrail = map D.p2
 
-figure44 :: (ConstraintRender n b) => TDiagram n b
+figure44 :: (T.Render n b) => T.TDiagram n b
 figure44 =
   lionData
     # getTrailsList
     # D.centerXY
     # D.scaleUToX (getRemSizeDiv (* 3))
-    # squareFrame (getRemSizeDiv (* 4))
+    # U.squareFrame (getRemSizeDiv (* 4))
 
-figure45 :: (ConstraintRender n b) => TDiagram n b
+figure45 :: (T.Render n b) => T.TDiagram n b
 figure45 =
   let rows = 5 :: Int
       cols = 3 :: Int
@@ -183,4 +182,4 @@ figure45 =
         # getTrailsList
         # D.centerXY
         # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # U.squareFrame (getRemSizeDiv (* 4))

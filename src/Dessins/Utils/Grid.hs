@@ -4,7 +4,7 @@
 module Dessins.Utils.Grid (hor, ver, group) where
 
 import Dessins.Const (getRemSizeDiv)
-import Dessins.Types (ConstraintRender, TDiagram)
+import qualified Dessins.Types as T
 
 import Diagrams.Prelude
   ( HasOrigin
@@ -40,7 +40,7 @@ ver ::
 ver gapss = vcat' (with & sep .~ gapss)
 
 group ::
-  (ConstraintRender n b) => String -> [TDiagram n b] -> TDiagram n b
+  (T.Render n b) => String -> [T.TDiagram n b] -> T.TDiagram n b
 group title ct =
   ver
     (getRemSizeDiv (/ 2))

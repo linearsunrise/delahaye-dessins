@@ -14,9 +14,9 @@ module Dessins.Figures.Composition2
 where
 
 import Dessins.Const (getRemSizeDiv)
-import Dessins.Types (ConstraintRender, TDiagram)
-import Dessins.Utils.Polygon (polygonEtoile, xAxis, yAxis)
-import Dessins.Utils.Scene (renderTrail, squareFrame)
+import qualified Dessins.Types as T
+import qualified Dessins.Utils.Polygon as U
+import qualified Dessins.Utils.Scene as U
 
 import Data.Function ((&))
 import Diagrams
@@ -41,15 +41,15 @@ data FigureParams n = FigureParams
 
 renderFigure ::
   forall n b.
-  (ConstraintRender n b, Enum n) =>
-  FigureParams n -> TDiagram n b
+  (Enum n, T.Render n b) =>
+  FigureParams n -> T.TDiagram n b
 renderFigure params =
-  let star :: (ConstraintRender n b) => TDiagram n b
+  let star :: (T.Render n b) => T.TDiagram n b
       star =
-        polygonEtoile
+        U.polygonEtoile
           (params & innerVertices)
           (params & innerStep)
-          # renderTrail
+          # U.renderTrail
 
       vertices = [0 .. ((params & pointsCount) - 1)]
 
@@ -57,7 +57,7 @@ renderFigure params =
         let pCount = (params & starsPerCycle)
             rr = (params & compositionRadius) * (params & mult) ** vert
             t = vert
-         in (yAxis t pCount 0, xAxis t pCount 0)
+         in (U.yAxis t pCount 0, U.xAxis t pCount 0)
               # bimap (rr *) (rr *)
               # r2
 
@@ -76,11 +76,11 @@ renderFigure params =
    in mconcat figures
         # centerXY
         # scaleUToX (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # U.squareFrame (getRemSizeDiv (* 4))
 
 figure20 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure20 =
   renderFigure
     FigureParams
@@ -94,8 +94,8 @@ figure20 =
       }
 
 figure21 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure21 =
   renderFigure
     FigureParams
@@ -109,8 +109,8 @@ figure21 =
       }
 
 figure22 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure22 =
   renderFigure
     FigureParams
@@ -124,8 +124,8 @@ figure22 =
       }
 
 figure23 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure23 =
   renderFigure
     FigureParams
@@ -139,8 +139,8 @@ figure23 =
       }
 
 figure24 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure24 =
   renderFigure
     FigureParams
@@ -154,8 +154,8 @@ figure24 =
       }
 
 figure25 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure25 =
   renderFigure
     FigureParams

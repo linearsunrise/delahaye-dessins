@@ -3,49 +3,35 @@
 
 module Dessins.Utils.Scene (renderTrail, squareFrame, renderSquareFrame) where
 
-import Dessins.Const (getRemSizeDiv)
-import Dessins.Types (ConstraintRender, TDiagram)
+import qualified Dessins.Const as Const
+import qualified Dessins.Types as T
 
-import Data.Data (Typeable)
-import Diagrams.Prelude
-  ( HasStyle
-  , N
-  , Path (Path)
-  , Point
-  , TrailLike
-  , V
-  , V2
-  , closeTrail
-  , fc
-  , fromVertices
-  , global
-  , located
-  , lw
-  , none
-  , over
-  , sRGB24read
-  , square
-  , strokePath
-  , (#)
-  )
+import qualified Data.Data as Data
+import Diagrams.Prelude ((#))
+import qualified Diagrams.Prelude as DP
 
-closePath :: Path v n -> Path v n
-closePath (Path ts) = Path (map (over located closeTrail) ts)
+closePath :: DP.Path v n -> DP.Path v n
+closePath (DP.Path ts) = DP.Path (map (DP.over DP.located DP.closeTrail) ts)
 
-renderTrail :: (ConstraintRender n b) => [Point V2 n] -> TDiagram n b
+renderTrail :: (T.Render n b) => [DP.Point DP.V2 n] -> T.TDiagram n b
 renderTrail v =
-  fromVertices v
+  DP.fromVertices v
     # closePath
-    # strokePath
-    # lw (global 0.045)
+    # DP.strokePath
+    # DP.lw (DP.global 0.045)
 
 squareFrame ::
-  (HasStyle a, Semigroup a, TrailLike a, Typeable (N a), V a ~ V2) =>
-  N a -> a -> a
+  ( DP.HasStyle a
+  , DP.TrailLike a
+  , DP.V a ~ DP.V2
+  , Data.Typeable (DP.N a)
+  , Semigroup a
+  ) =>
+  DP.N a -> a -> a
 squareFrame s content =
   content
-    <> square s # fc (sRGB24read "#d0d0d0") # lw none
+    <> DP.square s # DP.fc (DP.sRGB24read "#d0d0d0") # DP.lw DP.none
 
 renderSquareFrame ::
-  (ConstraintRender n b) => [Point V2 n] -> TDiagram n b
-renderSquareFrame = squareFrame (getRemSizeDiv (* 4)) . renderTrail
+  (T.Render n b) => [DP.Point DP.V2 n] -> T.TDiagram n b
+renderSquareFrame = squareFrame (Const.getRemSizeDiv (* 4)) . renderTrail

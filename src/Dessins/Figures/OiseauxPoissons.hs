@@ -9,12 +9,11 @@ module Dessins.Figures.OiseauxPoissons
 where
 
 import Dessins.Const (getRemSizeDiv)
-import Dessins.Types (ConstraintRender, TDiagram)
+import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
-import Dessins.Utils.Scene (squareFrame)
 
 import qualified Diagrams as D
-import Diagrams.Prelude as DP
+import Diagrams.Prelude as DP ((#))
 
 lionData :: (RealFloat n) => [[(n, n)]]
 lionData =
@@ -99,7 +98,7 @@ fishBirdWidth = 11
 fishBirdHeight :: (RealFloat n) => n
 fishBirdHeight = 9
 
-createPath :: (ConstraintRender n b) => [(n, n)] -> TDiagram n b
+createPath :: (T.Render n b) => [(n, n)] -> T.TDiagram n b
 createPath x =
   pointsListToTrail x
     # D.fromVertices
@@ -109,8 +108,8 @@ createPath x =
     # D.lineJoin D.LineJoinBevel
 
 getTrailsList ::
-  (ConstraintRender n b) =>
-  [[(n, n)]] -> TDiagram n b
+  (T.Render n b) =>
+  [[(n, n)]] -> T.TDiagram n b
 getTrailsList =
   mconcat
     . map createPath
@@ -118,15 +117,15 @@ getTrailsList =
 pointsListToTrail :: [(n, n)] -> [D.Point D.V2 n]
 pointsListToTrail = map D.p2
 
-figure46 :: (ConstraintRender n b) => TDiagram n b
+figure46 :: (T.Render n b) => T.TDiagram n b
 figure46 =
   lionData
     # getTrailsList
     # D.centerXY
     # D.scaleUToX (getRemSizeDiv (* 3))
-    # squareFrame (getRemSizeDiv (* 4))
+    # U.squareFrame (getRemSizeDiv (* 4))
 
-figure47 :: (ConstraintRender n b) => TDiagram n b
+figure47 :: (T.Render n b) => T.TDiagram n b
 figure47 =
   let rows = 4 :: Int
       cols = 4 :: Int
@@ -155,4 +154,4 @@ figure47 =
         # getTrailsList
         # D.centerXY
         # D.scaleUToX (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # U.squareFrame (getRemSizeDiv (* 4))

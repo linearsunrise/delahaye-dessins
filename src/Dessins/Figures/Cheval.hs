@@ -17,15 +17,13 @@ module Dessins.Figures.Cheval
   )
 where
 
-import Dessins.Const (getRemSizeDiv)
-import Dessins.Types (ConstraintRender, TDiagram)
+import qualified Dessins.Const as Const
+import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
-import Dessins.Utils.Polygon (xAxis, yAxis)
-import Dessins.Utils.Scene (squareFrame)
 
 import Diagrams ((#))
 import qualified Diagrams as D
-import Diagrams.Prelude as DP (Bifunctor (bimap), red)
+import qualified Diagrams.Prelude as DP
 
 chevalData :: (RealFloat n) => [[(n, n)]]
 chevalData =
@@ -109,7 +107,7 @@ chevalData =
   , [(28, 22), (25, 22)]
   ]
 
-createPath :: (ConstraintRender n b) => [(n, n)] -> TDiagram n b
+createPath :: (T.Render n b) => [(n, n)] -> T.TDiagram n b
 createPath x =
   pointsListToTrail x
     # D.fromVertices
@@ -119,8 +117,8 @@ createPath x =
     # D.lineJoin D.LineJoinBevel
 
 getTrailsList ::
-  (ConstraintRender n b) =>
-  [[(n, n)]] -> TDiagram n b
+  (T.Render n b) =>
+  [[(n, n)]] -> T.TDiagram n b
 getTrailsList =
   mconcat
     . map createPath
@@ -128,15 +126,15 @@ getTrailsList =
 pointsListToTrail :: [(n, n)] -> [D.Point D.V2 n]
 pointsListToTrail = map D.p2
 
-figure34 :: (ConstraintRender n b) => TDiagram n b
+figure34 :: (T.Render n b) => T.TDiagram n b
 figure34 =
   chevalData
     # getTrailsList
     # D.centerXY
-    # D.scaleUToY (getRemSizeDiv (* 3))
-    # squareFrame (getRemSizeDiv (* 4))
+    # D.scaleUToY (Const.getRemSizeDiv (* 3))
+    # U.squareFrame (Const.getRemSizeDiv (* 4))
 
-figure35 :: (ConstraintRender n b) => TDiagram n b
+figure35 :: (T.Render n b) => T.TDiagram n b
 figure35 =
   let vertices = 6
       phi = pi / 12
@@ -156,10 +154,10 @@ figure35 =
    in chevals
         # getTrailsList
         # D.centerXY
-        # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToY (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))
 
-figure36 :: (ConstraintRender n b) => TDiagram n b
+figure36 :: (T.Render n b) => T.TDiagram n b
 figure36 =
   let stages = 6
       flips = 2
@@ -184,10 +182,10 @@ figure36 =
    in chevals
         # getTrailsList
         # D.centerXY
-        # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToY (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))
 
-figure37 :: (ConstraintRender n b) => TDiagram n b
+figure37 :: (T.Render n b) => T.TDiagram n b
 figure37 =
   let vertices = 6
       phi = pi / 12
@@ -209,10 +207,10 @@ figure37 =
    in chevals
         # getTrailsList
         # D.centerXY
-        # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToY (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))
 
-figure38 :: (ConstraintRender n b) => TDiagram n b
+figure38 :: (T.Render n b) => T.TDiagram n b
 figure38 =
   let pointsCount = 6
       chevals =
@@ -233,10 +231,10 @@ figure38 =
    in chevals
         # getTrailsList
         # D.centerXY
-        # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToY (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))
 
-figure39 :: (ConstraintRender n b) => TDiagram n b
+figure39 :: (T.Render n b) => T.TDiagram n b
 figure39 =
   let iCount = 3
       jCount = 3
@@ -255,10 +253,10 @@ figure39 =
    in chevals
         # getTrailsList
         # D.centerXY
-        # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToY (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))
 
-figure40 :: (ConstraintRender n b) => TDiagram n b
+figure40 :: (T.Render n b) => T.TDiagram n b
 figure40 =
   let iCount = 4
       chevals =
@@ -276,10 +274,10 @@ figure40 =
    in chevals
         # getTrailsList
         # D.centerXY
-        # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToY (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))
 
-figure41 :: (ConstraintRender n b) => TDiagram n b
+figure41 :: (T.Render n b) => T.TDiagram n b
 figure41 =
   let iCount = 4
       chevals =
@@ -301,10 +299,10 @@ figure41 =
    in chevals
         # getTrailsList
         # D.centerXY
-        # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToY (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))
 
-figure42 :: (ConstraintRender n b) => TDiagram n b
+figure42 :: (T.Render n b) => T.TDiagram n b
 figure42 =
   let iCount = 4
       chevals =
@@ -339,10 +337,10 @@ figure42 =
    in chevals
         # getTrailsList
         # D.centerXY
-        # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToY (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))
 
-figure43 :: (ConstraintRender n b) => TDiagram n b
+figure43 :: (T.Render n b) => T.TDiagram n b
 figure43 =
   let iCount = 4
       chevals =
@@ -365,10 +363,10 @@ figure43 =
    in chevals
         # getTrailsList
         # D.centerXY
-        # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToY (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))
 
-bonus :: (ConstraintRender n b) => TDiagram n b
+bonus :: (T.Render n b) => T.TDiagram n b
 bonus =
   let vertices = 6
       phi = 0
@@ -385,10 +383,12 @@ bonus =
       chevals = mconcat [f x | x <- [0 .. (vertices - 1)]]
         where
           f t =
-            (xAxis (t / vertices) vertices phi, yAxis (t / vertices) vertices phi)
+            ( U.xAxis (t / vertices) vertices phi
+            , U.yAxis (t / vertices) vertices phi
+            )
               # \point -> map (map (warp point)) chevalData
    in chevals
         # getTrailsList
         # D.centerXY
-        # D.scaleUToY (getRemSizeDiv (* 3))
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToY (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))

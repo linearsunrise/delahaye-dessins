@@ -14,17 +14,14 @@ module Dessins.Figures.Composition1
 where
 
 import Dessins.Const (getRemSizeDiv)
-import Dessins.Types (ConstraintRender, TDiagram)
-import Dessins.Utils.Polygon (polygonEtoile, xAxis, yAxis)
-import Dessins.Utils.Scene (renderTrail, squareFrame)
+import qualified Dessins.Types as T
+import qualified Dessins.Utils as U
 
 import Data.Function ((&))
-import Diagrams
-  ( r2
-  , scale
-  , translate
-  , (#)
-  )
+import Diagrams as D ((#))
+import qualified Diagrams as D
+
+-- import Diagrams.Prelude as D
 
 data FigureParams n = FigureParams
   { figureRadius :: n
@@ -36,8 +33,8 @@ data FigureParams n = FigureParams
 
 renderFigure ::
   forall n b.
-  (ConstraintRender n b, Enum n) =>
-  FigureParams n -> TDiagram n b
+  (Enum n, T.Render n b) =>
+  FigureParams n -> T.TDiagram n b
 renderFigure params =
   -- Взято из книги, радиус композиции = .27,
   -- радиус кругов = .22.
@@ -50,27 +47,29 @@ renderFigure params =
          in radius1 / radius2
 
       star =
-        polygonEtoile (params & innerVertices) (params & innerStep)
-          # renderTrail
-          # scale starRadius
+        U.polygonEtoile (params & innerVertices) (params & innerStep)
+          # U.renderTrail
+          # D.scale starRadius
 
       vertices = [1 .. (params & pointCount)]
       phi = 0
 
       calcVectors t =
-        r2
-          (xAxis t (params & pointCount) phi, yAxis t (params & pointCount) phi)
+        D.r2
+          ( U.xAxis t (params & pointCount) phi
+          , U.yAxis t (params & pointCount) phi
+          )
 
       shiftPoints = map calcVectors vertices
 
-      createFigure v = star # translate v
+      createFigure v = star # D.translate v
 
       figures = map createFigure shiftPoints
    in mconcat figures
-        # scale (2 * similarityCoefficient)
-        # squareFrame (getRemSizeDiv (* 4))
+        # D.scale (2 * similarityCoefficient)
+        # U.squareFrame (getRemSizeDiv (* 4))
 
-figure13 :: (ConstraintRender n b, Enum n) => TDiagram n b
+figure13 :: (Enum n, T.Render n b) => T.TDiagram n b
 figure13 =
   renderFigure
     FigureParams
@@ -81,7 +80,7 @@ figure13 =
       , pointCount = 5
       }
 
-figure14 :: (ConstraintRender n b, Enum n) => TDiagram n b
+figure14 :: (Enum n, T.Render n b) => T.TDiagram n b
 figure14 =
   renderFigure
     FigureParams
@@ -92,7 +91,7 @@ figure14 =
       , pointCount = 6
       }
 
-figure15 :: (ConstraintRender n b, Enum n) => TDiagram n b
+figure15 :: (Enum n, T.Render n b) => T.TDiagram n b
 figure15 =
   renderFigure
     FigureParams
@@ -103,7 +102,7 @@ figure15 =
       , pointCount = 40
       }
 
-figure16 :: (ConstraintRender n b, Enum n) => TDiagram n b
+figure16 :: (Enum n, T.Render n b) => T.TDiagram n b
 figure16 =
   renderFigure
     FigureParams
@@ -114,7 +113,7 @@ figure16 =
       , pointCount = 10
       }
 
-figure17 :: (ConstraintRender n b, Enum n) => TDiagram n b
+figure17 :: (Enum n, T.Render n b) => T.TDiagram n b
 figure17 =
   renderFigure
     FigureParams
@@ -125,7 +124,7 @@ figure17 =
       , pointCount = 63
       }
 
-figure18 :: (ConstraintRender n b, Enum n) => TDiagram n b
+figure18 :: (Enum n, T.Render n b) => T.TDiagram n b
 figure18 =
   renderFigure
     FigureParams
@@ -136,7 +135,7 @@ figure18 =
       , pointCount = 25
       }
 
-figure19 :: (ConstraintRender n b, Enum n) => TDiagram n b
+figure19 :: (Enum n, T.Render n b) => T.TDiagram n b
 figure19 =
   renderFigure
     FigureParams

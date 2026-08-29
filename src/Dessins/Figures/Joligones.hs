@@ -16,23 +16,14 @@ module Dessins.Figures.Joligones
 where
 
 import Dessins.Const (getRemSizeDiv)
-import Dessins.Types (ConstraintRender, TDiagram)
-import Dessins.Utils.Polygon (xAxis, yAxis)
-import Dessins.Utils.Scene (squareFrame)
+import qualified Dessins.Types as T
+import qualified Dessins.Utils.Polygon as U
+import qualified Dessins.Utils.Scene as U
 
 import Data.Bifunctor (Bifunctor (bimap))
 import Data.Function ((&))
-import Diagrams
-  ( centerXY
-  , global
-  , lw
-  , p2
-  , scaleUToX
-  , scaleX
-  , strokeTrail
-  , trailFromVertices
-  , (#)
-  )
+import Diagrams ((#))
+import qualified Diagrams as D
 
 data FigureParams n = FigureParams
   { vertices :: n
@@ -44,39 +35,39 @@ data FigureParams n = FigureParams
 
 renderFigure ::
   forall n b.
-  (ConstraintRender n b, Enum n) =>
-  FigureParams n -> TDiagram n b
+  (Enum n, T.Render n b) =>
+  FigureParams n -> T.TDiagram n b
 renderFigure params =
   let calcVectors vert =
         let pCount = (params & vertices) + (params & fineAngle)
             rr = (params & rate) ** vert
             t = vert
             phi = -(3 * pi / 4) + (params & phase)
-         in (yAxis t pCount phi, xAxis t pCount phi)
+         in (U.yAxis t pCount phi, U.xAxis t pCount phi)
               # bimap (rr *) (rr *)
-              # p2
+              # D.p2
 
       vectors = [0 .. ((params & pointsCount) - 1)]
 
       figure =
         map calcVectors vectors
-          # trailFromVertices
-          # strokeTrail
-          # lw (global 0.045)
+          # D.trailFromVertices
+          # D.strokeTrail
+          # D.lw (D.global 0.045)
    in figure
 
 renderPipe ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b -> TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b -> T.TDiagram n b
 renderPipe v =
   v
-    # centerXY
-    # scaleUToX (getRemSizeDiv (* 3))
-    # squareFrame (getRemSizeDiv (* 4))
+    # D.centerXY
+    # D.scaleUToX (getRemSizeDiv (* 3))
+    # U.squareFrame (getRemSizeDiv (* 4))
 
 figure26 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure26 =
   renderFigure
     FigureParams
@@ -89,8 +80,8 @@ figure26 =
     # renderPipe
 
 figure27 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure27 =
   renderFigure
     FigureParams
@@ -103,8 +94,8 @@ figure27 =
     # renderPipe
 
 figure28 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure28 =
   renderFigure
     FigureParams
@@ -117,8 +108,8 @@ figure28 =
     # renderPipe
 
 figure29 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure29 =
   renderFigure
     FigureParams
@@ -131,8 +122,8 @@ figure29 =
     # renderPipe
 
 figure30 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure30 =
   renderFigure
     FigureParams
@@ -145,8 +136,8 @@ figure30 =
     # renderPipe
 
 figure31 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure31 =
   renderFigure
     FigureParams
@@ -159,8 +150,8 @@ figure31 =
     # renderPipe
 
 figure32 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure32 =
   renderFigure
     FigureParams
@@ -173,8 +164,8 @@ figure32 =
     # renderPipe
 
 figure33 ::
-  (ConstraintRender n b, Enum n) =>
-  TDiagram n b
+  (Enum n, T.Render n b) =>
+  T.TDiagram n b
 figure33 =
   renderFigure
     FigureParams
@@ -184,7 +175,7 @@ figure33 =
       , pointsCount = 400
       , phase = -(pi / 4)
       }
-    # scaleX 1.7
-    # centerXY
-    # scaleUToX (getRemSizeDiv (* 3))
-    # squareFrame (getRemSizeDiv (* 4))
+    # D.scaleX 1.7
+    # D.centerXY
+    # D.scaleUToX (getRemSizeDiv (* 3))
+    # U.squareFrame (getRemSizeDiv (* 4))

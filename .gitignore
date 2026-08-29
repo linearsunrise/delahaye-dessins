@@ -5,6 +5,6 @@ dist-newstyle/
 *.o
 *.hi
 
-# rendered task output
+#T.Rendered task output
 output/
 build/

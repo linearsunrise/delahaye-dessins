@@ -10,24 +10,24 @@ module Dessins.Figures.PolygonesReguliers
   )
 where
 
-import Dessins.Types (ConstraintRender, TDiagram)
-import Dessins.Utils.Polygon (polygonRegulier)
-import Dessins.Utils.Scene (renderSquareFrame)
+import qualified Dessins.Types as T
+import qualified Dessins.Utils.Polygon as U
+import qualified Dessins.Utils.Scene as U
 
-figure01 :: (ConstraintRender n b) => TDiagram n b
-figure01 = renderSquareFrame (polygonRegulier 4 (pi / 4))
+figure01 :: (T.Render n b) => T.TDiagram n b
+figure01 = U.renderSquareFrame (U.polygonRegulier 4 (pi / 4))
 
-figure02 :: (ConstraintRender n b) => TDiagram n b
-figure02 = renderSquareFrame (polygonRegulier 3 (pi / 2))
+figure02 :: (T.Render n b) => T.TDiagram n b
+figure02 = U.renderSquareFrame (U.polygonRegulier 3 (pi / 2))
 
-figure03 :: (ConstraintRender n b) => TDiagram n b
-figure03 = renderSquareFrame (polygonRegulier 3 0)
+figure03 :: (T.Render n b) => T.TDiagram n b
+figure03 = U.renderSquareFrame (U.polygonRegulier 3 0)
 
-figure04 :: (ConstraintRender n b) => TDiagram n b
-figure04 = renderSquareFrame (polygonRegulier 5 0)
+figure04 :: (T.Render n b) => T.TDiagram n b
+figure04 = U.renderSquareFrame (U.polygonRegulier 5 0)
 
-figure05 :: (ConstraintRender n b) => TDiagram n b
-figure05 = renderSquareFrame (polygonRegulier 8 0)
+figure05 :: (T.Render n b) => T.TDiagram n b
+figure05 = U.renderSquareFrame (U.polygonRegulier 8 0)
 
-figure06 :: (ConstraintRender n b) => TDiagram n b
-figure06 = renderSquareFrame (polygonRegulier 20 0)
+figure06 :: (T.Render n b) => T.TDiagram n b
+figure06 = U.renderSquareFrame (U.polygonRegulier 20 0)
