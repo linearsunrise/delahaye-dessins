@@ -13,14 +13,14 @@ module Dessins.Figures
 where
 
 import Dessins.Const (getRemSizeDiv)
-import Dessins.Figures.Cheval
-import Dessins.Figures.Composition1
-import Dessins.Figures.Composition2
-import Dessins.Figures.EtoilesRegulieres
-import Dessins.Figures.Joligones
-import Dessins.Figures.Lion
-import Dessins.Figures.OiseauxPoissons
-import Dessins.Figures.PolygonesReguliers
+import qualified Dessins.Figures.Cheval as Cheval
+import qualified Dessins.Figures.Composition1 as Composition1
+import qualified Dessins.Figures.Composition2 as Composition2
+import qualified Dessins.Figures.EtoilesRegulieres as EtoilesRegulieres
+import qualified Dessins.Figures.Joligones as Joligones
+import qualified Dessins.Figures.Lion as Lion
+import qualified Dessins.Figures.OiseauxPoissons as OiseauxPoissons
+import qualified Dessins.Figures.PolygonesReguliers as PolygonesReguliers
 import Dessins.Types (ConstraintRender, TDiagram)
 import Dessins.Utils.Grid (group, hor, ver)
 
@@ -28,13 +28,25 @@ polygonesReguliers :: (ConstraintRender n b) => TDiagram n b
 polygonesReguliers =
   group
     "POLYGONES RÉGULIERS"
-    [figure01, figure02, figure03, figure04, figure05, figure06]
+    [ PolygonesReguliers.figure01
+    , PolygonesReguliers.figure02
+    , PolygonesReguliers.figure03
+    , PolygonesReguliers.figure04
+    , PolygonesReguliers.figure05
+    , PolygonesReguliers.figure06
+    ]
 
 etoilesRegulieres :: (ConstraintRender n b) => TDiagram n b
 etoilesRegulieres =
   group
     "ÉTOILES RÉGULIÈRES"
-    [figure07, figure08, figure09, figure10, figure11, figure12]
+    [ EtoilesRegulieres.figure07
+    , EtoilesRegulieres.figure08
+    , EtoilesRegulieres.figure09
+    , EtoilesRegulieres.figure10
+    , EtoilesRegulieres.figure11
+    , EtoilesRegulieres.figure12
+    ]
 
 composition1 :: (ConstraintRender n b) => TDiagram n b
 composition1 =
@@ -43,20 +55,32 @@ composition1 =
     [ ver
         (getRemSizeDiv (/ 2))
         [ row13to18
-        , figure19
+        , Composition1.figure19
         ]
     ]
   where
     row13to18 =
       hor
         (getRemSizeDiv (/ 2))
-        [figure13, figure14, figure15, figure16, figure17, figure18]
+        [ Composition1.figure13
+        , Composition1.figure14
+        , Composition1.figure15
+        , Composition1.figure16
+        , Composition1.figure17
+        , Composition1.figure18
+        ]
 
 composition2 :: (ConstraintRender n b) => TDiagram n b
 composition2 =
   group
     "COMPOSITION 2"
-    [figure20, figure21, figure22, figure23, figure24, figure25]
+    [ Composition2.figure20
+    , Composition2.figure21
+    , Composition2.figure22
+    , Composition2.figure23
+    , Composition2.figure24
+    , Composition2.figure25
+    ]
 
 joligones :: (ConstraintRender n b) => TDiagram n b
 joligones =
@@ -72,50 +96,62 @@ joligones =
     row1 =
       hor
         (getRemSizeDiv (/ 2))
-        [ figure26
-        , figure27
-        , figure28
-        , figure29
-        , figure30
-        , figure31
+        [ Joligones.figure26
+        , Joligones.figure27
+        , Joligones.figure28
+        , Joligones.figure29
+        , Joligones.figure30
+        , Joligones.figure31
         ]
     row2 =
       hor
         (getRemSizeDiv (/ 2))
-        [ figure32
-        , figure33
+        [ Joligones.figure32
+        , Joligones.figure33
         ]
 
 cheval :: (ConstraintRender n b) => TDiagram n b
 cheval =
   group
     "CHEVAL"
-    [ figure34
-    , figure35
-    , figure36
-    , figure37
-    , figure38
-    , figure39
-    , figure40
-    , figure41
-    , figure42
-    , figure43
-    , figure44
-    , figure45
+    [ ver
+        (getRemSizeDiv (/ 2))
+        [ row1
+        , row2
+        ]
     ]
+  where
+    row1 =
+      hor
+        (getRemSizeDiv (/ 2))
+        [ Cheval.figure34
+        , Cheval.figure35
+        , Cheval.figure36
+        , Cheval.figure37
+        , Cheval.figure38
+        , Cheval.figure39
+        ]
+    row2 =
+      hor
+        (getRemSizeDiv (/ 2))
+        [ Cheval.figure40
+        , Cheval.figure41
+        , Cheval.figure42
+        , Cheval.figure43
+        ]
 
 lion :: (ConstraintRender n b) => TDiagram n b
 lion =
   group
     "LION"
-    [ figure44
-    , figure45
+    [ Lion.figure44
+    , Lion.figure45
     ]
 
 oiseauxPoissons :: (ConstraintRender n b) => TDiagram n b
 oiseauxPoissons =
   group
     "OISEAUX-POISSONS"
-    [ figure46
-    , figure47
+    [ OiseauxPoissons.figure46
+    , OiseauxPoissons.figure47
     ]
