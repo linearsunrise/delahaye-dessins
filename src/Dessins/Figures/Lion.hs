@@ -4,23 +4,21 @@
 
 module Dessins.Figures.Lion
   ( figure44
+  , figure45
   )
 where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Types (ConstraintRender, TDiagram)
 import qualified Dessins.Utils as U
-import Dessins.Utils.Polygon (xAxis, yAxis)
 import Dessins.Utils.Scene (squareFrame)
 
-import Diagrams ((#))
 import qualified Diagrams as D
 import Diagrams.Prelude as DP
 
 lionData :: (RealFloat n) => [[(n, n)]]
 lionData =
-  [
-    [ (5, 5)
+  [ [ (5, 5)
     , (5, 3)
     , (6, 0.5)
     , (6.5, 1)
@@ -112,8 +110,19 @@ lionData =
     , (5, 3)
     , (5, 5)
     ]
+      # map
+        ( U.translate -- находим origin для симметрии
+              ( -((lionWidth + 0.5) / 2)
+              , -((lionHeight + 5) / 2)
+              )
+        )
   ]
-    # map (map U.flipY)
+
+lionWidth :: (RealFloat n) => n
+lionWidth = 18.5
+
+lionHeight :: (RealFloat n) => n
+lionHeight = 14
 
 createPath :: (ConstraintRender n b) => [(n, n)] -> TDiagram n b
 createPath x =
@@ -141,3 +150,36 @@ figure44 =
     # D.centerXY
     # D.scaleUToX (getRemSizeDiv (* 3))
     # squareFrame (getRemSizeDiv (* 4))
+
+figure45 :: (ConstraintRender n b) => TDiagram n b
+figure45 =
+  let rows = 5 :: Int
+      cols = 3 :: Int
+
+      lions =
+        mconcat
+          [ f x y
+          | x <- [0 .. (cols - 1)]
+          , y <- [0 .. (rows - 1)]
+          ]
+        where
+          transformPipe i j point =
+            let w = lionWidth
+                h = lionHeight
+                a = fromIntegral i
+                b = fromIntegral j
+                signA = if odd i then -1 else 1
+                signB = if odd j then -1 else 1
+             in point
+                  # U.scaleBy (signB, signA)
+                  # U.translate
+                    ( (w - 4.5) * a
+                    , (h - 5) * b
+                    )
+
+          f i j = map (map (transformPipe i j)) lionData
+   in lions
+        # getTrailsList
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
+        # squareFrame (getRemSizeDiv (* 4))

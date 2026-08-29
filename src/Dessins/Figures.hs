@@ -98,4 +98,5 @@ cheval =
     , figure42
     , figure43
     , figure44
+    , figure45
     ]
