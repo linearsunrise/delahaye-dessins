@@ -111,10 +111,10 @@ lionData =
     , (5, 5)
     ]
       # map
-        ( U.translate -- находим origin для симметрии
-              ( -((lionWidth + 0.5) / 2)
-              , -((lionHeight + 5) / 2)
-              )
+        ( U.flipY . U.translate -- находим origin для симметрии
+            ( -((lionWidth + 0.5) / 2)
+            , -((lionHeight + 5) / 2)
+            )
         )
   ]
 

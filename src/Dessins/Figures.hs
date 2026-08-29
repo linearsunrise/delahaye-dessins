@@ -7,6 +7,8 @@ module Dessins.Figures
   , composition2
   , joligones
   , cheval
+  , lion
+  , oiseauxPoissons
   )
 where
 
@@ -17,6 +19,7 @@ import Dessins.Figures.Composition2
 import Dessins.Figures.EtoilesRegulieres
 import Dessins.Figures.Joligones
 import Dessins.Figures.Lion
+import Dessins.Figures.OiseauxPoissons
 import Dessins.Figures.PolygonesReguliers
 import Dessins.Types (ConstraintRender, TDiagram)
 import Dessins.Utils.Grid (group, hor, ver)
@@ -99,4 +102,20 @@ cheval =
     , figure43
     , figure44
     , figure45
+    ]
+
+lion :: (ConstraintRender n b) => TDiagram n b
+lion =
+  group
+    "LION"
+    [ figure44
+    , figure45
+    ]
+
+oiseauxPoissons :: (ConstraintRender n b) => TDiagram n b
+oiseauxPoissons =
+  group
+    "OISEAUX-POISSONS"
+    [ figure46
+    , figure47
     ]

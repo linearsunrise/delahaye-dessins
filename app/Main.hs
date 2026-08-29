@@ -7,6 +7,8 @@ import Dessins.Figures
   , composition2
   , etoilesRegulieres
   , joligones
+  , lion
+  , oiseauxPoissons
   , polygonesReguliers
   )
 import Dessins.Utils.Grid (ver)
@@ -24,6 +26,8 @@ scene =
     , composition2
     , joligones
     , cheval
+    , lion
+    , oiseauxPoissons
     ]
     # frame (getRemSizeDiv (/ 2))
 
