@@ -154,4 +154,5 @@ oiseauxPoissons =
     "OISEAUX-POISSONS"
     [ OiseauxPoissons.figure46
     , OiseauxPoissons.figure47
+    , OiseauxPoissons.figureDragon
     ]

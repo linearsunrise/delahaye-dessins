@@ -1,10 +1,10 @@
-{-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
 module Dessins.Figures.OiseauxPoissons
   ( figure46
   , figure47
+  , figureDragon
   )
 where
 
@@ -13,6 +13,7 @@ import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
 
 import qualified Diagrams as D
+import qualified Diagrams.Prelude as DP
 import Diagrams.Prelude as DP ((#))
 
 lionData :: (RealFloat n) => [[(n, n)]]
@@ -100,27 +101,27 @@ fishBirdHeight = 9
 
 createPath :: (T.Render n b) => [(n, n)] -> T.TDiagram n b
 createPath x =
-  pointsListToTrail x
+  getPointsList x
     # D.fromVertices
     # D.strokePath
     # D.fillRule D.EvenOdd
     # D.lw (D.global 0.045)
     # D.lineJoin D.LineJoinBevel
 
-getTrailsList ::
+getPathsList ::
   (T.Render n b) =>
   [[(n, n)]] -> T.TDiagram n b
-getTrailsList =
+getPathsList =
   mconcat
     . map createPath
 
-pointsListToTrail :: [(n, n)] -> [D.Point D.V2 n]
-pointsListToTrail = map D.p2
+getPointsList :: [(n, n)] -> [D.Point D.V2 n]
+getPointsList = map D.p2
 
 figure46 :: (T.Render n b) => T.TDiagram n b
 figure46 =
   lionData
-    # getTrailsList
+    # getPathsList
     # D.centerXY
     # D.scaleUToX (getRemSizeDiv (* 3))
     # U.squareFrame (getRemSizeDiv (* 4))
@@ -151,7 +152,37 @@ figure47 =
 
           f i j = map (map (transformPipe i j)) lionData
    in oiseauxPoissons
-        # getTrailsList
+        # getPathsList
         # D.centerXY
         # D.scaleUToX (getRemSizeDiv (* 3))
+        # U.squareFrame (getRemSizeDiv (* 4))
+
+setOrigin (ox, oy) = U.translate (-ox, -oy)
+
+-- getLast p
+
+dragonInitCurve :: (Floating b) => [(b, b)]
+dragonInitCurve = [(0, 0), (1, 0)]
+
+rotate90 :: (Num b) => (b, b) -> (b, b)
+rotate90 (x, y) = (-y, x)
+
+-- dragon :: (T.Render n b) => T.TDiagram n b
+-- dragon :: (Floating b, Ord b, Num t, Num [(b, b)]) => [(b, b)] -> t -> [(b, b)]
+-- dragon :: (Num b, Num t, Ord t) => [(b, b)] -> t -> [(b, b)]
+dragon :: (Ord t, Num t, Num b) => [(b, b)] -> t -> [(b, b)]
+dragon xs n =
+  if n <= 0 then xs
+  else
+    map (setOrigin(last xs) . rotate90) xs
+      # (\ls -> reverse xs ++ tail ls)
+      # (\ls -> dragon ls (n - 1))
+
+figureDragon :: (T.Render n b) => T.TDiagram n b
+figureDragon =
+  let dr = dragon dragonInitCurve 12
+   in [dr]
+        # getPathsList
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
         # U.squareFrame (getRemSizeDiv (* 4))
