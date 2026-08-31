@@ -155,4 +155,5 @@ oiseauxPoissons =
     [ OiseauxPoissons.figure46
     , OiseauxPoissons.figure47
     , OiseauxPoissons.figureDragon
+    , OiseauxPoissons.triangleFigure
     ]

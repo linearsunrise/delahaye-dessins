@@ -5,6 +5,7 @@ module Dessins.Figures.OiseauxPoissons
   ( figure46
   , figure47
   , figureDragon
+  , triangleFigure
   )
 where
 
@@ -13,8 +14,8 @@ import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
 
 import qualified Diagrams as D
-import qualified Diagrams.Prelude as DP
-import Diagrams.Prelude as DP ((#))
+import Diagrams.Prelude as DP ((#), Bifunctor (bimap))
+import qualified Dessins.Utils as D
 
 lionData :: (RealFloat n) => [[(n, n)]]
 lionData =
@@ -157,32 +158,61 @@ figure47 =
         # D.scaleUToX (getRemSizeDiv (* 3))
         # U.squareFrame (getRemSizeDiv (* 4))
 
-setOrigin (ox, oy) = U.translate (-ox, -oy)
-
--- getLast p
-
 dragonInitCurve :: (Floating b) => [(b, b)]
 dragonInitCurve = [(0, 0), (1, 0)]
 
-rotate90 :: (Num b) => (b, b) -> (b, b)
-rotate90 (x, y) = (-y, x)
-
--- dragon :: (T.Render n b) => T.TDiagram n b
--- dragon :: (Floating b, Ord b, Num t, Num [(b, b)]) => [(b, b)] -> t -> [(b, b)]
--- dragon :: (Num b, Num t, Ord t) => [(b, b)] -> t -> [(b, b)]
-dragon :: (Ord t, Num t, Num b) => [(b, b)] -> t -> [(b, b)]
-dragon xs n =
-  if n <= 0 then xs
-  else
-    map (setOrigin(last xs) . rotate90) xs
-      # (\ls -> reverse xs ++ tail ls)
-      # (\ls -> dragon ls (n - 1))
-
 figureDragon :: (T.Render n b) => T.TDiagram n b
 figureDragon =
-  let dr = dragon dragonInitCurve 12
+  let setOrigin :: Num b => (b, b) -> (b, b) -> (b, b)
+      setOrigin (ox, oy) = U.translate (-ox, -oy)
+    
+      rotate90 :: (Num b) => (b, b) -> (b, b)
+      rotate90 (x, y) = (-y, x)
+    
+      dragon :: (Num b, Num t, Ord t) => [(b, b)] -> t -> [(b, b)]
+      dragon xs n =
+        if n <= 0 then
+          xs
+        else
+          map (setOrigin (last xs) . rotate90) xs
+            # (\ls -> reverse xs ++ tail ls)
+            # (\ls -> dragon ls (n - 1))
+
+      dr = dragon dragonInitCurve 12
    in [dr]
         # getPathsList
         # D.centerXY
         # D.scaleUToY (getRemSizeDiv (* 3))
         # U.squareFrame (getRemSizeDiv (* 4))
+
+triangleFigure :: (T.Render n b) => T.TDiagram n b
+triangleFigure =
+  let vector = (0,10) # U.rotateBy (pi / 2)
+      n = 200
+      g phi = 1 / (2 * cos phi)
+
+      f 0 _ _ figureData           = figureData
+      f m phi lastPoint figureData =
+        f (m - 1) phi lp d
+          where
+            scaleFactor = g phi ** m * ((-1) ** (m + 1))
+            rotateAngle = phi * m
+            vec = vector
+              # U.scaleBy (scaleFactor, scaleFactor)
+              # U.rotateBy rotateAngle
+
+            lp = lastPoint
+              # U.translate vec
+            d = lp : figureData
+
+      angle = (59.5 * (pi / 180))
+      initData = []
+      comprehensionBy x = f x angle (0, 1) initData
+
+      list = comprehensionBy n
+   in list
+        # createPath
+        # D.centerXY
+        # D.scaleUToY (getRemSizeDiv (* 3))
+        # U.squareFrame (getRemSizeDiv (* 4))
+

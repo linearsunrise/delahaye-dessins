@@ -168,8 +168,8 @@ figure45 =
                 h = lionHeight
                 a = fromIntegral i
                 b = fromIntegral j
-                signA = if odd i then -1 else 1
-                signB = if odd j then -1 else 1
+                signA = (-1) ** a
+                signB = (-1) ** b
              in point
                   # U.scaleBy (signB, signA)
                   # U.translate
