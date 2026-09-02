@@ -11,11 +11,11 @@ where
 
 import Dessins.Const (getRemSizeDiv)
 import qualified Dessins.Types as T
+import qualified Dessins.Utils as D
 import qualified Dessins.Utils as U
 
 import qualified Diagrams as D
-import Diagrams.Prelude as DP ((#), Bifunctor (bimap))
-import qualified Dessins.Utils as D
+import Diagrams.Prelude as DP (Bifunctor (bimap), (#))
 
 lionData :: (RealFloat n) => [[(n, n)]]
 lionData =
@@ -163,12 +163,12 @@ dragonInitCurve = [(0, 0), (1, 0)]
 
 figureDragon :: (T.Render n b) => T.TDiagram n b
 figureDragon =
-  let setOrigin :: Num b => (b, b) -> (b, b) -> (b, b)
+  let setOrigin :: (Num b) => (b, b) -> (b, b) -> (b, b)
       setOrigin (ox, oy) = U.translate (-ox, -oy)
-    
+
       rotate90 :: (Num b) => (b, b) -> (b, b)
       rotate90 (x, y) = (-y, x)
-    
+
       dragon :: (Num b, Num t, Ord t) => [(b, b)] -> t -> [(b, b)]
       dragon xs n =
         if n <= 0 then
@@ -187,23 +187,25 @@ figureDragon =
 
 triangleFigure :: (T.Render n b) => T.TDiagram n b
 triangleFigure =
-  let vector = (0,10) # U.rotateBy (pi / 2)
+  let vector = (0, 10) # U.rotateBy (pi / 2)
       n = 200
       g phi = 1 / (2 * cos phi)
 
-      f 0 _ _ figureData           = figureData
+      f 0 _ _ figureData = figureData
       f m phi lastPoint figureData =
         f (m - 1) phi lp d
-          where
-            scaleFactor = g phi ** m * ((-1) ** (m + 1))
-            rotateAngle = phi * m
-            vec = vector
+        where
+          scaleFactor = g phi ** m * ((-1) ** (m + 1))
+          rotateAngle = phi * m
+          vec =
+            vector
               # U.scaleBy (scaleFactor, scaleFactor)
               # U.rotateBy rotateAngle
 
-            lp = lastPoint
+          lp =
+            lastPoint
               # U.translate vec
-            d = lp : figureData
+          d = lp : figureData
 
       angle = (59.5 * (pi / 180))
       initData = []
@@ -215,4 +217,3 @@ triangleFigure =
         # D.centerXY
         # D.scaleUToY (getRemSizeDiv (* 3))
         # U.squareFrame (getRemSizeDiv (* 4))
-

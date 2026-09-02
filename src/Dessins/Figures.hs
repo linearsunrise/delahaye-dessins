@@ -9,6 +9,7 @@ module Dessins.Figures
   , cheval
   , lion
   , oiseauxPoissons
+  , smurf
   )
 where
 
@@ -21,6 +22,7 @@ import qualified Dessins.Figures.Joligones as Joligones
 import qualified Dessins.Figures.Lion as Lion
 import qualified Dessins.Figures.OiseauxPoissons as OiseauxPoissons
 import qualified Dessins.Figures.PolygonesReguliers as PolygonesReguliers
+import qualified Dessins.Figures.Smurf as Smurf
 import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
 
@@ -156,4 +158,11 @@ oiseauxPoissons =
     , OiseauxPoissons.figure47
     , OiseauxPoissons.figureDragon
     , OiseauxPoissons.triangleFigure
+    ]
+
+smurf :: (T.Render n b) => T.TDiagram n b
+smurf =
+  U.group
+    "SMURF"
+    [ Smurf.figure48
     ]

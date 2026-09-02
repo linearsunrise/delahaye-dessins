@@ -31,6 +31,7 @@ library
       , Dessins.Figures.Cheval
       , Dessins.Figures.Lion
       , Dessins.Figures.OiseauxPoissons
+      , Dessins.Figures.Smurf
     build-depends:
         base >=4 && <5
       , diagrams-lib

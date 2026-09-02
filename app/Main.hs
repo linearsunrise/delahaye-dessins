@@ -19,6 +19,7 @@ scene =
     , Compositions.cheval
     , Compositions.lion
     , Compositions.oiseauxPoissons
+    , Compositions.smurf
     ]
     DP.# DP.frame (Const.getRemSizeDiv (/ 2))
 
