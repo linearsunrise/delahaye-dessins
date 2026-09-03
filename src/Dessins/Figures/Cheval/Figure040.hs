@@ -14,7 +14,7 @@ import qualified Diagrams as D
 
 figure040 :: (T.Render n b) => T.TDiagram n b
 figure040 =
-  let iCount = 4
+  let iCount = 4 :: Integer
       chevals =
         mconcat
           [ f x y

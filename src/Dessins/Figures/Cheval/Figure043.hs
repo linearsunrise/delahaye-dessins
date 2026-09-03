@@ -15,7 +15,7 @@ import qualified Diagrams.Prelude as DP
 
 figure043 :: (T.Render n b) => T.TDiagram n b
 figure043 =
-  let iCount = 4
+  let iCount = 4 :: Integer
       chevals =
         mconcat
           [ f x y

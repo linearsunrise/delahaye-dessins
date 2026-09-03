@@ -1,6 +1,4 @@
-{-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE ScopedTypeVariables #-}
 
 module Dessins.Figures.Cheval.Figure042 (figure042) where
 
@@ -11,11 +9,10 @@ import qualified Dessins.Utils as U
 
 import Diagrams ((#))
 import qualified Diagrams as D
-import qualified Diagrams.Prelude as DP
 
 figure042 :: (T.Render n b) => T.TDiagram n b
 figure042 =
-  let iCount = 4
+  let iCount = 4 :: Integer
       chevals =
         mconcat
           [ f x y

@@ -11,11 +11,13 @@ import qualified Dessins.Utils as U
 import qualified Diagrams as D
 import Diagrams.Prelude as DP ((#))
 
+dragonInitCurve :: (Num a) => [(a, a)]
+dragonInitCurve = [(0, 0), (0, 1)]
+
 figureDragon :: (T.Render n b) => T.TDiagram n b
 figureDragon =
   let setOrigin :: (Num b) => (b, b) -> (b, b) -> (b, b)
       setOrigin (ox, oy) = U.translate (-ox, -oy)
-      dragonInitCurve = [(0, 0), (0, 1)]
 
       rotate90 :: (Num b) => (b, b) -> (b, b)
       rotate90 (x, y) = (-y, x)
@@ -29,7 +31,7 @@ figureDragon =
             # (\ls -> reverse xs ++ drop 1 ls)
             # (\ls -> dragon ls (n - 1))
 
-      dr = dragon dragonInitCurve 12
+      dr = dragon dragonInitCurve (12 :: Int)
    in [dr]
         # getPathsList
         # D.centerXY

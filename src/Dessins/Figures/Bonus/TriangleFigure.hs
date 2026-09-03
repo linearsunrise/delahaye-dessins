@@ -6,11 +6,10 @@ module Dessins.Figures.Bonus.TriangleFigure (triangleFigure) where
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.OiseauxPoissons.Common
 import qualified Dessins.Types as T
-import qualified Dessins.Utils as D
 import qualified Dessins.Utils as U
 
 import qualified Diagrams as D
-import Diagrams.Prelude as DP (Bifunctor (bimap), (#))
+import Diagrams.Prelude as DP ((#))
 
 triangleFigure :: (T.Render n b) => T.TDiagram n b
 triangleFigure =

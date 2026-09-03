@@ -15,7 +15,7 @@ import qualified Diagrams as D
 figure036 :: (T.Render n b) => T.TDiagram n b
 figure036 =
   let stages = 6
-      flips = 2
+      flips = 2 :: Integer
 
       chevals =
         mconcat

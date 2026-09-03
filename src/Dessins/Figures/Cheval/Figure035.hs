@@ -11,7 +11,6 @@ import qualified Dessins.Utils as U
 
 import Diagrams ((#))
 import qualified Diagrams as D
-import qualified Diagrams.Prelude as DP
 
 figure035 :: (T.Render n b) => T.TDiagram n b
 figure035 =

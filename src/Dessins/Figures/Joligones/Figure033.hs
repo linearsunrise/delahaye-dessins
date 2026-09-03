@@ -8,11 +8,8 @@ module Dessins.Figures.Joligones.Figure033 (figure033) where
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.Joligones.Common
 import qualified Dessins.Types as T
-import qualified Dessins.Utils.Polygon as U
 import qualified Dessins.Utils.Scene as U
 
-import Data.Bifunctor (Bifunctor (bimap))
-import Data.Function ((&))
 import Diagrams ((#))
 import qualified Diagrams as D
 

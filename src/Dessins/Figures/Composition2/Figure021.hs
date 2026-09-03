@@ -5,22 +5,8 @@
 
 module Dessins.Figures.Composition2.Figure021 (figure021) where
 
-import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.Composition2.Common
 import qualified Dessins.Types as T
-import qualified Dessins.Utils.Polygon as U
-import qualified Dessins.Utils.Scene as U
-
-import Data.Function ((&))
-import Diagrams
-  ( centerXY
-  , r2
-  , scale
-  , scaleUToX
-  , translate
-  , (#)
-  )
-import Diagrams.Prelude (Bifunctor (bimap))
 
 figure021 ::
   (Enum n, T.Render n b) =>

@@ -6,11 +6,10 @@ module Dessins.Figures.OiseauxPoissons.Figure046 (figure046) where
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.OiseauxPoissons.Common
 import qualified Dessins.Types as T
-import qualified Dessins.Utils as D
 import qualified Dessins.Utils as U
 
 import qualified Diagrams as D
-import Diagrams.Prelude as DP (Bifunctor (bimap), (#))
+import Diagrams.Prelude as DP ((#))
 
 figure046 :: (T.Render n b) => T.TDiagram n b
 figure046 =

@@ -3,13 +3,11 @@
 
 module Dessins.Figures.OiseauxPoissons.Common where
 
-import Dessins.Const (getRemSizeDiv)
 import qualified Dessins.Types as T
-import qualified Dessins.Utils as D
 import qualified Dessins.Utils as U
 
 import qualified Diagrams as D
-import Diagrams.Prelude as DP (Bifunctor (bimap), (#))
+import Diagrams.Prelude as DP ((#))
 
 lionData :: (RealFloat n) => [[(n, n)]]
 lionData =
