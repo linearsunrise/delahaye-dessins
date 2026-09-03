@@ -16,3 +16,6 @@ test:
 check:
   cabal build all
   fourmolu --mode check app src test
+
+create-svg:
+  cabal run main -- -o output/main.svg -w 4800
