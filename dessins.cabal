@@ -23,6 +23,9 @@ library
       , Dessins.Const
       , Dessins.Types
       , Dessins.Figures
+
+      , Dessins.Figures.Build
+      , Dessins.Figures.Build.Registry
       
       , Dessins.Figures.PolygonesReguliers
       , Dessins.Figures.PolygonesReguliers.Common
@@ -106,10 +109,22 @@ library
     build-depends:
         base >=4 && <5
       , diagrams-lib
+      , diagrams-svg
+      , containers
 
 executable main
     import:           shared
     main-is:          Main.hs
+    hs-source-dirs:   app
+    build-depends:
+        base >=4 && <5
+      , dessins
+      , diagrams-lib
+      , diagrams-svg
+
+executable dessins-build
+    import:           shared
+    main-is:          BuildSvg.hs
     hs-source-dirs:   app
     build-depends:
         base >=4 && <5
