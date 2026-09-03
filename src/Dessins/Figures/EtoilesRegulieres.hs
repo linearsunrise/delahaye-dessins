@@ -1,33 +1,18 @@
 {-# LANGUAGE FlexibleContexts #-}
 
 module Dessins.Figures.EtoilesRegulieres
-  ( figure07
-  , figure08
-  , figure09
-  , figure10
-  , figure11
-  , figure12
+  ( module Figure007
+  , module Figure008
+  , module Figure009
+  , module Figure010
+  , module Figure011
+  , module Figure012
   )
 where
 
-import qualified Dessins.Types as T
-import qualified Dessins.Utils.Polygon as U
-import qualified Dessins.Utils.Scene as U
-
-figure07 :: (T.Render n b) => T.TDiagram n b
-figure07 = U.renderSquareFrame (U.polygonEtoile 5 2)
-
-figure08 :: (T.Render n b) => T.TDiagram n b
-figure08 = U.renderSquareFrame (U.polygonEtoile 7 4)
-
-figure09 :: (T.Render n b) => T.TDiagram n b
-figure09 = U.renderSquareFrame (U.polygonEtoile 20 9)
-
-figure10 :: (T.Render n b) => T.TDiagram n b
-figure10 = U.renderSquareFrame (U.polygonEtoile 20 7)
-
-figure11 :: (T.Render n b) => T.TDiagram n b
-figure11 = U.renderSquareFrame (U.polygonEtoile 51 20)
-
-figure12 :: (T.Render n b) => T.TDiagram n b
-figure12 = U.renderSquareFrame (U.polygonEtoile 51 25)
+import Dessins.Figures.EtoilesRegulieres.Figure007 as Figure007
+import Dessins.Figures.EtoilesRegulieres.Figure008 as Figure008
+import Dessins.Figures.EtoilesRegulieres.Figure009 as Figure009
+import Dessins.Figures.EtoilesRegulieres.Figure010 as Figure010
+import Dessins.Figures.EtoilesRegulieres.Figure011 as Figure011
+import Dessins.Figures.EtoilesRegulieres.Figure012 as Figure012

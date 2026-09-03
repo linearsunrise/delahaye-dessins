@@ -30,24 +30,24 @@ polygonesReguliers :: (T.Render n b) => T.TDiagram n b
 polygonesReguliers =
   U.group
     "POLYGONES RÉGULIERS"
-    [ PolygonesReguliers.figure01
-    , PolygonesReguliers.figure02
-    , PolygonesReguliers.figure03
-    , PolygonesReguliers.figure04
-    , PolygonesReguliers.figure05
-    , PolygonesReguliers.figure06
+    [ PolygonesReguliers.Figure001.figure
+    , PolygonesReguliers.Figure002.figure
+    , PolygonesReguliers.Figure003.figure
+    , PolygonesReguliers.Figure004.figure
+    , PolygonesReguliers.Figure005.figure
+    , PolygonesReguliers.Figure006.figure
     ]
 
 etoilesRegulieres :: (T.Render n b) => T.TDiagram n b
 etoilesRegulieres =
   U.group
     "ÉTOILES RÉGULIÈRES"
-    [ EtoilesRegulieres.figure07
-    , EtoilesRegulieres.figure08
-    , EtoilesRegulieres.figure09
-    , EtoilesRegulieres.figure10
-    , EtoilesRegulieres.figure11
-    , EtoilesRegulieres.figure12
+    [ EtoilesRegulieres.Figure007.figure
+    , EtoilesRegulieres.Figure008.figure
+    , EtoilesRegulieres.Figure009.figure
+    , EtoilesRegulieres.Figure010.figure
+    , EtoilesRegulieres.Figure011.figure
+    , EtoilesRegulieres.Figure012.figure
     ]
 
 composition1 :: (T.Render n b) => T.TDiagram n b
@@ -57,31 +57,31 @@ composition1 =
     [ U.ver
         (Const.getRemSizeDiv (/ 2))
         [ row13to18
-        , Composition1.figure19
+        , Composition1.Figure019.figure
         ]
     ]
   where
     row13to18 =
       U.hor
         (Const.getRemSizeDiv (/ 2))
-        [ Composition1.figure13
-        , Composition1.figure14
-        , Composition1.figure15
-        , Composition1.figure16
-        , Composition1.figure17
-        , Composition1.figure18
+        [ Composition1.Figure013.figure
+        , Composition1.Figure014.figure
+        , Composition1.Figure015.figure
+        , Composition1.Figure016.figure
+        , Composition1.Figure017.figure
+        , Composition1.Figure018.figure
         ]
 
 composition2 :: (T.Render n b) => T.TDiagram n b
 composition2 =
   U.group
     "COMPOSITION 2"
-    [ Composition2.figure20
-    , Composition2.figure21
-    , Composition2.figure22
-    , Composition2.figure23
-    , Composition2.figure24
-    , Composition2.figure25
+    [ Composition2.Figure020.figure
+    , Composition2.Figure021.figure
+    , Composition2.Figure022.figure
+    , Composition2.Figure023.figure
+    , Composition2.Figure024.figure
+    , Composition2.Figure025.figure
     ]
 
 joligones :: (T.Render n b) => T.TDiagram n b
@@ -98,18 +98,18 @@ joligones =
     row1 =
       U.hor
         (Const.getRemSizeDiv (/ 2))
-        [ Joligones.figure26
-        , Joligones.figure27
-        , Joligones.figure28
-        , Joligones.figure29
-        , Joligones.figure30
-        , Joligones.figure31
+        [ Joligones.Figure026.figure
+        , Joligones.Figure027.figure
+        , Joligones.Figure028.figure
+        , Joligones.Figure029.figure
+        , Joligones.Figure030.figure
+        , Joligones.Figure031.figure
         ]
     row2 =
       U.hor
         (Const.getRemSizeDiv (/ 2))
-        [ Joligones.figure32
-        , Joligones.figure33
+        [ Joligones.Figure032.figure
+        , Joligones.Figure033.figure
         ]
 
 cheval :: (T.Render n b) => T.TDiagram n b
@@ -126,36 +126,36 @@ cheval =
     row1 =
       U.hor
         (Const.getRemSizeDiv (/ 2))
-        [ Cheval.figure34
-        , Cheval.figure35
-        , Cheval.figure36
-        , Cheval.figure37
-        , Cheval.figure38
-        , Cheval.figure39
+        [ Cheval.Figure034.figure
+        , Cheval.Figure035.figure
+        , Cheval.Figure036.figure
+        , Cheval.Figure037.figure
+        , Cheval.Figure038.figure
+        , Cheval.Figure039.figure
         ]
     row2 =
       U.hor
         (Const.getRemSizeDiv (/ 2))
-        [ Cheval.figure40
-        , Cheval.figure41
-        , Cheval.figure42
-        , Cheval.figure43
+        [ Cheval.Figure040.figure
+        , Cheval.Figure041.figure
+        , Cheval.Figure042.figure
+        , Cheval.Figure043.figure
         ]
 
 lion :: (T.Render n b) => T.TDiagram n b
 lion =
   U.group
     "LION"
-    [ Lion.figure44
-    , Lion.figure45
+    [ Lion.Figure044.figure
+    , Lion.Figure045.figure
     ]
 
 oiseauxPoissons :: (T.Render n b) => T.TDiagram n b
 oiseauxPoissons =
   U.group
     "OISEAUX-POISSONS"
-    [ OiseauxPoissons.figure46
-    , OiseauxPoissons.figure47
+    [ OiseauxPoissons.Figure046.figure
+    , OiseauxPoissons.Figure047.figure
     , OiseauxPoissons.figureDragon
     , OiseauxPoissons.triangleFigure
     ]
@@ -164,5 +164,5 @@ smurf :: (T.Render n b) => T.TDiagram n b
 smurf =
   U.group
     "SMURF"
-    [ Smurf.figure48
+    [ Smurf.Figure048.figure
     ]
