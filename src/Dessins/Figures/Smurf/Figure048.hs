@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Smurf.Figure048 (figure) where
+module Dessins.Figures.Smurf.Figure048 (figure048) where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.Smurf.Common
@@ -11,16 +11,16 @@ import qualified Dessins.Utils as U
 import qualified Diagrams as D
 import Diagrams.Prelude as DP ((#))
 
-figure :: (T.Render n b) => T.TDiagram n b
-figure =
+figure048 :: (T.Render n b) => T.TDiagram n b
+figure048 =
   smurfData
     # getPathsList
     # D.centerXY
     # D.scaleUToY (getRemSizeDiv (* 3))
     # U.squareFrame (getRemSizeDiv (* 4))
 
--- figure :: (T.Render n b) => T.TDiagram n b
--- figure =
+-- figure048 :: (T.Render n b) => T.TDiagram n b
+-- figure048 =
 --   let rows = 4 :: Int
 --       cols = 4 :: Int
 

@@ -3,6 +3,6 @@ module Dessins.Figures.Bonus
   )
 where
 
-import qualified Dessins.Figures.Bonus.Bonus as Bonus
-import qualified Dessins.Figures.Bonus.FigureDragon as Bonus
-import qualified Dessins.Figures.Bonus.TriangleFigure as Bonus
+import Dessins.Figures.Bonus.Bonus as Bonus
+import Dessins.Figures.Bonus.FigureDragon as Bonus
+import Dessins.Figures.Bonus.TriangleFigure as Bonus

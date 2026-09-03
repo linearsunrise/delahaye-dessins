@@ -3,7 +3,7 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -Wno-simplifiable-class-constraints #-}
 
-module Dessins.Figures.Joligones.Figure029 (figure) where
+module Dessins.Figures.Joligones.Figure029 (figure029) where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.Joligones.Common
@@ -16,10 +16,10 @@ import Data.Function ((&))
 import Diagrams ((#))
 import qualified Diagrams as D
 
-figure ::
+figure029 ::
   (Enum n, T.Render n b) =>
   T.TDiagram n b
-figure =
+figure029 =
   renderFigure
     FigureParams
       { vertices = 20

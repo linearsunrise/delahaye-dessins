@@ -1,6 +1,3 @@
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-
-{-# HLINT ignore "Redundant bracket" #-}
 module Dessins.Const (remSize, getRemSizeDiv) where
 
 remSize :: Integer

@@ -8,11 +8,27 @@ module Dessins.Figures.Joligones
   )
 where
 
-import qualified Dessins.Figures.Joligones.Figure026 as Joligones
-import qualified Dessins.Figures.Joligones.Figure027 as Joligones
-import qualified Dessins.Figures.Joligones.Figure028 as Joligones
-import qualified Dessins.Figures.Joligones.Figure029 as Joligones
-import qualified Dessins.Figures.Joligones.Figure030 as Joligones
-import qualified Dessins.Figures.Joligones.Figure031 as Joligones
-import qualified Dessins.Figures.Joligones.Figure032 as Joligones
-import qualified Dessins.Figures.Joligones.Figure033 as Joligones
+import Dessins.Figures.Joligones.Figure026 as Joligones
+  ( figure026
+  )
+import Dessins.Figures.Joligones.Figure027 as Joligones
+  ( figure027
+  )
+import Dessins.Figures.Joligones.Figure028 as Joligones
+  ( figure028
+  )
+import Dessins.Figures.Joligones.Figure029 as Joligones
+  ( figure029
+  )
+import Dessins.Figures.Joligones.Figure030 as Joligones
+  ( figure030
+  )
+import Dessins.Figures.Joligones.Figure031 as Joligones
+  ( figure031
+  )
+import Dessins.Figures.Joligones.Figure032 as Joligones
+  ( figure032
+  )
+import Dessins.Figures.Joligones.Figure033 as Joligones
+  ( figure033
+  )

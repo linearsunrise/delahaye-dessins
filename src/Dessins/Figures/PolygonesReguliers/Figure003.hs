@@ -1,11 +1,10 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module Dessins.Figures.PolygonesReguliers.Figure003 (figure) where
+module Dessins.Figures.PolygonesReguliers.Figure003 (figure003) where
 
-import Dessins.Figures.PolygonesReguliers.Common
 import qualified Dessins.Types as T
 import qualified Dessins.Utils.Polygon as U
 import qualified Dessins.Utils.Scene as U
 
-figure :: (T.Render n b) => T.TDiagram n b
-figure = U.renderSquareFrame (U.polygonRegulier 3 0)
+figure003 :: (T.Render n b) => T.TDiagram n b
+figure003 = U.renderSquareFrame (U.polygonRegulier 3 0)

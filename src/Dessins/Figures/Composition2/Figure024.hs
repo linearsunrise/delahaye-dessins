@@ -3,7 +3,7 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -Wno-simplifiable-class-constraints #-}
 
-module Dessins.Figures.Composition2.Figure024 (figure) where
+module Dessins.Figures.Composition2.Figure024 (figure024) where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.Composition2.Common
@@ -22,10 +22,10 @@ import Diagrams
   )
 import Diagrams.Prelude (Bifunctor (bimap))
 
-figure ::
+figure024 ::
   (Enum n, T.Render n b) =>
   T.TDiagram n b
-figure =
+figure024 =
   renderFigure
     FigureParams
       { figureRadius = 0.35

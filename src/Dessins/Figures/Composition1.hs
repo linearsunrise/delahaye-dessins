@@ -14,9 +14,23 @@ module Dessins.Figures.Composition1
 where
 
 import Dessins.Figures.Composition1.Figure013 as Figure013
+  ( figure013
+  )
 import Dessins.Figures.Composition1.Figure014 as Figure014
+  ( figure014
+  )
 import Dessins.Figures.Composition1.Figure015 as Figure015
+  ( figure015
+  )
 import Dessins.Figures.Composition1.Figure016 as Figure016
+  ( figure016
+  )
 import Dessins.Figures.Composition1.Figure017 as Figure017
+  ( figure017
+  )
 import Dessins.Figures.Composition1.Figure018 as Figure018
+  ( figure018
+  )
 import Dessins.Figures.Composition1.Figure019 as Figure019
+  ( figure019
+  )

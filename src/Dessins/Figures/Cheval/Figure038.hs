@@ -2,7 +2,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Cheval.Figure038 (figure) where
+module Dessins.Figures.Cheval.Figure038 (figure038) where
 
 import qualified Dessins.Const as Const
 import Dessins.Figures.Cheval.Common
@@ -13,8 +13,8 @@ import Diagrams ((#))
 import qualified Diagrams as D
 import qualified Diagrams.Prelude as DP
 
-figure :: (T.Render n b) => T.TDiagram n b
-figure =
+figure038 :: (T.Render n b) => T.TDiagram n b
+figure038 =
   let pointsCount = 6
       chevals =
         mconcat

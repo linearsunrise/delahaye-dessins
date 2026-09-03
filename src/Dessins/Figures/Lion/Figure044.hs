@@ -2,7 +2,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Lion.Figure044 (figure) where
+module Dessins.Figures.Lion.Figure044 (figure044) where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.Lion.Common
@@ -12,8 +12,8 @@ import qualified Dessins.Utils as U
 import qualified Diagrams as D
 import Diagrams.Prelude as DP
 
-figure :: (T.Render n b) => T.TDiagram n b
-figure =
+figure044 :: (T.Render n b) => T.TDiagram n b
+figure044 =
   lionData
     # getTrailsList
     # D.centerXY

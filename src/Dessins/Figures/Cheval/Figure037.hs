@@ -2,7 +2,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Cheval.Figure037 (figure) where
+module Dessins.Figures.Cheval.Figure037 (figure037) where
 
 import qualified Dessins.Const as Const
 import Dessins.Figures.Cheval.Common
@@ -13,8 +13,8 @@ import Diagrams ((#))
 import qualified Diagrams as D
 import qualified Diagrams.Prelude as DP
 
-figure :: (T.Render n b) => T.TDiagram n b
-figure =
+figure037 :: (T.Render n b) => T.TDiagram n b
+figure037 =
   let vertices = 6
       phi = pi / 12
       rr = 0.87

@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.OiseauxPoissons.Figure047 (figure) where
+module Dessins.Figures.OiseauxPoissons.Figure047 (figure047) where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.OiseauxPoissons.Common
@@ -12,8 +12,8 @@ import qualified Dessins.Utils as U
 import qualified Diagrams as D
 import Diagrams.Prelude as DP (Bifunctor (bimap), (#))
 
-figure :: (T.Render n b) => T.TDiagram n b
-figure =
+figure047 :: (T.Render n b) => T.TDiagram n b
+figure047 =
   let rows = 4 :: Int
       cols = 4 :: Int
 

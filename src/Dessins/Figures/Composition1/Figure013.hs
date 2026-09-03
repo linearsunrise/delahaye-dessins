@@ -2,13 +2,13 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Composition1.Figure013 (figure) where
+module Dessins.Figures.Composition1.Figure013 (figure013) where
 
 import Dessins.Figures.Composition1.Common
 import qualified Dessins.Types as T
 
-figure :: (Enum n, T.Render n b) => T.TDiagram n b
-figure =
+figure013 :: (Enum n, T.Render n b) => T.TDiagram n b
+figure013 =
   renderFigure
     FigureParams
       { figureRadius = 0.22

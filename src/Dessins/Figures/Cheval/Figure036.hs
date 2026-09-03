@@ -2,7 +2,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Cheval.Figure036 (figure) where
+module Dessins.Figures.Cheval.Figure036 (figure036) where
 
 import qualified Dessins.Const as Const
 import Dessins.Figures.Cheval.Common
@@ -11,10 +11,9 @@ import qualified Dessins.Utils as U
 
 import Diagrams ((#))
 import qualified Diagrams as D
-import qualified Diagrams.Prelude as DP
 
-figure :: (T.Render n b) => T.TDiagram n b
-figure =
+figure036 :: (T.Render n b) => T.TDiagram n b
+figure036 =
   let stages = 6
       flips = 2
 

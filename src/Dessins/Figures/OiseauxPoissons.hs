@@ -8,4 +8,8 @@ module Dessins.Figures.OiseauxPoissons
 where
 
 import Dessins.Figures.OiseauxPoissons.Figure046 as Figure046
+  ( figure046
+  )
 import Dessins.Figures.OiseauxPoissons.Figure047 as Figure047
+  ( figure047
+  )

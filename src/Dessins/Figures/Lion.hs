@@ -8,5 +8,5 @@ module Dessins.Figures.Lion
   )
 where
 
-import Dessins.Figures.Lion.Figure044 as Figure044
-import Dessins.Figures.Lion.Figure045 as Figure045
+import Dessins.Figures.Lion.Figure044 as Figure044 (figure044)
+import Dessins.Figures.Lion.Figure045 as Figure045 (figure045)

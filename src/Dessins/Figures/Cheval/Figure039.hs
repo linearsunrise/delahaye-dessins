@@ -2,7 +2,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Cheval.Figure039 (figure) where
+module Dessins.Figures.Cheval.Figure039 (figure039) where
 
 import qualified Dessins.Const as Const
 import Dessins.Figures.Cheval.Common
@@ -13,8 +13,8 @@ import Diagrams ((#))
 import qualified Diagrams as D
 import qualified Diagrams.Prelude as DP
 
-figure :: (T.Render n b) => T.TDiagram n b
-figure =
+figure039 :: (T.Render n b) => T.TDiagram n b
+figure039 =
   let iCount = 3
       jCount = 3
       chevals =

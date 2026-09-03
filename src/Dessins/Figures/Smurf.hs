@@ -6,4 +6,4 @@ module Dessins.Figures.Smurf
   )
 where
 
-import Dessins.Figures.Smurf.Figure048 as Figure048
+import Dessins.Figures.Smurf.Figure048 as Figure048 (figure048)

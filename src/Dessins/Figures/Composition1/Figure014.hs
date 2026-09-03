@@ -2,7 +2,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Composition1.Figure014 (figure) where
+module Dessins.Figures.Composition1.Figure014 (figure014) where
 
 import Dessins.Const (getRemSizeDiv)
 import Dessins.Figures.Composition1.Common
@@ -13,8 +13,8 @@ import Data.Function ((&))
 import Diagrams as D ((#))
 import qualified Diagrams as D
 
-figure :: (Enum n, T.Render n b) => T.TDiagram n b
-figure =
+figure014 :: (Enum n, T.Render n b) => T.TDiagram n b
+figure014 =
   renderFigure
     FigureParams
       { figureRadius = 0.3
