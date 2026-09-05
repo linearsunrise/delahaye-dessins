@@ -14,24 +14,24 @@ polygonesReguliers :: (T.Render n b) => T.TDiagram n b
 polygonesReguliers =
   U.group
     "POLYGONES RÉGULIERS"
-    [ R.getFigureById R.Figure001
-    , R.getFigureById R.Figure002
-    , R.getFigureById R.Figure003
-    , R.getFigureById R.Figure004
-    , R.getFigureById R.Figure005
-    , R.getFigureById R.Figure006
+    [ R.getFigureById (R.FigureId "001")
+    , R.getFigureById (R.FigureId "002")
+    , R.getFigureById (R.FigureId "003")
+    , R.getFigureById (R.FigureId "004")
+    , R.getFigureById (R.FigureId "005")
+    , R.getFigureById (R.FigureId "006")
     ]
 
 etoilesRegulieres :: (T.Render n b) => T.TDiagram n b
 etoilesRegulieres =
   U.group
     "ÉTOILES RÉGULIÈRES"
-    [ R.getFigureById R.Figure007
-    , R.getFigureById R.Figure008
-    , R.getFigureById R.Figure009
-    , R.getFigureById R.Figure010
-    , R.getFigureById R.Figure011
-    , R.getFigureById R.Figure012
+    [ R.getFigureById (R.FigureId "007")
+    , R.getFigureById (R.FigureId "008")
+    , R.getFigureById (R.FigureId "009")
+    , R.getFigureById (R.FigureId "010")
+    , R.getFigureById (R.FigureId "011")
+    , R.getFigureById (R.FigureId "012")
     ]
 
 composition1 :: (T.Render n b) => T.TDiagram n b
@@ -41,31 +41,31 @@ composition1 =
     [ U.ver
         (Const.getRemSizeDiv (/ 2))
         [ row13to18
-        , R.getFigureById R.Figure019
+        , R.getFigureById (R.FigureId "019")
         ]
     ]
   where
     row13to18 =
       U.hor
         (Const.getRemSizeDiv (/ 2))
-        [ R.getFigureById R.Figure013
-        , R.getFigureById R.Figure014
-        , R.getFigureById R.Figure015
-        , R.getFigureById R.Figure016
-        , R.getFigureById R.Figure017
-        , R.getFigureById R.Figure018
+        [ R.getFigureById (R.FigureId "013")
+        , R.getFigureById (R.FigureId "014")
+        , R.getFigureById (R.FigureId "015")
+        , R.getFigureById (R.FigureId "016")
+        , R.getFigureById (R.FigureId "017")
+        , R.getFigureById (R.FigureId "018")
         ]
 
 composition2 :: (T.Render n b) => T.TDiagram n b
 composition2 =
   U.group
     "COMPOSITION 2"
-    [ R.getFigureById R.Figure020
-    , R.getFigureById R.Figure021
-    , R.getFigureById R.Figure022
-    , R.getFigureById R.Figure023
-    , R.getFigureById R.Figure024
-    , R.getFigureById R.Figure025
+    [ R.getFigureById (R.FigureId "020")
+    , R.getFigureById (R.FigureId "021")
+    , R.getFigureById (R.FigureId "022")
+    , R.getFigureById (R.FigureId "023")
+    , R.getFigureById (R.FigureId "024")
+    , R.getFigureById (R.FigureId "025")
     ]
 
 joligones :: (T.Render n b) => T.TDiagram n b
@@ -82,18 +82,18 @@ joligones =
     row1 =
       U.hor
         (Const.getRemSizeDiv (/ 2))
-        [ R.getFigureById R.Figure026
-        , R.getFigureById R.Figure027
-        , R.getFigureById R.Figure028
-        , R.getFigureById R.Figure029
-        , R.getFigureById R.Figure030
-        , R.getFigureById R.Figure031
+        [ R.getFigureById (R.FigureId "026")
+        , R.getFigureById (R.FigureId "027")
+        , R.getFigureById (R.FigureId "028")
+        , R.getFigureById (R.FigureId "029")
+        , R.getFigureById (R.FigureId "030")
+        , R.getFigureById (R.FigureId "031")
         ]
     row2 =
       U.hor
         (Const.getRemSizeDiv (/ 2))
-        [ R.getFigureById R.Figure032
-        , R.getFigureById R.Figure033
+        [ R.getFigureById (R.FigureId "032")
+        , R.getFigureById (R.FigureId "033")
         ]
 
 cheval :: (T.Render n b) => T.TDiagram n b
@@ -110,51 +110,51 @@ cheval =
     row1 =
       U.hor
         (Const.getRemSizeDiv (/ 2))
-        [ R.getFigureById R.Figure034
-        , R.getFigureById R.Figure035
-        , R.getFigureById R.Figure036
-        , R.getFigureById R.Figure037
-        , R.getFigureById R.Figure038
-        , R.getFigureById R.Figure039
+        [ R.getFigureById (R.FigureId "034")
+        , R.getFigureById (R.FigureId "035")
+        , R.getFigureById (R.FigureId "036")
+        , R.getFigureById (R.FigureId "037")
+        , R.getFigureById (R.FigureId "038")
+        , R.getFigureById (R.FigureId "039")
         ]
     row2 =
       U.hor
         (Const.getRemSizeDiv (/ 2))
-        [ R.getFigureById R.Figure040
-        , R.getFigureById R.Figure041
-        , R.getFigureById R.Figure042
-        , R.getFigureById R.Figure043
+        [ R.getFigureById (R.FigureId "040")
+        , R.getFigureById (R.FigureId "041")
+        , R.getFigureById (R.FigureId "042")
+        , R.getFigureById (R.FigureId "043")
         ]
 
 lion :: (T.Render n b) => T.TDiagram n b
 lion =
   U.group
     "LION"
-    [ R.getFigureById R.Figure044
-    , R.getFigureById R.Figure045
+    [ R.getFigureById (R.FigureId "044")
+    , R.getFigureById (R.FigureId "045")
     ]
 
 oiseauxPoissons :: (T.Render n b) => T.TDiagram n b
 oiseauxPoissons =
   U.group
     "OISEAUX-POISSONS"
-    [ R.getFigureById R.Figure046
-    , R.getFigureById R.Figure047
+    [ R.getFigureById (R.FigureId "046")
+    , R.getFigureById (R.FigureId "047")
     ]
 
 smurf :: (T.Render n b) => T.TDiagram n b
 smurf =
   U.group
     "SMURF"
-    [ R.getFigureById R.Figure048
+    [ R.getFigureById (R.FigureId "048")
     ]
 
 bonus :: (T.Render n b) => T.TDiagram n b
 bonus =
   U.group
     "OISEAUX-POISSONS"
-    [ R.getFigureById R.BonusII
-    , R.getFigureById R.BonusIII
-    , R.getFigureById R.BonusIV
-    , R.getFigureById R.BonusI
+    [ R.getFigureById (R.FigureId "II")
+    , R.getFigureById (R.FigureId "III")
+    , R.getFigureById (R.FigureId "IV")
+    , R.getFigureById (R.FigureId "I")
     ]

@@ -69,70 +69,13 @@ import qualified Dessins.Figures.Bonus.BonusIV as BIV
 
 import qualified Data.Map.Strict as Map
 
-data FigureId
-  = Figure001
-  | Figure002
-  | Figure003
-  | Figure004
-  | Figure005
-  | Figure006
-  | Figure007
-  | Figure008
-  | Figure009
-  | Figure010
-  | Figure011
-  | Figure012
-  | Figure013
-  | Figure014
-  | Figure015
-  | Figure016
-  | Figure017
-  | Figure018
-  | Figure019
-  | Figure020
-  | Figure021
-  | Figure022
-  | Figure023
-  | Figure024
-  | Figure025
-  | Figure026
-  | Figure027
-  | Figure028
-  | Figure029
-  | Figure030
-  | Figure031
-  | Figure032
-  | Figure033
-  | Figure034
-  | Figure035
-  | Figure036
-  | Figure037
-  | Figure038
-  | Figure039
-  | Figure040
-  | Figure041
-  | Figure042
-  | Figure043
-  | Figure044
-  | Figure045
-  | Figure046
-  | Figure047
-  | Figure048
-  | BonusI
-  | BonusII
-  | BonusIII
-  | BonusIV
-  deriving (Eq, Ord, Show)
-
 data FigureSpec = FigureSpec
   { figureId :: FigureId
-  , figureNum :: FigureNum
-  , figurePath :: FilePath
   , figure :: forall n b. (T.Render n b) => T.TDiagram n b
   }
 
-newtype FigureNum
-  = FigureNum {numFigure :: String}
+newtype FigureId
+  = FigureId {uniqFigureId :: String}
   deriving (Eq, Ord, Show)
 
 getFigure :: (T.Render n b) => Maybe FigureSpec -> T.TDiagram n b
@@ -144,315 +87,211 @@ getFigureById unId = getFigure (lookupFigure unId)
 figures :: [FigureSpec]
 figures =
   [ FigureSpec
-      { figureId = Figure001
-      , figureNum = FigureNum "001"
-      , figurePath = "build/figure001.svg"
+      { figureId = FigureId "001"
       , figure = F001.figure
       }
   , FigureSpec
-      { figureId = Figure002
-      , figureNum = FigureNum "002"
-      , figurePath = "build/figure002.svg"
+      { figureId = FigureId "002"
       , figure = F002.figure
       }
   , FigureSpec
-      { figureId = Figure003
-      , figureNum = FigureNum "003"
-      , figurePath = "build/figure003.svg"
+      { figureId = FigureId "003"
       , figure = F003.figure
       }
   , FigureSpec
-      { figureId = Figure004
-      , figureNum = FigureNum "004"
-      , figurePath = "build/figure004.svg"
+      { figureId = FigureId "004"
       , figure = F004.figure
       }
   , FigureSpec
-      { figureId = Figure005
-      , figureNum = FigureNum "005"
-      , figurePath = "build/figure005.svg"
+      { figureId = FigureId "005"
       , figure = F005.figure
       }
   , FigureSpec
-      { figureId = Figure006
-      , figureNum = FigureNum "006"
-      , figurePath = "build/figure006.svg"
+      { figureId = FigureId "006"
       , figure = F006.figure
       }
   , FigureSpec
-      { figureId = Figure007
-      , figureNum = FigureNum "007"
-      , figurePath = "build/figure007.svg"
+      { figureId = FigureId "007"
       , figure = F007.figure
       }
   , FigureSpec
-      { figureId = Figure008
-      , figureNum = FigureNum "008"
-      , figurePath = "build/figure008.svg"
+      { figureId = FigureId "008"
       , figure = F008.figure
       }
   , FigureSpec
-      { figureId = Figure009
-      , figureNum = FigureNum "009"
-      , figurePath = "build/figure009.svg"
+      { figureId = FigureId "009"
       , figure = F009.figure
       }
   , FigureSpec
-      { figureId = Figure010
-      , figureNum = FigureNum "010"
-      , figurePath = "build/figure010.svg"
+      { figureId = FigureId "010"
       , figure = F010.figure
       }
   , FigureSpec
-      { figureId = Figure011
-      , figureNum = FigureNum "011"
-      , figurePath = "build/figure011.svg"
+      { figureId = FigureId "011"
       , figure = F011.figure
       }
   , FigureSpec
-      { figureId = Figure012
-      , figureNum = FigureNum "012"
-      , figurePath = "build/figure012.svg"
+      { figureId = FigureId "012"
       , figure = F012.figure
       }
   , FigureSpec
-      { figureId = Figure013
-      , figureNum = FigureNum "013"
-      , figurePath = "build/figure013.svg"
+      { figureId = FigureId "013"
       , figure = F013.figure
       }
   , FigureSpec
-      { figureId = Figure014
-      , figureNum = FigureNum "014"
-      , figurePath = "build/figure014.svg"
+      { figureId = FigureId "014"
       , figure = F014.figure
       }
   , FigureSpec
-      { figureId = Figure015
-      , figureNum = FigureNum "015"
-      , figurePath = "build/figure015.svg"
+      { figureId = FigureId "015"
       , figure = F015.figure
       }
   , FigureSpec
-      { figureId = Figure016
-      , figureNum = FigureNum "016"
-      , figurePath = "build/figure016.svg"
+      { figureId = FigureId "016"
       , figure = F016.figure
       }
   , FigureSpec
-      { figureId = Figure017
-      , figureNum = FigureNum "017"
-      , figurePath = "build/figure017.svg"
+      { figureId = FigureId "017"
       , figure = F017.figure
       }
   , FigureSpec
-      { figureId = Figure018
-      , figureNum = FigureNum "018"
-      , figurePath = "build/figure018.svg"
+      { figureId = FigureId "018"
       , figure = F018.figure
       }
   , FigureSpec
-      { figureId = Figure019
-      , figureNum = FigureNum "019"
-      , figurePath = "build/figure019.svg"
+      { figureId = FigureId "019"
       , figure = F019.figure
       }
   , FigureSpec
-      { figureId = Figure020
-      , figureNum = FigureNum "020"
-      , figurePath = "build/figure020.svg"
+      { figureId = FigureId "020"
       , figure = F020.figure
       }
   , FigureSpec
-      { figureId = Figure021
-      , figureNum = FigureNum "021"
-      , figurePath = "build/figure021.svg"
+      { figureId = FigureId "021"
       , figure = F021.figure
       }
   , FigureSpec
-      { figureId = Figure022
-      , figureNum = FigureNum "022"
-      , figurePath = "build/figure022.svg"
+      { figureId = FigureId "022"
       , figure = F022.figure
       }
   , FigureSpec
-      { figureId = Figure023
-      , figureNum = FigureNum "023"
-      , figurePath = "build/figure023.svg"
+      { figureId = FigureId "023"
       , figure = F023.figure
       }
   , FigureSpec
-      { figureId = Figure024
-      , figureNum = FigureNum "024"
-      , figurePath = "build/figure024.svg"
+      { figureId = FigureId "024"
       , figure = F024.figure
       }
   , FigureSpec
-      { figureId = Figure025
-      , figureNum = FigureNum "025"
-      , figurePath = "build/figure025.svg"
+      { figureId = FigureId "025"
       , figure = F025.figure
       }
   , FigureSpec
-      { figureId = Figure026
-      , figureNum = FigureNum "026"
-      , figurePath = "build/figure026.svg"
+      { figureId = FigureId "026"
       , figure = F026.figure
       }
   , FigureSpec
-      { figureId = Figure027
-      , figureNum = FigureNum "027"
-      , figurePath = "build/figure027.svg"
+      { figureId = FigureId "027"
       , figure = F027.figure
       }
   , FigureSpec
-      { figureId = Figure028
-      , figureNum = FigureNum "028"
-      , figurePath = "build/figure028.svg"
+      { figureId = FigureId "028"
       , figure = F028.figure
       }
   , FigureSpec
-      { figureId = Figure029
-      , figureNum = FigureNum "029"
-      , figurePath = "build/figure029.svg"
+      { figureId = FigureId "029"
       , figure = F029.figure
       }
   , FigureSpec
-      { figureId = Figure030
-      , figureNum = FigureNum "030"
-      , figurePath = "build/figure030.svg"
+      { figureId = FigureId "030"
       , figure = F030.figure
       }
   , FigureSpec
-      { figureId = Figure031
-      , figureNum = FigureNum "031"
-      , figurePath = "build/figure031.svg"
+      { figureId = FigureId "031"
       , figure = F031.figure
       }
   , FigureSpec
-      { figureId = Figure032
-      , figureNum = FigureNum "032"
-      , figurePath = "build/figure032.svg"
+      { figureId = FigureId "032"
       , figure = F032.figure
       }
   , FigureSpec
-      { figureId = Figure033
-      , figureNum = FigureNum "033"
-      , figurePath = "build/figure033.svg"
+      { figureId = FigureId "033"
       , figure = F033.figure
       }
   , FigureSpec
-      { figureId = Figure034
-      , figureNum = FigureNum "034"
-      , figurePath = "build/figure034.svg"
+      { figureId = FigureId "034"
       , figure = F034.figure
       }
   , FigureSpec
-      { figureId = Figure035
-      , figureNum = FigureNum "035"
-      , figurePath = "build/figure035.svg"
+      { figureId = FigureId "035"
       , figure = F035.figure
       }
   , FigureSpec
-      { figureId = Figure036
-      , figureNum = FigureNum "036"
-      , figurePath = "build/figure036.svg"
+      { figureId = FigureId "036"
       , figure = F036.figure
       }
   , FigureSpec
-      { figureId = Figure037
-      , figureNum = FigureNum "037"
-      , figurePath = "build/figure037.svg"
+      { figureId = FigureId "037"
       , figure = F037.figure
       }
   , FigureSpec
-      { figureId = Figure038
-      , figureNum = FigureNum "038"
-      , figurePath = "build/figure038.svg"
+      { figureId = FigureId "038"
       , figure = F038.figure
       }
   , FigureSpec
-      { figureId = Figure039
-      , figureNum = FigureNum "039"
-      , figurePath = "build/figure039.svg"
+      { figureId = FigureId "039"
       , figure = F039.figure
       }
   , FigureSpec
-      { figureId = Figure040
-      , figureNum = FigureNum "040"
-      , figurePath = "build/figure040.svg"
+      { figureId = FigureId "040"
       , figure = F040.figure
       }
   , FigureSpec
-      { figureId = Figure041
-      , figureNum = FigureNum "041"
-      , figurePath = "build/figure041.svg"
+      { figureId = FigureId "041"
       , figure = F041.figure
       }
   , FigureSpec
-      { figureId = Figure042
-      , figureNum = FigureNum "042"
-      , figurePath = "build/figure042.svg"
+      { figureId = FigureId "042"
       , figure = F042.figure
       }
   , FigureSpec
-      { figureId = Figure043
-      , figureNum = FigureNum "043"
-      , figurePath = "build/figure043.svg"
+      { figureId = FigureId "043"
       , figure = F043.figure
       }
   , FigureSpec
-      { figureId = Figure044
-      , figureNum = FigureNum "044"
-      , figurePath = "build/figure044.svg"
+      { figureId = FigureId "044"
       , figure = F044.figure
       }
   , FigureSpec
-      { figureId = Figure045
-      , figureNum = FigureNum "045"
-      , figurePath = "build/figure045.svg"
+      { figureId = FigureId "045"
       , figure = F045.figure
       }
   , FigureSpec
-      { figureId = Figure046
-      , figureNum = FigureNum "046"
-      , figurePath = "build/figure046.svg"
+      { figureId = FigureId "046"
       , figure = F046.figure
       }
   , FigureSpec
-      { figureId = Figure047
-      , figureNum = FigureNum "047"
-      , figurePath = "build/figure047.svg"
+      { figureId = FigureId "047"
       , figure = F047.figure
       }
   , FigureSpec
-      { figureId = Figure048
-      , figureNum = FigureNum "048"
-      , figurePath = "build/figure048.svg"
+      { figureId = FigureId "048"
       , figure = F048.figure
       }
   , FigureSpec
-      { figureId = BonusI
-      , figureNum = FigureNum "I"
-      , figurePath = "build/bonusSmear.svg"
+      { figureId = FigureId "I"
       , figure = BI.figure
       }
   , FigureSpec
-      { figureId = BonusII
-      , figureNum = FigureNum "II"
-      , figurePath = "build/bonusTriangleFigureA.svg"
+      { figureId = FigureId "II"
       , figure = BII.figure
       }
   , FigureSpec
-      { figureId = BonusIII
-      , figureNum = FigureNum "III"
-      , figurePath = "build/bonusTriangleFigureB.svg"
+      { figureId = FigureId "III"
       , figure = BIII.figure
       }
   , FigureSpec
-      { figureId = BonusIV
-      , figureNum = FigureNum "IV"
-      , figurePath = "build/bonusDragon.svg"
+      { figureId = FigureId "IV"
       , figure = BIV.figure
       }
   ]
