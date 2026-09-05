@@ -1,4 +1,4 @@
-module Dessins.Const (remSize, getRemSizeDiv) where
+module Dessins.Const where
 
 remSize :: Integer
 remSize = 12

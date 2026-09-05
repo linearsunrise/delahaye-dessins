@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Bonus.TriangleFigureA (triangleFigure) where
+module Dessins.Figures.Bonus.BonusIV (figure) where
 
 import qualified Dessins.Utils as U
 
@@ -12,8 +12,8 @@ import qualified Dessins.Types as T
 import qualified Diagrams as D
 import Diagrams.Prelude as DP ((#))
 
-triangleFigure :: (T.Render n b) => T.TDiagram n b
-triangleFigure =
+figure :: (T.Render n b) => T.TDiagram n b
+figure =
   let vector = U.Point 0 10 0 # U.rotateByZ (pi / 2)
       n = 200
       g phi = 1 / (2 * cos phi)
@@ -34,7 +34,7 @@ triangleFigure =
               # U.translate (U.px vec, U.py vec)
           d = lp : figureData
 
-      angle = (59.5 * (pi / 180))
+      angle = (36 * (pi / 180))
       initData = []
       comprehensionBy x = f x angle (U.Point 0 1 0) initData
 

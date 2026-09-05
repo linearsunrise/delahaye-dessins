@@ -1,6 +1,6 @@
 module Main (main) where
 
-import Dessins.Figures.Build.Registry
+import Dessins.Build.Registry
   ( FigureSpec (FigureSpec)
   , figures
   )

@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Bonus.FigureDragon (figureDragon) where
+module Dessins.Figures.Bonus.BonusII (figure) where
 
 import qualified Dessins.Utils as U
 
@@ -15,8 +15,8 @@ import Diagrams.Prelude as DP ((#))
 dragonInitCurve :: (Floating a) => U.Path a
 dragonInitCurve = U.Path [U.Point 0 0 0, U.Point 0 1 0]
 
-figureDragon :: (T.Render n b) => T.TDiagram n b
-figureDragon =
+figure :: (T.Render n b) => T.TDiagram n b
+figure =
   let rotate90 = U.rotateByZ (pi / 2)
 
       lastPoint (U.Path xs) = last xs # (\(U.Point px py _) -> (px, py))

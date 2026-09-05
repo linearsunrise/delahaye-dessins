@@ -1,6 +1,6 @@
-module Dessins.Figures.Build
-  ( module Dessins.Figures.Build.Registry
+module Dessins.Build
+  ( module Dessins.Build.Registry
   )
 where
 
-import Dessins.Figures.Build.Registry
+import Dessins.Build.Registry

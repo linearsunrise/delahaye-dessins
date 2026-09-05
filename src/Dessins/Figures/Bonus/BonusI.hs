@@ -2,7 +2,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Bonus.Bonus (bonus) where
+module Dessins.Figures.Bonus.BonusI (figure) where
 
 import qualified Dessins.Utils as U
 
@@ -15,8 +15,8 @@ import Dessins.Figures.Cheval.Common
 import Diagrams ((#))
 import qualified Diagrams as D
 
-bonus :: (T.Render n b) => T.TDiagram n b
-bonus =
+figure :: (T.Render n b) => T.TDiagram n b
+figure =
   let vertices = 6
       phi = 0
 
