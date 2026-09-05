@@ -1,112 +1,96 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.OiseauxPoissons.Common where
+module Dessins.Figures.OiseauxPoissons.Common
+  ( lionData
+  , fishBirdWidth
+  , fishBirdHeight
+  )
+where
 
-import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
 
-import qualified Diagrams as D
 import Diagrams.Prelude as DP ((#))
 
-lionData :: (RealFloat n) => [[(n, n)]]
+lionData :: (Floating n) => U.Figure n
 lionData =
-  [ [ (11, 5)
-    , (9, 6)
-    , (7, 6)
-    , (3, 4)
-    , (2, 4)
-    , (2.7, 3.3)
-    , (2.7, 3.2)
-    , (3, 3.2)
-    , (3, 3.5)
-    , (2.7, 3.5)
-    , (2.7, 3.2)
-    , (2.8, 3.2)
-    , (3, 3)
-    , (4, 3)
-    , (5, 4)
-    , (6, 4)
-    , (5, 3)
-    , (6, 1)
-    , (9, 0)
-    , (9, 1)
-    , (7, 2)
-    , (7, 4)
-    , (7, 2)
-    , (11, 0)
-    , (11, 1)
-    , (9, 3)
-    , (10, 4)
-    , (11, 4)
-    , (11, 5)
-    , (10, 7)
-    , (11, 8)
-    , (10, 8)
-    , (9, 7)
-    , (8, 7)
-    , (7, 8)
-    , (5, 9)
-    , (5, 8)
-    , (2, 9)
-    , (2, 8)
-    , (1, 8)
-    , (0, 7)
-    , (1, 7)
-    , (0, 7)
-    , (1.5, 5.5)
-    , (2, 5.5)
-    , (2, 6)
-    , (1.5, 6)
-    , (1.5, 5.5)
-    , (2, 5)
-    , (3, 7)
-    , (4, 6)
-    , (4, 7)
-    , (3, 7)
-    , (2, 8)
-    , (7, 8)
-    , (2, 8)
-    , (3, 7)
-    , (2, 5)
-    , (5, 5)
-    , (2, 5)
-    , (2, 4)
-    , (3, 4)
-    , (7, 6)
-    , (9, 6)
-    , (11, 5)
+  U.Figure
+    [ U.Path
+        [ U.Point 11 5 0
+        , U.Point 9 6 0
+        , U.Point 7 6 0
+        , U.Point 3 4 0
+        , U.Point 2 4 0
+        , U.Point 2.7 3.3 0
+        , U.Point 2.7 3.2 0
+        , U.Point 3 3.2 0
+        , U.Point 3 3.5 0
+        , U.Point 2.7 3.5 0
+        , U.Point 2.7 3.2 0
+        , U.Point 2.8 3.2 0
+        , U.Point 3 3 0
+        , U.Point 4 3 0
+        , U.Point 5 4 0
+        , U.Point 6 4 0
+        , U.Point 5 3 0
+        , U.Point 6 1 0
+        , U.Point 9 0 0
+        , U.Point 9 1 0
+        , U.Point 7 2 0
+        , U.Point 7 4 0
+        , U.Point 7 2 0
+        , U.Point 11 0 0
+        , U.Point 11 1 0
+        , U.Point 9 3 0
+        , U.Point 10 4 0
+        , U.Point 11 4 0
+        , U.Point 11 5 0
+        , U.Point 10 7 0
+        , U.Point 11 8 0
+        , U.Point 10 8 0
+        , U.Point 9 7 0
+        , U.Point 8 7 0
+        , U.Point 7 8 0
+        , U.Point 5 9 0
+        , U.Point 5 8 0
+        , U.Point 2 9 0
+        , U.Point 2 8 0
+        , U.Point 1 8 0
+        , U.Point 0 7 0
+        , U.Point 1 7 0
+        , U.Point 0 7 0
+        , U.Point 1.5 5.5 0
+        , U.Point 2 5.5 0
+        , U.Point 2 6 0
+        , U.Point 1.5 6 0
+        , U.Point 1.5 5.5 0
+        , U.Point 2 5 0
+        , U.Point 3 7 0
+        , U.Point 4 6 0
+        , U.Point 4 7 0
+        , U.Point 3 7 0
+        , U.Point 2 8 0
+        , U.Point 7 8 0
+        , U.Point 2 8 0
+        , U.Point 3 7 0
+        , U.Point 2 5 0
+        , U.Point 5 5 0
+        , U.Point 2 5 0
+        , U.Point 2 4 0
+        , U.Point 3 4 0
+        , U.Point 7 6 0
+        , U.Point 9 6 0
+        , U.Point 11 5 0
+        ]
+        # U.flipY
+        # U.translate -- находим origin для симметрии
+          ( -((fishBirdWidth + 2.5) / 2)
+          , -((fishBirdHeight + 1.5) / 2)
+          )
     ]
-      # map
-        ( U.translate -- находим origin для симметрии
-            ( -((fishBirdWidth + 2.5) / 2)
-            , -((fishBirdHeight + 1.5) / 2)
-            )
-            . U.flipY
-        )
-  ]
 
-fishBirdWidth :: (RealFloat n) => n
+fishBirdWidth :: (Floating n) => n
 fishBirdWidth = 11
 
-fishBirdHeight :: (RealFloat n) => n
+fishBirdHeight :: (Floating n) => n
 fishBirdHeight = 9
-
-createPath :: (T.Render n b) => [(n, n)] -> T.TDiagram n b
-createPath x =
-  getPointsList x
-    # D.fromVertices
-    # D.strokePath
-    # D.fillRule D.EvenOdd
-    # D.lw (D.global 0.045)
-    # D.lineJoin D.LineJoinBevel
-
-getPathsList ::
-  (T.Render n b) =>
-  [[(n, n)]] -> T.TDiagram n b
-getPathsList =
-  mconcat
-    . map createPath
-
-getPointsList :: [(n, n)] -> [D.Point D.V2 n]
-getPointsList = map D.p2

@@ -16,19 +16,17 @@ figure040 :: (T.Render n b) => T.TDiagram n b
 figure040 =
   let iCount = 4 :: Integer
       chevals =
-        mconcat
-          [ f x y
-          | x <- [-iCount .. iCount]
-          , y <- [-abs x .. abs x]
-          ]
+        [ f x y
+        | x <- [-iCount .. iCount]
+        , y <- [-abs x .. abs x]
+        ]
         where
-          transform i j v =
-            v
+          f j i =
+            chevalData
               # U.translate (fromIntegral i * 20, fromIntegral j * 20)
-
-          f j i = map (map (transform i j)) chevalData
    in chevals
-        # getTrailsList
+        # U.combineFigures
+        # U.toDessinFrame
         # D.centerXY
         # D.scaleUToY (Const.getRemSizeDiv (* 3))
         # U.squareFrame (Const.getRemSizeDiv (* 4))

@@ -19,18 +19,18 @@ figure035 =
 
       divideBy = 90
 
-      chevals = mconcat [f x | x <- [0 .. (vertices - 1)]]
+      chevals = [f x | x <- [0 .. (vertices - 1)]]
         where
           ax i = (2 * i * pi / vertices + phi)
-          transform t v =
-            v
-              # U.translate (0.5, 0.5)
-              # U.rotateBy (ax t)
-              # U.scaleBy (1 / divideBy, 1 / divideBy)
 
-          f t = map (map (transform t)) chevalData
+          f t =
+            chevalData
+              # U.translate (0.5, 0.5)
+              # U.rotateByZ (ax t)
+              # U.scaleBy (1 / divideBy, 1 / divideBy)
    in chevals
-        # getTrailsList
+        # U.combineFigures
+        # U.toDessinFrame
         # D.centerXY
         # D.scaleUToY (Const.getRemSizeDiv (* 3))
         # U.squareFrame (Const.getRemSizeDiv (* 4))

@@ -5,7 +5,11 @@
 module Dessins.Figures.Lion.Figure045 (figure045) where
 
 import Dessins.Const (getRemSizeDiv)
-import Dessins.Figures.Lion.Common
+import Dessins.Figures.Lion.Common as C
+  ( lionData
+  , lionHeight
+  , lionWidth
+  )
 import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
 
@@ -14,33 +18,25 @@ import Diagrams.Prelude as DP
 
 figure045 :: (T.Render n b) => T.TDiagram n b
 figure045 =
-  let rows = 5 :: Int
-      cols = 3 :: Int
+  let rows = 5
+      cols = 3
 
       lions =
-        mconcat
-          [ f x y
-          | x <- [0 .. (cols - 1)]
-          , y <- [0 .. (rows - 1)]
-          ]
+        [ f x y
+        | x <- [0 .. (cols - 1)]
+        , y <- [0 .. (rows - 1)]
+        ]
         where
-          transformPipe i j point =
-            let w = lionWidth
-                h = lionHeight
-                a = fromIntegral i
-                b = fromIntegral j
-                signA = (-1) ** a
-                signB = (-1) ** b
-             in point
-                  # U.scaleBy (signB, signA)
-                  # U.translate
-                    ( (w - 4.5) * a
-                    , (h - 5) * b
-                    )
-
-          f i j = map (map (transformPipe i j)) lionData
+          f i j =
+            C.lionData
+              # U.scaleBy ((-1) ** j, (-1) ** i)
+              # U.translate
+                ( (C.lionWidth - 4.5) * i
+                , (C.lionHeight - 5) * j
+                )
    in lions
-        # getTrailsList
+        # U.combineFigures
+        # U.toDessinFrame
         # D.centerXY
         # D.scaleUToY (getRemSizeDiv (* 3))
         # U.squareFrame (getRemSizeDiv (* 4))

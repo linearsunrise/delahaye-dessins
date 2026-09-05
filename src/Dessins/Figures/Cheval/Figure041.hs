@@ -11,29 +11,26 @@ import qualified Dessins.Utils as U
 
 import Diagrams ((#))
 import qualified Diagrams as D
-import qualified Diagrams.Prelude as DP
 
 figure041 :: (T.Render n b) => T.TDiagram n b
 figure041 =
   let iCount = 4 :: Integer
       chevals =
-        mconcat
-          [ f x y
-          | x <- [-iCount .. iCount]
-          , y <- [-iCount .. iCount]
-          ]
+        [ createFigure x y
+        | x <- [-iCount .. iCount]
+        , y <- [-iCount .. iCount]
+        ]
         where
-          transform i j v =
-            v
+          warp (x, y, _) = (x * abs x, y * abs y, 0)
+          createFigure j i =
+            chevalData
               # U.translate (by i, by j)
-              # DP.bimap warp warp
+              # U.warp warp
             where
               by t = (fromIntegral t - 1) * 20
-              warp x = x * abs x
-
-          f j i = map (map (transform i j)) chevalData
    in chevals
-        # getTrailsList
+        # U.combineFigures
+        # U.toDessinFrame
         # D.centerXY
         # D.scaleUToY (Const.getRemSizeDiv (* 3))
         # U.squareFrame (Const.getRemSizeDiv (* 4))

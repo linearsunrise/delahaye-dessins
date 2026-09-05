@@ -15,7 +15,7 @@ import Diagrams.Prelude as DP
 figure044 :: (T.Render n b) => T.TDiagram n b
 figure044 =
   lionData
-    # getTrailsList
+    # U.toDessinFrame
     # D.centerXY
     # D.scaleUToX (getRemSizeDiv (* 3))
     # U.squareFrame (getRemSizeDiv (* 4))

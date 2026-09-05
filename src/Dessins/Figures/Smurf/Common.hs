@@ -1,202 +1,194 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Smurf.Common where
+module Dessins.Figures.Smurf.Common
+  ( fishBirdWidth
+  , fishBirdHeight
+  , smurfData
+  )
+where
 
-import qualified Dessins.Types as T
+import qualified Dessins.Utils as U
 
-import qualified Diagrams as D
-import Diagrams.Prelude as DP ((#))
-
-smurfData :: (RealFloat n) => [[(n, n)]]
+smurfData :: (Floating n) => U.Figure n
 smurfData =
-  [
-    [ (12, 12)
-    , (14, 8)
-    , (14, 4)
-    , (12, 2)
-    , (8, 2)
-    , (4, 4)
-    , (0, 10)
-    , (0, 20)
-    , (4, 26)
-    , (6, 28)
-    , (12, 28)
-    , (14, 26)
-    , (14, 22)
-    , (12, 16)
-    , (12, 12)
-    , (20, 14)
-    , (24, 14)
-    , (28, 12)
-    , (28, 10)
-    , (26, 4)
-    , (28, 0)
-    , (36, 0)
-    , (38, 2)
-    , (40, 10)
-    , (40, 22)
-    , (36, 26)
-    , (28, 26)
-    , (26, 22)
-    , (28, 14)
-    , (28, 12)
-    , (28, 14)
-    , (27, 18)
-    , (18, 18)
-    , (16, 20)
-    , (16, 18)
-    , (20, 14)
-    , (16, 18)
-    , (12, 16)
+  U.Figure
+    [ U.Path
+        [ U.Point 12 12 0
+        , U.Point 14 8 0
+        , U.Point 14 4 0
+        , U.Point 12 2 0
+        , U.Point 8 2 0
+        , U.Point 4 4 0
+        , U.Point 0 10 0
+        , U.Point 0 20 0
+        , U.Point 4 26 0
+        , U.Point 6 28 0
+        , U.Point 12 28 0
+        , U.Point 14 26 0
+        , U.Point 14 22 0
+        , U.Point 12 16 0
+        , U.Point 12 12 0
+        , U.Point 20 14 0
+        , U.Point 24 14 0
+        , U.Point 28 12 0
+        , U.Point 28 10 0
+        , U.Point 26 4 0
+        , U.Point 28 0 0
+        , U.Point 36 0 0
+        , U.Point 38 2 0
+        , U.Point 40 10 0
+        , U.Point 40 22 0
+        , U.Point 36 26 0
+        , U.Point 28 26 0
+        , U.Point 26 22 0
+        , U.Point 28 14 0
+        , U.Point 28 12 0
+        , U.Point 28 14 0
+        , U.Point 27 18 0
+        , U.Point 18 18 0
+        , U.Point 16 20 0
+        , U.Point 16 18 0
+        , U.Point 20 14 0
+        , U.Point 16 18 0
+        , U.Point 12 16 0
+        ]
+    , U.Path
+        [ U.Point 16 20 0
+        , U.Point 16 24 0
+        , U.Point 20 32 0
+        , U.Point 20 34 0
+        , U.Point 20 32 0
+        , U.Point 12 34 0
+        , U.Point 12 32 0
+        , U.Point 10 28 0
+        ]
+    , U.Path
+        [ U.Point 4 26 0
+        , U.Point 2 28 0
+        , U.Point 4 30 0
+        , U.Point 8 30 0
+        , U.Point 6 32 0
+        , U.Point 6 34 0
+        , U.Point 6 32 0
+        , U.Point 4 32 0
+        , U.Point 2 30 0
+        , U.Point 2 28 0
+        ]
+    , U.Path [U.Point 8 30 0, U.Point 8 36 0, U.Point 10 38 0]
+    , U.Path
+        [ U.Point 4 32 0
+        , U.Point 4 34 0
+        , U.Point 8 38 0
+        , U.Point 6 40 0
+        , U.Point 6 42 0
+        , U.Point 8 44 0
+        , U.Point 10 44 0
+        , U.Point 10 42 0
+        , U.Point 12 42 0
+        , U.Point 12 38 0
+        , U.Point 16 36 0
+        , U.Point 32 36 0
+        , U.Point 38 40 0
+        , U.Point 40 44 0
+        , U.Point 38 42 0
+        , U.Point 36 46 0
+        , U.Point 30 48 0
+        , U.Point 36 48 0
+        , U.Point 40 44 0
+        , U.Point 40 56 0
+        , U.Point 36 62 0
+        , U.Point 32 64 0
+        , U.Point 24 64 0
+        , U.Point 18 62 0
+        , U.Point 16 60 0
+        , U.Point 16 58 0
+        , U.Point 18 56 0
+        , U.Point 24 56 0
+        , U.Point 22 56 0
+        , U.Point 20 53 0
+        , U.Point 28 56 0
+        , U.Point 22 54 0
+        , U.Point 28 54 0
+        , U.Point 32 52 0
+        , U.Point 34 48 0
+        , U.Point 32 52 0
+        , U.Point 28 48 0
+        , U.Point 30 46 0
+        , U.Point 28 44 0
+        ]
+    , U.Path
+        [ U.Point 28 48 0
+        , U.Point 22 48 0
+        , U.Point 24 48 0
+        , U.Point 24 52 0
+        , U.Point 22 54 0
+        , U.Point 18 52 0
+        , U.Point 18 50 0
+        , U.Point 20 48 0
+        , U.Point 12 48 0
+        , U.Point 16 48 0
+        , U.Point 18 50 0
+        , U.Point 16 48 0
+        , U.Point 16 50 0
+        , U.Point 18 52 0
+        , U.Point 16 50 0
+        , U.Point 16 48 0
+        , U.Point 14 46 0
+        , U.Point 16 44 0
+        ]
+    , U.Path [U.Point 12 48 0, U.Point 10 44 0]
+    , U.Path [U.Point 16 46 0, U.Point 18 44 0]
+    , U.Path
+        [ U.Point 18 46 0
+        , U.Point 26 46 0
+        , U.Point 24 46 0
+        , U.Point 24 44 0
+        , U.Point 22 42 0
+        , U.Point 20 44 0
+        , U.Point 20 46 0
+        ]
+    , U.Path [U.Point 22 42 0, U.Point 22 44 0, U.Point 24 44 0]
+    , U.Path [U.Point 28 46 0, U.Point 26 44 0]
+    , U.Path [U.Point 24 54 0, U.Point 25 52 0]
+    , U.Path [U.Point 27 52 0, U.Point 28 54 0, U.Point 30 52 0]
+    , U.Path [U.Point 25 49 0, U.Point 26 50 0, U.Point 27 49 0]
+    , U.Path
+        [ U.Point 36 38 0
+        , U.Point 40 38 0
+        , U.Point 42 40 0
+        , U.Point 48 40 0
+        , U.Point 48 42 0
+        , U.Point 50 42 0
+        , U.Point 52 40 0
+        , U.Point 50 36 0
+        , U.Point 48 36 0
+        , U.Point 48 38 0
+        , U.Point 48 38 0
+        , U.Point 48 36 0
+        , U.Point 46 34 0
+        , U.Point 48 36 0
+        , U.Point 48 26 0
+        , U.Point 46 24 0
+        , U.Point 46 32 0
+        , U.Point 46 30 0
+        , U.Point 42 30 0
+        , U.Point 44 28 0
+        , U.Point 44 26 0
+        , U.Point 42 24 0
+        , U.Point 40 26 0
+        , U.Point 40 32 0
+        , U.Point 42 32 0
+        , U.Point 28 32 0
+        , U.Point 30 32 0
+        , U.Point 32 26 0
+        ]
+    , U.Path [U.Point 44 26 0, U.Point 44 24 0, U.Point 46 24 0]
+    , U.Path [U.Point 42 38 0, U.Point 44 36 0, U.Point 44 32 0]
     ]
-  ,
-    [ (16, 20)
-    , (16, 24)
-    , (20, 32)
-    , (20, 34)
-    , (20, 32)
-    , (12, 34)
-    , (12, 32)
-    , (10, 28)
-    ]
-  ,
-    [ (4, 26)
-    , (2, 28)
-    , (4, 30)
-    , (8, 30)
-    , (6, 32)
-    , (6, 34)
-    , (6, 32)
-    , (4, 32)
-    , (2, 30)
-    , (2, 28)
-    ]
-  , [(8, 30), (8, 36), (10, 38)]
-  ,
-    [ (4, 32)
-    , (4, 34)
-    , (8, 38)
-    , (6, 40)
-    , (6, 42)
-    , (8, 44)
-    , (10, 44)
-    , (10, 42)
-    , (12, 42)
-    , (12, 38)
-    , (16, 36)
-    , (32, 36)
-    , (38, 40)
-    , (40, 44)
-    , (38, 42)
-    , (36, 46)
-    , (30, 48)
-    , (36, 48)
-    , (40, 44)
-    , (40, 56)
-    , (36, 62)
-    , (32, 64)
-    , (24, 64)
-    , (18, 62)
-    , (16, 60)
-    , (16, 58)
-    , (18, 56)
-    , (24, 56)
-    , (22, 56)
-    , (20, 53)
-    , (28, 56)
-    , (22, 54)
-    , (28, 54)
-    , (32, 52)
-    , (34, 48)
-    , (32, 52)
-    , (28, 48)
-    , (30, 46)
-    , (28, 44)
-    ]
-  ,
-    [ (28, 48)
-    , (22, 48)
-    , (24, 48)
-    , (24, 52)
-    , (22, 54)
-    , (18, 52)
-    , (18, 50)
-    , (20, 48)
-    , (12, 48)
-    , (16, 48)
-    , (18, 50)
-    , (16, 48)
-    , (16, 50)
-    , (18, 52)
-    , (16, 50)
-    , (16, 48)
-    , (14, 46)
-    , (16, 44)
-    ]
-  , [(12, 48), (10, 44)]
-  , [(16, 46), (18, 44)]
-  , [(18, 46), (26, 46), (24, 46), (24, 44), (22, 42), (20, 44), (20, 46)]
-  , [(22, 42), (22, 44), (24, 44)]
-  , [(28, 46), (26, 44)]
-  , [(24, 54), (25, 52)]
-  , [(27, 52), (28, 54), (30, 52)]
-  , [(25, 49), (26, 50), (27, 49)]
-  ,
-    [ (36, 38)
-    , (40, 38)
-    , (42, 40)
-    , (48, 40)
-    , (48, 42)
-    , (50, 42)
-    , (52, 40)
-    , (50, 36)
-    , (48, 36)
-    , (48, 38)
-    , (48, 38)
-    , (48, 36)
-    , (46, 34)
-    , (48, 36)
-    , (48, 26)
-    , (46, 24)
-    , (46, 32)
-    , (46, 30)
-    , (42, 30)
-    , (44, 28)
-    , (44, 26)
-    , (42, 24)
-    , (40, 26)
-    , (40, 32)
-    , (42, 32)
-    , (28, 32)
-    , (30, 32)
-    , (32, 26)
-    ]
-  , [(44, 26), (44, 24), (46, 24)]
-  , [(42, 38), (44, 36), (44, 32)]
-  ]
 
 fishBirdWidth :: (RealFloat n) => n
 fishBirdWidth = 11
 
 fishBirdHeight :: (RealFloat n) => n
 fishBirdHeight = 9
-
-createPath :: (T.Render n b) => [(n, n)] -> T.TDiagram n b
-createPath x =
-  getPointsList x
-    # D.fromVertices
-    # D.strokePath
-    # D.fillRule D.EvenOdd
-    # D.lw (D.global 0.045)
-    # D.lineJoin D.LineJoinBevel
-
-getPathsList ::
-  (T.Render n b) =>
-  [[(n, n)]] -> T.TDiagram n b
-getPathsList =
-  mconcat
-    . map createPath
-
-getPointsList :: [(n, n)] -> [D.Point D.V2 n]
-getPointsList = map D.p2

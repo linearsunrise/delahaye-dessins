@@ -14,13 +14,12 @@ figure042 :: (T.Render n b) => T.TDiagram n b
 figure042 =
   let iCount = 4 :: Integer
       chevals =
-        mconcat
-          [ f x y
-          | x <- [-iCount .. iCount]
-          , y <- [-iCount .. iCount]
-          ]
+        [ f x y
+        | x <- [-iCount .. iCount]
+        , y <- [-iCount .. iCount]
+        ]
         where
-          warp (x, y) =
+          warp (x, y, _) =
             let an =
                   if x == 0 then
                     pi / 2 * signum y
@@ -30,20 +29,19 @@ figure042 =
                 di =
                   sqrt (x ** 2 + y ** 2)
                     # \t -> t / (1 + t) * 0.65
-             in (di * cos an, di * sin an)
+             in (di * cos an, di * sin an, 0)
 
-          transform i j v =
-            v
+          by t = (fromIntegral t - 1) * 20
+          aspect = 2 / 80
+
+          f j i =
+            chevalData
               # U.translate (by i, by j)
               # U.scaleBy (aspect, aspect)
-              # warp
-            where
-              by t = (fromIntegral t - 1) * 20
-              aspect = 2 / 80
-
-          f j i = map (map (transform i j)) chevalData
+              # U.warp warp
    in chevals
-        # getTrailsList
+        # U.combineFigures
+        # U.toDessinFrame
         # D.centerXY
         # D.scaleUToY (Const.getRemSizeDiv (* 3))
         # U.squareFrame (Const.getRemSizeDiv (* 4))

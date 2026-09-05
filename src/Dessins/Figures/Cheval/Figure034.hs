@@ -15,7 +15,7 @@ import qualified Diagrams as D
 figure034 :: (T.Render n b) => T.TDiagram n b
 figure034 =
   chevalData
-    # getTrailsList
+    # U.toDessinFrame
     # D.centerXY
     # D.scaleUToY (Const.getRemSizeDiv (* 3))
     # U.squareFrame (Const.getRemSizeDiv (* 4))

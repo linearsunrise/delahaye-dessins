@@ -15,6 +15,8 @@ where
 
 import qualified Dessins.Const as Const
 import qualified Dessins.Figures.Bonus as Bonus
+import qualified Dessins.Figures.Bonus.TriangleFigureA as TriangleFigureA
+import qualified Dessins.Figures.Bonus.TriangleFigureB as TriangleFigureB
 import Dessins.Figures.Cheval as Cheval
 import Dessins.Figures.Composition1 as Composition1
 import Dessins.Figures.Composition2 as Composition2
@@ -158,7 +160,8 @@ oiseauxPoissons =
     [ OiseauxPoissons.figure046
     , OiseauxPoissons.figure047
     , Bonus.figureDragon
-    , Bonus.triangleFigure
+    , TriangleFigureA.triangleFigure
+    , TriangleFigureB.triangleFigure
     ]
 
 smurf :: (T.Render n b) => T.TDiagram n b

@@ -17,19 +17,17 @@ figure039 =
   let iCount = 3
       jCount = 3
       chevals =
-        mconcat
-          [ f x y
-          | x <- [0 .. (iCount - 1)]
-          , y <- [0 .. (jCount - 1)]
-          ]
+        [ createFigure x y
+        | x <- [0 .. (iCount - 1)]
+        , y <- [0 .. (jCount - 1)]
+        ]
         where
-          transform i j v =
-            v
+          createFigure i j =
+            chevalData
               # U.translate (i * 20, j * 20)
-
-          f i j = map (map (transform i j)) chevalData
    in chevals
-        # getTrailsList
+        # U.combineFigures
+        # U.toDessinFrame
         # D.centerXY
         # D.scaleUToY (Const.getRemSizeDiv (* 3))
         # U.squareFrame (Const.getRemSizeDiv (* 4))

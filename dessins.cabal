@@ -105,12 +105,14 @@ library
       , Dessins.Figures.Bonus
       , Dessins.Figures.Bonus.Bonus
       , Dessins.Figures.Bonus.FigureDragon
-      , Dessins.Figures.Bonus.TriangleFigure
+      , Dessins.Figures.Bonus.TriangleFigureA
+      , Dessins.Figures.Bonus.TriangleFigureB
     build-depends:
         base >=4 && <5
       , diagrams-lib
       , diagrams-svg
       , containers
+      , transformers
 
 executable main
     import:           shared
@@ -131,3 +133,5 @@ executable dessins-build
       , dessins
       , diagrams-lib
       , diagrams-svg
+      , containers
+      , transformers

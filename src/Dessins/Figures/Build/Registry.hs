@@ -11,7 +11,8 @@ where
 
 import qualified Dessins.Figures.Bonus.Bonus as Bonus
 import qualified Dessins.Figures.Bonus.FigureDragon as Bonus
-import qualified Dessins.Figures.Bonus.TriangleFigure as Bonus
+import qualified Dessins.Figures.Bonus.TriangleFigureA as TriangleFigureA
+import qualified Dessins.Figures.Bonus.TriangleFigureB as TriangleFigureB
 import qualified Dessins.Figures.Cheval.Figure034 as F034
 import qualified Dessins.Figures.Cheval.Figure035 as F035
 import qualified Dessins.Figures.Cheval.Figure036 as F036
@@ -62,8 +63,8 @@ import qualified Dessins.Figures.PolygonesReguliers.Figure006 as F006
 import qualified Dessins.Figures.Smurf.Figure048 as F048
 
 import qualified Data.Map.Strict as Map
-import Diagrams.Backend.SVG (SVG)
 import Diagrams (Diagram)
+import Diagrams.Backend.SVG (SVG)
 
 data FigureSpec = FigureSpec
   { figureId :: FigureId
@@ -79,7 +80,6 @@ newtype FigureId
 newtype FigureNum
   = FigureNum {numFigure :: String}
   deriving (Eq, Ord, Show)
-
 
 figures :: [FigureSpec]
 figures =
@@ -372,20 +372,26 @@ figures =
       , figure = F048.figure048
       }
   , FigureSpec
-      { figureId = FigureId "figure049"
-      , figureNum = FigureNum "049"
+      { figureId = FigureId "bonusSmear"
+      , figureNum = FigureNum "I"
       , figurePath = "build/bonusSmear.svg"
       , figure = Bonus.bonus
       }
   , FigureSpec
-      { figureId = FigureId "figure050"
-      , figureNum = FigureNum "050"
-      , figurePath = "build/bonusTriangleFigure.svg"
-      , figure = Bonus.triangleFigure
+      { figureId = FigureId "bonusTriangleFigure"
+      , figureNum = FigureNum "II"
+      , figurePath = "build/bonusTriangleFigureA.svg"
+      , figure = TriangleFigureA.triangleFigure
+      }
+  , FigureSpec
+      { figureId = FigureId "bonusTriangleFigure"
+      , figureNum = FigureNum "III"
+      , figurePath = "build/bonusTriangleFigureB.svg"
+      , figure = TriangleFigureB.triangleFigure
       }
   , FigureSpec
       { figureId = FigureId "bonusDragon"
-      , figureNum = FigureNum "051"
+      , figureNum = FigureNum "IV"
       , figurePath = "build/bonusDragon.svg"
       , figure = Bonus.figureDragon
       }

@@ -11,31 +11,35 @@ import qualified Dessins.Utils as U
 
 import Diagrams ((#))
 import qualified Diagrams as D
-import qualified Diagrams.Prelude as DP
 
 bonus :: (T.Render n b) => T.TDiagram n b
 bonus =
   let vertices = 6
       phi = 0
 
-      warp :: (RealFloat a) => (a, a) -> (a, a) -> (a, a)
-      warp (x1, y1) (x2, y2) =
-        (co * x - si * y, si * x - co * y)
-          # DP.bimap add add
+      warp :: (RealFloat a) => (a, a, a) -> (a, a, a) -> (a, a, a)
+      warp (x1, y1, _) (x2, y2, _) =
+        (add (co * x - si * y), add (si * x - co * y), 0)
         where
           (x, y) = (x2, y2)
           (co, si) = (x1, y1)
           add = (+ 0.5)
 
-      chevals = mconcat [f x | x <- [0 .. (vertices - 1)]]
+      warpWith t =
+        warp
+          ( U.xAxis (t / vertices) vertices phi
+          , U.yAxis (t / vertices) vertices phi
+          , 0
+          )
+
+      chevals = [createFigure x | x <- [0 .. (vertices - 1)]]
         where
-          f t =
-            ( U.xAxis (t / vertices) vertices phi
-            , U.yAxis (t / vertices) vertices phi
-            )
-              # \point -> map (map (warp point)) chevalData
+          createFigure t =
+            chevalData
+              # U.warp (warpWith t)
    in chevals
-        # getTrailsList
+        # U.combineFigures
+        # U.toDessinFrame
         # D.centerXY
         # D.scaleUToY (Const.getRemSizeDiv (* 3))
         # U.squareFrame (Const.getRemSizeDiv (* 4))
