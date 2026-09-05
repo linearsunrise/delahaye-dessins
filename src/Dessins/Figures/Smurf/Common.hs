@@ -2,8 +2,8 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
 module Dessins.Figures.Smurf.Common
-  ( fishBirdWidth
-  , fishBirdHeight
+  ( smurfWidth
+  , smurfHeight
   , smurfData
   )
 where
@@ -187,8 +187,8 @@ smurfData =
     , U.Path [U.Point 42 38 0, U.Point 44 36 0, U.Point 44 32 0]
     ]
 
-fishBirdWidth :: (RealFloat n) => n
-fishBirdWidth = 11
+smurfWidth :: (RealFloat n) => n
+smurfWidth = 11
 
-fishBirdHeight :: (RealFloat n) => n
-fishBirdHeight = 9
+smurfHeight :: (RealFloat n) => n
+smurfHeight = 9

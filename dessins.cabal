@@ -101,6 +101,7 @@ library
       , Dessins.Figures.Smurf
       , Dessins.Figures.Smurf.Common
       , Dessins.Figures.Smurf.Figure048
+      , Dessins.Figures.Smurf.Figure049
 
       , Dessins.Figures.Bonus
       , Dessins.Figures.Bonus.BonusI
