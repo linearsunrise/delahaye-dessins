@@ -147,6 +147,7 @@ smurf =
   U.group
     "SMURF"
     [ R.getFigureById (R.FigureId "048")
+    , R.getFigureById (R.FigureId "049")
     ]
 
 bonus :: (T.Render n b) => T.TDiagram n b
