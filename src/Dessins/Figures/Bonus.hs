@@ -1,7 +1,1 @@
-module Dessins.Figures.Bonus
-  ( module Bonus
-  )
-where
-
-import Dessins.Figures.Bonus.Bonus as Bonus
-import Dessins.Figures.Bonus.FigureDragon as Bonus
+module Dessins.Figures.Bonus where

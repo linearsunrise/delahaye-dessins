@@ -4,6 +4,7 @@
 module Dessins.Utils.Grid (hor, ver, group) where
 
 import Dessins.Const (getRemSizeDiv)
+
 import qualified Dessins.Types as T
 
 import Diagrams.Prelude

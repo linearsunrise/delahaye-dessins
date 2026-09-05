@@ -3,9 +3,11 @@
 
 module Dessins.Figures.Bonus.FigureDragon (figureDragon) where
 
-import Dessins.Const (getRemSizeDiv)
-import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
+
+import Dessins.Const (getRemSizeDiv)
+
+import qualified Dessins.Types as T
 
 import qualified Diagrams as D
 import Diagrams.Prelude as DP ((#))

@@ -2,18 +2,21 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Cheval.Figure038 (figure038) where
+module Dessins.Figures.Cheval.Figure038 (figure) where
+
+import qualified Dessins.Utils as U
 
 import qualified Dessins.Const as Const
-import Dessins.Figures.Cheval.Common
+
 import qualified Dessins.Types as T
-import qualified Dessins.Utils as U
+
+import Dessins.Figures.Cheval.Common
 
 import Diagrams ((#))
 import qualified Diagrams as D
 
-figure038 :: (T.Render n b) => T.TDiagram n b
-figure038 =
+figure :: (T.Render n b) => T.TDiagram n b
+figure =
   let pointsCount = 6
       chevals =
         [ createFigure x y

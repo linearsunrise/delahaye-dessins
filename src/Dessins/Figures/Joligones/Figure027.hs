@@ -3,17 +3,18 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -Wno-simplifiable-class-constraints #-}
 
-module Dessins.Figures.Joligones.Figure027 (figure027) where
+module Dessins.Figures.Joligones.Figure027 (figure) where
+
+import qualified Dessins.Types as T
 
 import Dessins.Figures.Joligones.Common
-import qualified Dessins.Types as T
 
 import Diagrams ((#))
 
-figure027 ::
+figure ::
   (Enum n, T.Render n b) =>
   T.TDiagram n b
-figure027 =
+figure =
   renderFigure
     FigureParams
       { vertices = 2 * 30 / 29

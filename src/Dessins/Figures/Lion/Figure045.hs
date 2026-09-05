@@ -2,22 +2,25 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Dessins.Figures.Lion.Figure045 (figure045) where
+module Dessins.Figures.Lion.Figure045 (figure) where
+
+import qualified Dessins.Utils as U
 
 import Dessins.Const (getRemSizeDiv)
+
+import qualified Dessins.Types as T
+
 import Dessins.Figures.Lion.Common as C
   ( lionData
   , lionHeight
   , lionWidth
   )
-import qualified Dessins.Types as T
-import qualified Dessins.Utils as U
 
 import qualified Diagrams as D
 import Diagrams.Prelude as DP
 
-figure045 :: (T.Render n b) => T.TDiagram n b
-figure045 =
+figure :: (T.Render n b) => T.TDiagram n b
+figure =
   let rows = 5
       cols = 3
 

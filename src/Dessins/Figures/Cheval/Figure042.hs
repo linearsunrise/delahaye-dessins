@@ -1,17 +1,20 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module Dessins.Figures.Cheval.Figure042 (figure042) where
+module Dessins.Figures.Cheval.Figure042 (figure) where
+
+import qualified Dessins.Utils as U
 
 import qualified Dessins.Const as Const
-import Dessins.Figures.Cheval.Common
+
 import qualified Dessins.Types as T
-import qualified Dessins.Utils as U
+
+import Dessins.Figures.Cheval.Common
 
 import Diagrams ((#))
 import qualified Diagrams as D
 
-figure042 :: (T.Render n b) => T.TDiagram n b
-figure042 =
+figure :: (T.Render n b) => T.TDiagram n b
+figure =
   let iCount = 4 :: Integer
       chevals =
         [ f x y

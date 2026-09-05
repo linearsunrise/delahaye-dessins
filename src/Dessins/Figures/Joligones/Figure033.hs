@@ -3,20 +3,23 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -Wno-simplifiable-class-constraints #-}
 
-module Dessins.Figures.Joligones.Figure033 (figure033) where
+module Dessins.Figures.Joligones.Figure033 (figure) where
+
+import qualified Dessins.Utils.Scene as U
 
 import Dessins.Const (getRemSizeDiv)
-import Dessins.Figures.Joligones.Common
+
 import qualified Dessins.Types as T
-import qualified Dessins.Utils.Scene as U
+
+import Dessins.Figures.Joligones.Common
 
 import Diagrams ((#))
 import qualified Diagrams as D
 
-figure033 ::
+figure ::
   (Enum n, T.Render n b) =>
   T.TDiagram n b
-figure033 =
+figure =
   renderFigure
     FigureParams
       { vertices = 2 * 60 / 19

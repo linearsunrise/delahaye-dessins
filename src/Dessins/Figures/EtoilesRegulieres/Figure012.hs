@@ -1,10 +1,11 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module Dessins.Figures.EtoilesRegulieres.Figure012 (figure012) where
+module Dessins.Figures.EtoilesRegulieres.Figure012 (figure) where
 
-import qualified Dessins.Types as T
 import qualified Dessins.Utils.Polygon as U
 import qualified Dessins.Utils.Scene as U
 
-figure012 :: (T.Render n b) => T.TDiagram n b
-figure012 = U.renderSquareFrame (U.polygonEtoile 51 25)
+import qualified Dessins.Types as T
+
+figure :: (T.Render n b) => T.TDiagram n b
+figure = U.renderSquareFrame (U.polygonEtoile 51 25)

@@ -1,8 +1,10 @@
 module Main (main) where
 
-import qualified Dessins.Const as Const
-import qualified Dessins.Figures as Compositions
 import qualified Dessins.Utils.Grid as U
+
+import qualified Dessins.Const as Const
+
+import qualified Dessins.Figures as Compositions
 
 import qualified Diagrams.Backend.SVG.CmdLine as Backend (B, mainWith)
 import qualified Diagrams.Prelude as DP (Diagram, frame, (#))
@@ -20,6 +22,7 @@ scene =
     , Compositions.lion
     , Compositions.oiseauxPoissons
     , Compositions.smurf
+    , Compositions.bonus
     ]
     DP.# DP.frame (Const.getRemSizeDiv (/ 2))
 

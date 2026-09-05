@@ -5,10 +5,12 @@
 
 module Dessins.Figures.Joligones.Common where
 
-import Dessins.Const (getRemSizeDiv)
-import qualified Dessins.Types as T
 import qualified Dessins.Utils.Polygon as U
 import qualified Dessins.Utils.Scene as U
+
+import Dessins.Const (getRemSizeDiv)
+
+import qualified Dessins.Types as T
 
 import Data.Bifunctor (Bifunctor (bimap))
 import Data.Function ((&))

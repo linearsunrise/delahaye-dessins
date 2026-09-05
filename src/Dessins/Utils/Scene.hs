@@ -4,6 +4,7 @@
 module Dessins.Utils.Scene (renderTrail, squareFrame, renderSquareFrame) where
 
 import qualified Dessins.Const as Const
+
 import qualified Dessins.Types as T
 
 import qualified Data.Data as Data

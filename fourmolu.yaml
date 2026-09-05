@@ -4,6 +4,62 @@ function-arrows: leading-args
 comma-style: leading
 record-style: aligned
 import-grouping:
+
+  - name: "Utils"
+    rules:
+      - glob: Dessins.Utils.*
+  - name: "Utils"
+    rules:
+      - glob: Dessins.Utils
+  - name: "Const"
+    rules:
+      - glob: Dessins.Const
+  - name: "Types"
+    rules:
+      - glob: Dessins.Types
+  - name: "Types"
+    rules:
+      - glob: Dessins.Types.*
+
+  - name: "PolygonesReguliers"
+    rules:
+      - glob: Dessins.Figures.PolygonesReguliers.*
+  - name: "EtoilesRegulieres"
+    rules:
+      - glob: Dessins.Figures.EtoilesRegulieres.*
+  - name: "Composition1"
+    rules:
+      - glob: Dessins.Figures.Composition1.*
+  - name: "Composition2"
+    rules:
+      - glob: Dessins.Figures.Composition2.*
+  - name: "Local imports"
+    rules:
+      - glob: Dessins.Figures.Joligones.*
+  - name: "Joligones"
+    rules:
+      - glob: Dessins.Figures.Cheval.*
+  - name: "Lion"
+    rules:
+      - glob: Dessins.Figures.Lion.*
+  - name: "OiseauxPoissons"
+    rules:
+      - glob: Dessins.Figures.OiseauxPoissons.*
+  - name: "Smurf"
+    rules:
+      - glob: Dessins.Figures.Smurf.*
+
+  - name: "Bonus Figures"
+    rules:
+      - glob: Dessins.Figures.Bonus.*
+
+  - name: "Figures"
+    rules:
+      - glob: Dessins.Figures
+  - name: "Figures"
+    rules:
+      - glob: Dessins.Figures.*
+
   - name: "Local imports"
     rules:
       - scope: local
@@ -53,14 +109,3 @@ fixities:
   - infixr 3 >~<
   - infixr 3.3 |~|
   - infixr 3.7 <~>
-local-modules:
-  - Dessins
-  - Dessins.Utils
-  - Dessins.Utils.Grid
-  - Dessins.Utils.Polygon
-  - Dessins.Utils.Scene
-  - Dessins.Const
-  - Dessins.Types
-  - Dessins.Figures
-  - Dessins.Figures.PolygonesReguliers
-  - Dessins.Figures.EtoilesRegulieres

@@ -4,9 +4,11 @@
 
 module Dessins.Figures.Composition1.Common where
 
-import Dessins.Const (getRemSizeDiv)
-import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
+
+import Dessins.Const (getRemSizeDiv)
+
+import qualified Dessins.Types as T
 
 import Data.Function ((&))
 import Diagrams as D ((#))

@@ -38,7 +38,6 @@ module Dessins.Utils
   )
 where
 
-import qualified Dessins.Types as T
 import Dessins.Utils.Grid as U (group, hor, ver)
 import Dessins.Utils.Polygon as U
   ( axis
@@ -52,6 +51,8 @@ import Dessins.Utils.Scene as U
   , renderTrail
   , squareFrame
   )
+
+import qualified Dessins.Types as T
 
 import Data.Function ((&))
 import qualified Diagrams as D

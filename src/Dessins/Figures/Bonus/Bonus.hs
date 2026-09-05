@@ -4,10 +4,13 @@
 
 module Dessins.Figures.Bonus.Bonus (bonus) where
 
-import qualified Dessins.Const as Const
-import Dessins.Figures.Cheval.Common
-import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
+
+import qualified Dessins.Const as Const
+
+import qualified Dessins.Types as T
+
+import Dessins.Figures.Cheval.Common
 
 import Diagrams ((#))
 import qualified Diagrams as D

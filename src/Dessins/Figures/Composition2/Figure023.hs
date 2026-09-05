@@ -3,15 +3,16 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -Wno-simplifiable-class-constraints #-}
 
-module Dessins.Figures.Composition2.Figure023 (figure023) where
+module Dessins.Figures.Composition2.Figure023 (figure) where
 
-import Dessins.Figures.Composition2.Common
 import qualified Dessins.Types as T
 
-figure023 ::
+import Dessins.Figures.Composition2.Common
+
+figure ::
   (Enum n, T.Render n b) =>
   T.TDiagram n b
-figure023 =
+figure =
   renderFigure
     FigureParams
       { figureRadius = 0.5

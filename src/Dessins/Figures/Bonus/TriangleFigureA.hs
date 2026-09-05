@@ -3,9 +3,11 @@
 
 module Dessins.Figures.Bonus.TriangleFigureA (triangleFigure) where
 
-import Dessins.Const (getRemSizeDiv)
-import qualified Dessins.Types as T
 import qualified Dessins.Utils as U
+
+import Dessins.Const (getRemSizeDiv)
+
+import qualified Dessins.Types as T
 
 import qualified Diagrams as D
 import Diagrams.Prelude as DP ((#))
