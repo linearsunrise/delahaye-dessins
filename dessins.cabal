@@ -103,11 +103,16 @@ library
       , Dessins.Figures.Smurf.Figure048
       , Dessins.Figures.Smurf.Figure049
 
+      , Dessins.Figures.Dragon
+      , Dessins.Figures.Dragon.Common
+      , Dessins.Figures.Dragon.Figure050
+
       , Dessins.Figures.Bonus
       , Dessins.Figures.Bonus.BonusI
       , Dessins.Figures.Bonus.BonusII
       , Dessins.Figures.Bonus.BonusIII
       , Dessins.Figures.Bonus.BonusIV
+      , Dessins.Figures.Bonus.BonusV
     build-depends:
         base >=4 && <5
       , diagrams-lib

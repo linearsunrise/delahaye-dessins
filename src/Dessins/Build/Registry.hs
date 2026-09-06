@@ -63,10 +63,13 @@ import qualified Dessins.Figures.OiseauxPoissons.Figure047 as F047
 import qualified Dessins.Figures.Smurf.Figure048 as F048
 import qualified Dessins.Figures.Smurf.Figure049 as F049
 
+import qualified Dessins.Figures.Dragon.Figure050 as F050
+
 import qualified Dessins.Figures.Bonus.BonusI as BI
 import qualified Dessins.Figures.Bonus.BonusII as BII
 import qualified Dessins.Figures.Bonus.BonusIII as BIII
 import qualified Dessins.Figures.Bonus.BonusIV as BIV
+import qualified Dessins.Figures.Bonus.BonusV as BV
 
 import qualified Data.Map.Strict as Map
 
@@ -284,6 +287,10 @@ figures =
       , figure = F049.figure
       }
   , FigureSpec
+      { figureId = FigureId "050"
+      , figure = F050.figure
+      }
+  , FigureSpec
       { figureId = FigureId "I"
       , figure = BI.figure
       }
@@ -298,6 +305,10 @@ figures =
   , FigureSpec
       { figureId = FigureId "IV"
       , figure = BIV.figure
+      }
+  , FigureSpec
+      { figureId = FigureId "V"
+      , figure = BV.figure
       }
   ]
 

@@ -13,7 +13,7 @@ import qualified Diagrams as D
 import Diagrams.Prelude as DP ((#))
 
 dragonInitCurve :: (Floating a) => U.Path a
-dragonInitCurve = U.Path [U.Point 0 0 0, U.Point 0 1 0]
+dragonInitCurve = U.Path [U.Point 0 0 1, U.Point 0 1 1]
 
 figure :: (T.Render n b) => T.TDiagram n b
 figure =

@@ -48,6 +48,9 @@ import-grouping:
   - name: "Smurf"
     rules:
       - glob: Dessins.Figures.Smurf.*
+  - name: "Dragons"
+    rules:
+      - glob: Dessins.Figures.Dragon.*
 
   - name: "Bonus Figures"
     rules:
