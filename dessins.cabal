@@ -106,6 +106,7 @@ library
       , Dessins.Figures.Dragon
       , Dessins.Figures.Dragon.Common
       , Dessins.Figures.Dragon.Figure050
+      , Dessins.Figures.Dragon.Figure051
 
       , Dessins.Figures.Bonus
       , Dessins.Figures.Bonus.BonusI

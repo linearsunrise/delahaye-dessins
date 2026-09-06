@@ -1,6 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 
-module Dessins.Figures.Dragon.Figure050 (figure) where
+module Dessins.Figures.Dragon.Figure051 (figure) where
 
 import qualified Dessins.Utils as U
 
@@ -15,12 +15,12 @@ import Diagrams.Prelude as DP ((#))
 
 figure :: (T.Render n b) => T.TDiagram n b
 figure =
-  let repeats = 6
+  let repeats = 10
       path = C.dragon C.dragonInitCurve repeats
    in path
         # (\(U.Path xs) -> take (length xs - 1) xs)
         # U.Path
-        # U.flipX
+        # U.flipY
         # U.toDessinFrame
         # D.centerXY
         # D.scaleUToY (getRemSizeDiv (* 3))

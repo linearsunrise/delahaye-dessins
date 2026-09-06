@@ -4,9 +4,10 @@
 {-# LANGUAGE TypeFamilies #-}
 
 module Dessins.Figures.Dragon.Common where
-import qualified Dessins.Utils as U
-import Diagrams.Prelude ((#))
 
+import qualified Dessins.Utils as U
+
+import Diagrams.Prelude ((#))
 
 rotateZ90AroundOrigin ::
   (Num (U.Scalar a), U.Transformable a) =>

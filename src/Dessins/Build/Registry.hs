@@ -64,6 +64,7 @@ import qualified Dessins.Figures.Smurf.Figure048 as F048
 import qualified Dessins.Figures.Smurf.Figure049 as F049
 
 import qualified Dessins.Figures.Dragon.Figure050 as F050
+import qualified Dessins.Figures.Dragon.Figure051 as F051
 
 import qualified Dessins.Figures.Bonus.BonusI as BI
 import qualified Dessins.Figures.Bonus.BonusII as BII
@@ -289,6 +290,10 @@ figures =
   , FigureSpec
       { figureId = FigureId "050"
       , figure = F050.figure
+      }
+  , FigureSpec
+      { figureId = FigureId "051"
+      , figure = F051.figure
       }
   , FigureSpec
       { figureId = FigureId "I"
