@@ -26,7 +26,7 @@ instance Convertable (Path a) where
     toVertices d
       D.# D.fromVertices
       D.# D.strokePath
-      D.# D.lw (D.global 0.75)
+      D.# D.lw (D.global 0.25)
       D.# D.fc DP.red
       D.# D.lineJoin D.LineJoinBevel
 

@@ -19,7 +19,7 @@ renderTrail v =
   DP.fromVertices v
     # closePath
     # DP.strokePath
-    # DP.lw (DP.global 0.75)
+    # DP.lw (DP.global 0.25)
 
 squareFrame ::
   ( DP.HasStyle a
