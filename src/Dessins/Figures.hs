@@ -78,12 +78,13 @@ import qualified Diagrams as D
 import Diagrams.Prelude ((#))
 
 renderText :: (T.Render n b) => String -> T.TDiagram n b -> T.TDiagram n b
-renderText str diag = text <> diag
-  where text = D.text str
+renderText str diag = text <> base
+  where padding = 12
+        base = diag # D.alignBR
+        text = D.alignedText 1 0 str
           # D.fontSize 12
           # D.font "IBM Plex Mono"
-          # D.alignBL
-          # D.translate ((D.width diag / 2 - 20) D.^& (-D.height diag / 2 + 12))
+          # D.translate (D.r2 (-padding, padding))
 
 polygonesReguliers :: (T.Render n b) => T.TDiagram n b
 polygonesReguliers =
