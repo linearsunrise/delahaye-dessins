@@ -9,6 +9,9 @@ import Dessins.Const (getRemSizeDiv)
 
 import qualified Dessins.Types as T
 
+import qualified Dessins.Types.Convertable as Convertable
+import qualified Dessins.Types.Geometry as G
+
 import Dessins.Figures.OiseauxPoissons.Common as C
   ( fishBirdHeight
   , fishBirdWidth
@@ -31,14 +34,14 @@ figure =
         where
           f i j =
             lionData
-              # U.flipX
-              # U.translate
+              # G.flipX
+              # G.translate
                 ( (C.fishBirdWidth - 6) * j - (C.fishBirdWidth - 2) * i
                 , (C.fishBirdHeight - 5) * (i + j)
                 )
    in oiseauxPoissons
-        # U.combineFigures
-        # U.toDessinFrame
+        # Convertable.combineFigures
+        # Convertable.toDessinFrame
         # D.centerXY
         # D.scaleUToX (getRemSizeDiv (* 3))
         # U.squareFrame (getRemSizeDiv (* 4))

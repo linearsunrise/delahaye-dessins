@@ -10,6 +10,8 @@ import qualified Dessins.Const as Const
 
 import qualified Dessins.Types as T
 
+import qualified Dessins.Types.Convertable as Convertable
+
 import Dessins.Figures.Cheval.Common
 
 import Diagrams ((#))
@@ -18,7 +20,7 @@ import qualified Diagrams as D
 figure :: (T.Render n b) => T.TDiagram n b
 figure =
   chevalData
-    # U.toDessinFrame
+    # Convertable.toDessinFrame
     # D.centerXY
     # D.scaleUToY (Const.getRemSizeDiv (* 3))
     # U.squareFrame (Const.getRemSizeDiv (* 4))

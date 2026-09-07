@@ -10,6 +10,9 @@ import qualified Dessins.Const as Const
 
 import qualified Dessins.Types as T
 
+import qualified Dessins.Types.Convertable as Convertable
+import qualified Dessins.Types.Geometry as G
+
 import Dessins.Figures.Cheval.Common
 
 import Diagrams ((#))
@@ -27,13 +30,13 @@ figure =
           warp (x, y, _) = (x * abs x, y * abs y, 0)
           createFigure j i =
             chevalData
-              # U.translate (by i, by j)
-              # U.warp warp
+              # G.translate (by i, by j)
+              # G.warp warp
             where
               by t = (fromIntegral t - 1) * 20
    in chevals
-        # U.combineFigures
-        # U.toDessinFrame
+        # Convertable.combineFigures
+        # Convertable.toDessinFrame
         # D.centerXY
         # D.scaleUToY (Const.getRemSizeDiv (* 3))
         # U.squareFrame (Const.getRemSizeDiv (* 4))

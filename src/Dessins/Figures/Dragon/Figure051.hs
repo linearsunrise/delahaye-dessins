@@ -8,6 +8,9 @@ import Dessins.Const (getRemSizeDiv)
 
 import qualified Dessins.Types as T
 
+import qualified Dessins.Types.Convertable as Convertable
+import qualified Dessins.Types.Geometry as G
+
 import qualified Dessins.Figures.Dragon.Common as C
 
 import qualified Diagrams as D
@@ -18,10 +21,10 @@ figure =
   let repeats = 10
       path = C.dragon C.dragonInitCurve repeats
    in path
-        # (\(U.Path xs) -> take (length xs - 1) xs)
-        # U.Path
-        # U.flipY
-        # U.toDessinFrame
+        # (\(G.Path xs) -> take (length xs - 1) xs)
+        # G.Path
+        # G.flipY
+        # Convertable.toDessinFrame
         # D.centerXY
         # D.scaleUToY (getRemSizeDiv (* 3))
         # U.squareFrame (getRemSizeDiv (* 4))

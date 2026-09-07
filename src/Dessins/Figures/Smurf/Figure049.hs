@@ -9,6 +9,9 @@ import Dessins.Const (getRemSizeDiv)
 
 import qualified Dessins.Types as T
 
+import qualified Dessins.Types.Convertable as Convertable
+import qualified Dessins.Types.Geometry as G
+
 import qualified Dessins.Figures.Smurf.Common as C
 
 import qualified Diagrams as D
@@ -22,14 +25,14 @@ figure =
 
       createFigure i =
         C.smurfData
-          # U.scaleBy (np / 100 * k, np / 100 * k)
-          # U.translate (-(k * np), 0)
+          # G.scaleBy (np / 100 * k, np / 100 * k)
+          # G.translate (-(k * np), 0)
         where
           k = 0.5 ** i
           np = 480
    in list
-        # U.combineFigures
-        # U.toDessinFrame
+        # Convertable.combineFigures
+        # Convertable.toDessinFrame
         # D.centerXY
         # D.scaleUToX (getRemSizeDiv (* 3))
         # U.squareFrame (getRemSizeDiv (* 4))

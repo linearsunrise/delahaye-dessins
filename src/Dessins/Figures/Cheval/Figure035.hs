@@ -10,6 +10,9 @@ import qualified Dessins.Const as Const
 
 import qualified Dessins.Types as T
 
+import qualified Dessins.Types.Convertable as Convertable
+import qualified Dessins.Types.Geometry as G
+
 import Dessins.Figures.Cheval.Common
 
 import Diagrams ((#))
@@ -28,12 +31,12 @@ figure =
 
           f t =
             chevalData
-              # U.translate (0.5, 0.5)
-              # U.rotateByZ (ax t)
-              # U.scaleBy (1 / divideBy, 1 / divideBy)
+              # G.translate (0.5, 0.5)
+              # G.rotateByZ (ax t)
+              # G.scaleBy (1 / divideBy, 1 / divideBy)
    in chevals
-        # U.combineFigures
-        # U.toDessinFrame
+        # Convertable.combineFigures
+        # Convertable.toDessinFrame
         # D.centerXY
         # D.scaleUToY (Const.getRemSizeDiv (* 3))
         # U.squareFrame (Const.getRemSizeDiv (* 4))

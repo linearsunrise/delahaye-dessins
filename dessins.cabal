@@ -20,8 +20,20 @@ library
       , Dessins.Utils.Grid
       , Dessins.Utils.Polygon
       , Dessins.Utils.Scene
+
       , Dessins.Const
+
       , Dessins.Types
+      , Dessins.Types.Geometry
+      , Dessins.Types.Geometry.Figure
+      , Dessins.Types.Geometry.Matrix
+      , Dessins.Types.Geometry.Transformable
+      , Dessins.Types.Geometry.Point
+      , Dessins.Types.Geometry.Path
+      , Dessins.Types.Geometry.Vector
+      , Dessins.Types.Convertable
+
+
       , Dessins.Figures
 
       , Dessins.Build
@@ -107,6 +119,7 @@ library
       , Dessins.Figures.Dragon.Common
       , Dessins.Figures.Dragon.Figure050
       , Dessins.Figures.Dragon.Figure051
+      , Dessins.Figures.Dragon.Figure052
 
       , Dessins.Figures.Bonus
       , Dessins.Figures.Bonus.BonusI

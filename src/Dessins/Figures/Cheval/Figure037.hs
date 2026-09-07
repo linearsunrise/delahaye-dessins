@@ -10,6 +10,9 @@ import qualified Dessins.Const as Const
 
 import qualified Dessins.Types as T
 
+import qualified Dessins.Types.Convertable as Convertable
+import qualified Dessins.Types.Geometry as G
+
 import Dessins.Figures.Cheval.Common
 
 import Diagrams ((#))
@@ -33,26 +36,26 @@ figure =
       ax i =
         2 * i * pi / vertices + phi
 
-      chevals :: [U.Figure n]
+      chevals :: [G.Figure n]
       chevals =
         [ createFigure i
         | i <- [0 .. pointsCount - 1]
         ]
         where
-          createFigure :: Int -> U.Figure n
+          createFigure :: Int -> G.Figure n
           createFigure i =
             chevalData
-              # U.translate (0.15, 0.15)
-              # U.scaleBy (3 / 110, 3 / 110)
-              # U.translate (0.5, 0.5)
-              # U.rotateByZ (ax a)
-              # U.scaleBy (rr ** a / 2, rr ** a / 2)
+              # G.translate (0.15, 0.15)
+              # G.scaleBy (3 / 110, 3 / 110)
+              # G.translate (0.5, 0.5)
+              # G.rotateByZ (ax a)
+              # G.scaleBy (rr ** a / 2, rr ** a / 2)
             where
               a :: n
               a = fromIntegral i
    in chevals
-        # U.combineFigures
-        # U.toDessinFrame
+        # Convertable.combineFigures
+        # Convertable.toDessinFrame
         # D.centerXY
         # D.scaleUToY (Const.getRemSizeDiv (* 3))
         # U.squareFrame (Const.getRemSizeDiv (* 4))

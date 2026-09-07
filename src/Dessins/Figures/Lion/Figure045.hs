@@ -10,6 +10,9 @@ import Dessins.Const (getRemSizeDiv)
 
 import qualified Dessins.Types as T
 
+import qualified Dessins.Types.Convertable as Convertable
+import qualified Dessins.Types.Geometry as G
+
 import Dessins.Figures.Lion.Common as C
   ( lionData
   , lionHeight
@@ -32,14 +35,14 @@ figure =
         where
           f i j =
             C.lionData
-              # U.scaleBy ((-1) ** j, (-1) ** i)
-              # U.translate
+              # G.scaleBy ((-1) ** j, (-1) ** i)
+              # G.translate
                 ( (C.lionWidth - 4.5) * i
                 , (C.lionHeight - 5) * j
                 )
    in lions
-        # U.combineFigures
-        # U.toDessinFrame
+        # Convertable.combineFigures
+        # Convertable.toDessinFrame
         # D.centerXY
         # D.scaleUToY (getRemSizeDiv (* 3))
         # U.squareFrame (getRemSizeDiv (* 4))

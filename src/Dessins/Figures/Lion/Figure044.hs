@@ -10,6 +10,8 @@ import Dessins.Const (getRemSizeDiv)
 
 import qualified Dessins.Types as T
 
+import qualified Dessins.Types.Convertable as Convertable
+
 import Dessins.Figures.Lion.Common
 
 import qualified Diagrams as D
@@ -18,7 +20,7 @@ import Diagrams.Prelude as DP
 figure :: (T.Render n b) => T.TDiagram n b
 figure =
   lionData
-    # U.toDessinFrame
+    # Convertable.toDessinFrame
     # D.centerXY
     # D.scaleUToX (getRemSizeDiv (* 3))
     # U.squareFrame (getRemSizeDiv (* 4))
