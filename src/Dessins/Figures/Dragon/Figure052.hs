@@ -21,7 +21,7 @@ import Diagrams.Prelude as DP ((#))
 figure :: (T.Render n b) => T.TDiagram n b
 figure =
   let repeats = 14
-      path = C.dragon C.dragonInitCurve repeats
+      path = C.dragon C.dragonInitCurve repeats (const 0)
    in path
         # (\(G.Path xs) -> take (length xs - 1) xs)
         # G.Path

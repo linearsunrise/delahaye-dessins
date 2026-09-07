@@ -26,16 +26,15 @@ dragonInitCurve =
     , G.Point 0 0 1
     ]
 
-dragon :: (Eq n, Floating n) => G.Path n -> Integer -> G.Path n
-dragon xs 0 = xs
-dragon xs n =
-  let reverseDirectionEvery = 1
-      sign = (-1) ^ (n `mod` reverseDirectionEvery)
+dragon :: (Eq n, Floating n) => G.Path n -> Integer -> (Integer -> Integer) -> G.Path n
+dragon xs 0 _ = xs
+dragon xs n rotationRule =
+  let sign = (-1) ^ rotationRule n
    in xs
         # ( \ls ->
               ls ^++ G.rotateZAround (T.deg (90 * sign)) (G.fromPoint newOrigin) ls
           )
-        # (\ls -> dragon ls (n - 1))
+        # (\ls -> dragon ls (n - 1) rotationRule)
   where
     lastPoint = G.lastPt xs
     dir = G.vectorByLastTwoPoints xs ~* 2

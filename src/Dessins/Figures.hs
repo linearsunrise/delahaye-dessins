@@ -67,6 +67,7 @@ import qualified Dessins.Figures.Smurf.Figure049 as F049
 import qualified Dessins.Figures.Dragon.Figure050 as F050
 import qualified Dessins.Figures.Dragon.Figure051 as F051
 import qualified Dessins.Figures.Dragon.Figure052 as F052
+import qualified Dessins.Figures.Dragon.Figure053 as F053
 
 import qualified Dessins.Figures.Bonus.BonusI as BI
 import qualified Dessins.Figures.Bonus.BonusII as BII
@@ -77,14 +78,17 @@ import qualified Dessins.Figures.Bonus.BonusV as BV
 import qualified Diagrams as D
 import Diagrams.Prelude ((#))
 
-renderText :: (T.Render n b) => String -> T.TDiagram n b -> T.TDiagram n b
+renderText ::
+  (T.Render n b) => String -> T.TDiagram n b -> T.TDiagram n b
 renderText str diag = text <> base
-  where padding = 12
-        base = diag # D.alignBR
-        text = D.alignedText 1 0 str
-          # D.fontSize 12
-          # D.font "IBM Plex Mono"
-          # D.translate (D.r2 (-padding, padding))
+  where
+    padding = 12
+    base = diag # D.alignBR
+    text =
+      D.alignedText 1 0 str
+        # D.fontSize 12
+        # D.font "IBM Plex Mono"
+        # D.translate (D.r2 (-padding, padding))
 
 polygonesReguliers :: (T.Render n b) => T.TDiagram n b
 polygonesReguliers =
@@ -294,6 +298,11 @@ dragons =
               ]
               # D.alignBL
           , F052.figure # D.scale 12 # renderText "F052" # D.alignBL
+          , U.hor
+              0
+              [ F053.figure # D.scale 6 # renderText "F053"
+              ]
+              # D.alignBL
           ]
       ]
 
