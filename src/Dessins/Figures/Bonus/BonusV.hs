@@ -51,9 +51,10 @@ dragon xs n = case n of
 
 figure :: (T.Render n b) => T.TDiagram n b
 figure =
-  let repeats = 14 :: Integer
+  let repeats = 15 :: Integer
       path = dragon dragonInitCurve repeats
    in path
+        # G.rotateZ (-T.deg 45)
         # Convertable.toDessinFrame
         # D.centerXY
         # D.scaleUToY (getRemSizeDiv (* 3))

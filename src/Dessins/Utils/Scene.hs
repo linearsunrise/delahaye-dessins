@@ -33,8 +33,8 @@ squareFrame s content =
   content
     <> DP.square s
       # DP.fc (DP.sRGB24read "#f0f0f0")
-      # DP.lw DP.none
-      # DP.lw (DP.global 0.75)
+      -- # DP.lw DP.none
+      # DP.lw (DP.global 0.25)
 
 renderSquareFrame ::
   (T.Render n b) => [DP.Point DP.V2 n] -> T.TDiagram n b

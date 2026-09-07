@@ -77,6 +77,14 @@ import qualified Dessins.Figures.Bonus.BonusV as BV
 import qualified Diagrams as D
 import Diagrams.Prelude ((#))
 
+renderText :: (T.Render n b) => String -> T.TDiagram n b -> T.TDiagram n b
+renderText str diag = text <> diag
+  where text = D.text str
+          # D.fontSize 12
+          # D.font "IBM Plex Mono"
+          # D.alignBL
+          # D.translate ((D.width diag / 2 - 20) D.^& (-D.height diag / 2 + 12))
+
 polygonesReguliers :: (T.Render n b) => T.TDiagram n b
 polygonesReguliers =
   U.group
@@ -86,15 +94,15 @@ polygonesReguliers =
           0
           [ U.hor
               0
-              [ F001.figure # D.scale 4
-              , F002.figure # D.scale 4
-              , F003.figure # D.scale 4
+              [ F001.figure # D.scale 4 # renderText "F001"
+              , F002.figure # D.scale 4 # renderText "F002"
+              , F003.figure # D.scale 4 # renderText "F003"
               ]
           , U.hor
               0
-              [ F004.figure # D.scale 4
-              , F005.figure # D.scale 4
-              , F006.figure # D.scale 4
+              [ F004.figure # D.scale 4 # renderText "F004"
+              , F005.figure # D.scale 4 # renderText "F005"
+              , F006.figure # D.scale 4 # renderText "F006"
               ]
           ]
     ]
@@ -108,15 +116,15 @@ etoilesRegulieres =
           0
           [ U.hor
               0
-              [ F007.figure # D.scale 4
-              , F008.figure # D.scale 4
-              , F009.figure # D.scale 4
+              [ F007.figure # D.scale 4 # renderText "F007"
+              , F008.figure # D.scale 4 # renderText "F008"
+              , F009.figure # D.scale 4 # renderText "F009"
               ]
           , U.hor
               0
-              [ F010.figure # D.scale 4
-              , F011.figure # D.scale 4
-              , F012.figure # D.scale 4
+              [ F010.figure # D.scale 4 # renderText "F010"
+              , F011.figure # D.scale 4 # renderText "F011"
+              , F012.figure # D.scale 4 # renderText "F012"
               ]
           ]
     ]
@@ -136,17 +144,17 @@ composition1 =
     r1 =
       U.hor
         0
-        [ F013.figure # D.scale 3
-        , F014.figure # D.scale 3
-        , F015.figure # D.scale 3
-        , F016.figure # D.scale 3
+        [ F013.figure # D.scale 3 # renderText "F013"
+        , F014.figure # D.scale 3 # renderText "F014"
+        , F015.figure # D.scale 3 # renderText "F015"
+        , F016.figure # D.scale 3 # renderText "F016"
         ]
     r2 =
       U.hor
         0
-        [ F017.figure # D.scale 4
-        , F018.figure # D.scale 4
-        , F019.figure # D.scale 4
+        [ F017.figure # D.scale 4 # renderText "F017"
+        , F018.figure # D.scale 4 # renderText "F018"
+        , F019.figure # D.scale 4 # renderText "F019"
         ]
 
 composition2 :: (T.Render n b) => T.TDiagram n b
@@ -158,15 +166,15 @@ composition2 =
           0
           [ U.hor
               0
-              [ F020.figure # D.scale 4
-              , F021.figure # D.scale 4
-              , F022.figure # D.scale 4
+              [ F020.figure # D.scale 4 # renderText "F020"
+              , F021.figure # D.scale 4 # renderText "F021"
+              , F022.figure # D.scale 4 # renderText "F022"
               ]
           , U.hor
               0
-              [ F023.figure # D.scale 4
-              , F024.figure # D.scale 4
-              , F025.figure # D.scale 4
+              [ F023.figure # D.scale 4 # renderText "F023"
+              , F024.figure # D.scale 4 # renderText "F024"
+              , F025.figure # D.scale 4 # renderText "F025"
               ]
           ]
     ]
@@ -186,18 +194,18 @@ joligones =
     row1 =
       U.hor
         0
-        [ F026.figure # D.scale 3
-        , F027.figure # D.scale 3
-        , F028.figure # D.scale 3
-        , F029.figure # D.scale 3
+        [ F026.figure # D.scale 3 # renderText "F026"
+        , F027.figure # D.scale 3 # renderText "F027"
+        , F028.figure # D.scale 3 # renderText "F028"
+        , F029.figure # D.scale 3 # renderText "F029"
         ]
     row2 =
       U.hor
         0
-        [ F030.figure # D.scale 3
-        , F031.figure # D.scale 3
-        , F032.figure # D.scale 3
-        , F033.figure # D.scale 3
+        [ F030.figure # D.scale 3 # renderText "F030"
+        , F031.figure # D.scale 3 # renderText "F031"
+        , F032.figure # D.scale 3 # renderText "F032"
+        , F033.figure # D.scale 3 # renderText "F033"
         ]
 
 cheval :: (T.Render n b) => T.TDiagram n b
@@ -216,31 +224,31 @@ cheval =
     row1 =
       U.hor
         0
-        [ F034.figure # D.scale 4
-        , F035.figure # D.scale 4
-        , F036.figure # D.scale 4
+        [ F034.figure # D.scale 4 # renderText "F034"
+        , F035.figure # D.scale 4 # renderText "F035"
+        , F036.figure # D.scale 4 # renderText "F036"
         ]
     row2 =
       U.hor
         0
         [ U.ver
             0
-            [ F037.figure # D.scale 4
-            , F038.figure # D.scale 4
+            [ F037.figure # D.scale 4 # renderText "F037"
+            , F038.figure # D.scale 4 # renderText "F038"
             ]
             # D.alignBL
-        , F039.figure # D.scale 8 # D.alignBL
+        , F039.figure # D.scale 8 # renderText "F039" # D.alignBL
         ]
     row3 =
       U.hor
         0
-        [ D.alignBL $ F042.figure # D.scale 9
+        [ D.alignBL $ F042.figure # D.scale 9 # renderText "F042"
         , D.alignBL $
             U.ver
               0
-              [ F040.figure # D.scale 3
-              , F041.figure # D.scale 3
-              , F043.figure # D.scale 3
+              [ F040.figure # D.scale 3 # renderText "F040"
+              , F041.figure # D.scale 3 # renderText "F041"
+              , F043.figure # D.scale 3 # renderText "F043"
               ]
         ]
 
@@ -249,8 +257,8 @@ lion =
   D.alignL $
     U.group
       "LION"
-      [ F044.figure # D.scale 6
-      , F045.figure # D.scale 6
+      [ F044.figure # D.scale 6 # renderText "F044"
+      , F045.figure # D.scale 6 # renderText "F045"
       ]
 
 oiseauxPoissons :: (T.Render n b) => T.TDiagram n b
@@ -258,8 +266,8 @@ oiseauxPoissons =
   D.alignL $
     U.group
       "OISEAUX-POISSONS"
-      [ F046.figure # D.scale 6
-      , F047.figure # D.scale 6
+      [ F046.figure # D.scale 6 # renderText "F046"
+      , F047.figure # D.scale 6 # renderText "F047"
       ]
 
 smurf :: (T.Render n b) => T.TDiagram n b
@@ -267,8 +275,8 @@ smurf =
   D.alignL $
     U.group
       "SMURF"
-      [ F048.figure # D.scale 6
-      , F049.figure # D.scale 6
+      [ F048.figure # D.scale 6 # renderText "F048"
+      , F049.figure # D.scale 6 # renderText "F049"
       ]
 
 dragons :: (T.Render n b) => T.TDiagram n b
@@ -280,11 +288,11 @@ dragons =
           0
           [ U.hor
               0
-              [ F050.figure # D.scale 6
-              , F051.figure # D.scale 6
+              [ F050.figure # D.scale 6 # renderText "F050"
+              , F051.figure # D.scale 6 # renderText "F051"
               ]
               # D.alignBL
-          , F052.figure # D.scale 12 # D.alignBL
+          , F052.figure # D.scale 12 # renderText "F052" # D.alignBL
           ]
       ]
 
@@ -295,10 +303,10 @@ bonus =
       "Bonus"
       [ U.ver
           0
-          [ BI.figure # D.scale 12
-          , BII.figure # D.scale 12
-          , BIII.figure # D.scale 12
-          , BIV.figure # D.scale 12
-          , BV.figure # D.scale 12
+          [ BI.figure # D.scale 12 # renderText "BI"
+          , BII.figure # D.scale 12 # renderText "BII"
+          , BIII.figure # D.scale 12 # renderText "BIII"
+          , BIV.figure # D.scale 12 # renderText "BIV"
+          , BV.figure # D.scale 12 # renderText "BV"
           ]
       ]
