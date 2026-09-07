@@ -3,16 +3,18 @@
 
 module Dessins.Figures.Smurf.Figure049 (figure) where
 
-import qualified Dessins.Utils as U
+import qualified Dessins.Utils.Scene as U
 
-import Dessins.Const (getRemSizeDiv)
+import qualified Dessins.Const as Const
 
 import qualified Dessins.Types as T
 
 import qualified Dessins.Types.Convertable as Convertable
-import qualified Dessins.Types.Geometry as G
 
 import qualified Dessins.Figures.Smurf.Common as C
+
+import qualified Dessins.Types.Geometry.Transformable as G
+import qualified Dessins.Types.Geometry.Vector as G
 
 import qualified Diagrams as D
 import Diagrams.Prelude as DP ((#))
@@ -26,7 +28,7 @@ figure =
       createFigure i =
         C.smurfData
           # G.scaleBy (np / 100 * k, np / 100 * k)
-          # G.translate (-(k * np), 0)
+          # G.translate (G.Vector (-(k * np)) 0 0)
         where
           k = 0.5 ** i
           np = 480
@@ -34,5 +36,5 @@ figure =
         # Convertable.combineFigures
         # Convertable.toDessinFrame
         # D.centerXY
-        # D.scaleUToX (getRemSizeDiv (* 3))
-        # U.squareFrame (getRemSizeDiv (* 4))
+        # D.scaleUToX (Const.getRemSizeDiv (* 3))
+        # U.squareFrame (Const.getRemSizeDiv (* 4))

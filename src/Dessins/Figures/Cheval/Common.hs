@@ -3,7 +3,9 @@
 
 module Dessins.Figures.Cheval.Common where
 
-import qualified Dessins.Types.Geometry as G
+import qualified Dessins.Types.Geometry.Figure as G
+import qualified Dessins.Types.Geometry.Path as G
+import qualified Dessins.Types.Geometry.Point as G
 
 chevalData :: (Floating n) => G.Figure n
 chevalData =

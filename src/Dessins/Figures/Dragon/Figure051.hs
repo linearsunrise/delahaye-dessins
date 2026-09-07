@@ -9,9 +9,11 @@ import Dessins.Const (getRemSizeDiv)
 import qualified Dessins.Types as T
 
 import qualified Dessins.Types.Convertable as Convertable
-import qualified Dessins.Types.Geometry as G
 
 import qualified Dessins.Figures.Dragon.Common as C
+
+import qualified Dessins.Types.Geometry.Path as G
+import qualified Dessins.Types.Geometry.Transformable as G
 
 import qualified Diagrams as D
 import Diagrams.Prelude as DP ((#))

@@ -8,7 +8,9 @@ module Dessins.Figures.Smurf.Common
   )
 where
 
-import qualified Dessins.Types.Geometry as G
+import qualified Dessins.Types.Geometry.Figure as G
+import qualified Dessins.Types.Geometry.Path as G
+import qualified Dessins.Types.Geometry.Point as G
 
 smurfData :: (Floating n) => G.Figure n
 smurfData =

@@ -4,21 +4,19 @@
 
 module Dessins.Figures.Bonus.BonusV (figure) where
 
-import qualified Dessins.Utils as U
+import qualified Dessins.Utils.Scene as U
 
 import Dessins.Const (getRemSizeDiv)
 
 import qualified Dessins.Types as T
 
 import qualified Dessins.Types.Convertable as Convertable
+import qualified Dessins.Types.Units as T
 
 import qualified Dessins.Types.Geometry.Path as G
 import qualified Dessins.Types.Geometry.Point as G
-import Dessins.Types.Geometry.Vector
-  ( Additive ((~+))
-  , Concat ((^++))
-  , lastPt
-  )
+import qualified Dessins.Types.Geometry.Transformable as G
+import Dessins.Types.Geometry.Vector hiding ((^++))
 import qualified Dessins.Types.Geometry.Vector as G
 
 import qualified Diagrams as D
@@ -31,21 +29,29 @@ dragonInitCurve =
     , G.Point (-1) 0 1
     ]
 
-dragon :: (Eq b, Floating n, Num b) => G.Path n -> b -> G.Path n
+brokenRotateZAround ::
+  (G.Transformable c) => G.Scalar c -> G.Point (G.Scalar c) -> c -> c
+brokenRotateZAround phi origin =
+  G.translate (G.fromPoint origin)
+    . G.rotateZ phi
+    . G.translate (G.fromPoint origin)
+
+(^++) :: G.Path n -> G.Path n -> G.Path n
+(G.Path path1) ^++ (G.Path path2) = G.Path (path1 ++ reverse path2)
+
+dragon :: (Eq b, Eq n, Floating n, Num b) => G.Path n -> b -> G.Path n
 dragon xs n = case n of
   0 -> xs
   m ->
     xs
-      # (\ls -> ls ^++ G.rotateZ90AroundOrigin newOrigin ls)
+      # (\ls -> ls ^++ brokenRotateZAround (T.deg 90) lastPoint ls)
       # (\ls -> dragon ls (m - 1))
     where
       lastPoint = lastPt xs
-      dir = G.vectorByLastTwoPoints xs
-      newOrigin = lastPoint ~+ dir
 
 figure :: (T.Render n b) => T.TDiagram n b
 figure =
-  let repeats = 17 :: Integer
+  let repeats = 14 :: Integer
       path = dragon dragonInitCurve repeats
    in path
         # Convertable.toDessinFrame

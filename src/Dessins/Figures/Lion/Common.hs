@@ -3,11 +3,15 @@
 
 module Dessins.Figures.Lion.Common where
 
-import qualified Dessins.Types.Geometry as G
+import qualified Dessins.Types.Geometry.Figure as G
+import qualified Dessins.Types.Geometry.Path as G
+import qualified Dessins.Types.Geometry.Point as G
+import qualified Dessins.Types.Geometry.Transformable as G
+import qualified Dessins.Types.Geometry.Vector as G
 
 import Diagrams.Prelude as DP ((#))
 
-lionData :: (Floating n) => G.Figure n
+lionData :: (Eq n, Floating n) => G.Figure n
 lionData =
   G.Figure
     [ G.Path
@@ -105,8 +109,10 @@ lionData =
         ]
     ]
     # G.setOrigin -- находим origin для симметрии
-      ( (lionWidth + 0.5) / 2
-      , (lionHeight + 5) / 2
+      ( G.Vector
+          ((lionWidth + 0.5) / 2)
+          ((lionHeight + 5) / 2)
+          0
       )
     # G.flipY
 

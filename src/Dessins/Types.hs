@@ -1,7 +1,7 @@
 {-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE FlexibleContexts #-}
 
-module Dessins.Types where
+module Dessins.Types (Render, TDiagram) where
 
 import Data.Typeable (Typeable)
 import Diagrams.Prelude (Any, Path, QDiagram, Renderable, V2)

@@ -11,6 +11,12 @@ import Data.Function ((&))
 data Vector a = Vector a a a
   deriving (Eq, Ord, Show)
 
+toPoint :: Vector a -> Point a
+toPoint (Vector x y z) = Point x y z
+
+fromPoint :: Point a -> Vector a
+fromPoint (Point x y z) = Vector x y z
+
 class Additive a b c where
   (~+) :: a -> b -> c
 

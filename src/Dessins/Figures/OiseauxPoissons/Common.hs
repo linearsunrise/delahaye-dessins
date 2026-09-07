@@ -8,11 +8,15 @@ module Dessins.Figures.OiseauxPoissons.Common
   )
 where
 
-import qualified Dessins.Types.Geometry as G
+import qualified Dessins.Types.Geometry.Figure as G
+import qualified Dessins.Types.Geometry.Path as G
+import qualified Dessins.Types.Geometry.Point as G
+import qualified Dessins.Types.Geometry.Transformable as G
+import qualified Dessins.Types.Geometry.Vector as G
 
 import Diagrams.Prelude as DP ((#))
 
-lionData :: (Floating n) => G.Figure n
+lionData :: (Eq n, Floating n) => G.Figure n
 lionData =
   G.Figure
     [ G.Path
@@ -84,8 +88,10 @@ lionData =
         ]
         # G.flipY
         # G.translate -- находим origin для симметрии
-          ( -((fishBirdWidth + 2.5) / 2)
-          , -((fishBirdHeight + 1.5) / 2)
+          ( G.Vector
+              (-((fishBirdWidth + 2.5) / 2))
+              (-((fishBirdHeight + 1.5) / 2))
+              0
           )
     ]
 

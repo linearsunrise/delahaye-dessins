@@ -5,7 +5,6 @@ module Dessins.Build.Registry where
 
 import qualified Dessins.Types as T
 
-
 import qualified Dessins.Figures.PolygonesReguliers.Figure001 as F001
 import qualified Dessins.Figures.PolygonesReguliers.Figure002 as F002
 import qualified Dessins.Figures.PolygonesReguliers.Figure003 as F003

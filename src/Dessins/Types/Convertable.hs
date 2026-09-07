@@ -5,10 +5,9 @@ module Dessins.Types.Convertable where
 
 import qualified Dessins.Types as T
 
-import Dessins.Types.Geometry (Point (Point))
-
-import Dessins.Types.Geometry.Figure
-import Dessins.Types.Geometry.Path
+import Dessins.Types.Geometry.Figure (Figure (..))
+import Dessins.Types.Geometry.Path (Path (..))
+import Dessins.Types.Geometry.Point (Point (Point))
 
 import Data.Function ((&))
 import qualified Diagrams as D

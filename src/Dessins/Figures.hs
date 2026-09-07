@@ -2,12 +2,13 @@
 
 module Dessins.Figures where
 
+import qualified Dessins.Utils.Grid as U
+
 import qualified Dessins.Const as Const
 
 import qualified Dessins.Types as T
 
 import qualified Dessins.Build.Registry as R
-import qualified Dessins.Utils.Grid as U
 
 polygonesReguliers :: (T.Render n b) => T.TDiagram n b
 polygonesReguliers =

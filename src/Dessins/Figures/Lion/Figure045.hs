@@ -11,13 +11,15 @@ import Dessins.Const (getRemSizeDiv)
 import qualified Dessins.Types as T
 
 import qualified Dessins.Types.Convertable as Convertable
-import qualified Dessins.Types.Geometry as G
 
 import Dessins.Figures.Lion.Common as C
   ( lionData
   , lionHeight
   , lionWidth
   )
+
+import qualified Dessins.Types.Geometry.Transformable as G
+import qualified Dessins.Types.Geometry.Vector as G
 
 import qualified Diagrams as D
 import Diagrams.Prelude as DP
@@ -33,13 +35,17 @@ figure =
         , y <- [0 .. (rows - 1)]
         ]
         where
+          getVector i j =
+            G.Vector
+              ((C.lionWidth - 4.5) * i)
+              ((C.lionHeight - 5) * j)
+              0
+
           f i j =
             C.lionData
               # G.scaleBy ((-1) ** j, (-1) ** i)
               # G.translate
-                ( (C.lionWidth - 4.5) * i
-                , (C.lionHeight - 5) * j
-                )
+                (getVector i j)
    in lions
         # Convertable.combineFigures
         # Convertable.toDessinFrame

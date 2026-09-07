@@ -11,9 +11,11 @@ import qualified Dessins.Const as Const
 import qualified Dessins.Types as T
 
 import qualified Dessins.Types.Convertable as Convertable
-import qualified Dessins.Types.Geometry as G
 
 import Dessins.Figures.Cheval.Common
+
+import qualified Dessins.Types.Geometry.Transformable as G
+import qualified Dessins.Types.Geometry.Vector as G
 
 import Diagrams ((#))
 import qualified Diagrams as D
@@ -31,10 +33,11 @@ figure =
           warp (x, y, _) = (fn x, fn y, 0)
 
           by t = (fromIntegral t - 1) * 20
+          getVector i j = G.Vector (by i) (by j) 0
 
           createFigure j i =
             chevalData
-              # G.translate (by i, by j)
+              # G.translate (getVector i j)
               # G.warp warp
    in chevals
         # Convertable.combineFigures

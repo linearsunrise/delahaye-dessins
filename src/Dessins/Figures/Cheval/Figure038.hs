@@ -11,9 +11,11 @@ import qualified Dessins.Const as Const
 import qualified Dessins.Types as T
 
 import qualified Dessins.Types.Convertable as Convertable
-import qualified Dessins.Types.Geometry as G
 
 import Dessins.Figures.Cheval.Common
+
+import qualified Dessins.Types.Geometry.Transformable as G
+import qualified Dessins.Types.Geometry.Vector as G
 
 import Diagrams ((#))
 import qualified Diagrams as D
@@ -30,9 +32,9 @@ figure =
           createFigure i j =
             chevalData
               # G.scaleBy (1 / 40, 1 / 40)
-              # G.translate (j, 0)
+              # G.translate (G.Vector j 0 0)
               # G.scaleBy (0.5 ** i, 0.5 ** i)
-              # G.translate (0, 2 - 2 * 0.5 ** i)
+              # G.translate (G.Vector 0 (2 - 2 * 0.5 ** i) 0)
    in chevals
         # Convertable.combineFigures
         # Convertable.toDessinFrame

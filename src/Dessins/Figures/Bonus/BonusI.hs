@@ -4,16 +4,18 @@
 
 module Dessins.Figures.Bonus.BonusI (figure) where
 
-import qualified Dessins.Utils as U
+import qualified Dessins.Utils.Polygon as U
+import qualified Dessins.Utils.Scene as U
 
 import qualified Dessins.Const as Const
 
 import qualified Dessins.Types as T
 
 import qualified Dessins.Types.Convertable as Convertable
-import qualified Dessins.Types.Geometry as G
 
-import Dessins.Figures.Cheval.Common
+import Dessins.Figures.Cheval.Common (chevalData)
+
+import qualified Dessins.Types.Geometry.Transformable as G
 
 import Diagrams ((#))
 import qualified Diagrams as D

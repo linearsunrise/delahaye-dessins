@@ -10,13 +10,15 @@ import Dessins.Const (getRemSizeDiv)
 import qualified Dessins.Types as T
 
 import qualified Dessins.Types.Convertable as Convertable
-import qualified Dessins.Types.Geometry as G
 
 import Dessins.Figures.OiseauxPoissons.Common as C
   ( fishBirdHeight
   , fishBirdWidth
   , lionData
   )
+
+import qualified Dessins.Types.Geometry.Transformable as G
+import qualified Dessins.Types.Geometry.Vector as G
 
 import qualified Diagrams as D
 import Diagrams.Prelude as DP ((#))
@@ -32,13 +34,15 @@ figure =
         , y <- [0 .. (rows - 1)]
         ]
         where
+          getVec i j =
+            G.Vector
+              ((C.fishBirdWidth - 6) * j - (C.fishBirdWidth - 2) * i)
+              ((C.fishBirdHeight - 5) * (i + j))
+              0
           f i j =
             lionData
               # G.flipX
-              # G.translate
-                ( (C.fishBirdWidth - 6) * j - (C.fishBirdWidth - 2) * i
-                , (C.fishBirdHeight - 5) * (i + j)
-                )
+              # G.translate (getVec i j)
    in oiseauxPoissons
         # Convertable.combineFigures
         # Convertable.toDessinFrame
