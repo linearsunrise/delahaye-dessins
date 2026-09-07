@@ -44,7 +44,7 @@ group ::
   (T.Render n b) => String -> [T.TDiagram n b] -> T.TDiagram n b
 group title ct =
   ver
-    (getRemSizeDiv (/ 2))
+    0
     [ text title # alignL # fontSize (local (getRemSizeDiv (/ 4)))
-    , hor (getRemSizeDiv (/ 2)) ct
+    , hor 0 ct
     ]

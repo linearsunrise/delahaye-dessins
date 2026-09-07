@@ -22,6 +22,7 @@ scene =
     , Compositions.lion
     , Compositions.oiseauxPoissons
     , Compositions.smurf
+    , Compositions.dragons
     , Compositions.bonus
     ]
     DP.# DP.frame (Const.getRemSizeDiv (/ 2))

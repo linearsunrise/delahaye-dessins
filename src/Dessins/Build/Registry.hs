@@ -73,6 +73,8 @@ import qualified Dessins.Figures.Bonus.BonusIII as BIII
 import qualified Dessins.Figures.Bonus.BonusIV as BIV
 import qualified Dessins.Figures.Bonus.BonusV as BV
 
+import qualified Dessins.Figures as Compositions
+
 import qualified Data.Map.Strict as Map
 
 data FigureSpec = FigureSpec
@@ -319,6 +321,54 @@ figures =
   , FigureSpec
       { figureId = FigureId "V"
       , figure = BV.figure
+      }
+  , FigureSpec
+      { figureId = FigureId "V"
+      , figure = BV.figure
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.PolygonesReguliers"
+      , figure = Compositions.polygonesReguliers
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.EtoilesRegulieres"
+      , figure = Compositions.etoilesRegulieres
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.Composition1"
+      , figure = Compositions.composition1
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.Composition2"
+      , figure = Compositions.composition2
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.Joligones"
+      , figure = Compositions.joligones
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.Cheval"
+      , figure = Compositions.cheval
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.Lion"
+      , figure = Compositions.lion
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.OiseauxPoissons"
+      , figure = Compositions.oiseauxPoissons
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.Smurf"
+      , figure = Compositions.smurf
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.Dragons"
+      , figure = Compositions.dragons
+      }
+  , FigureSpec
+      { figureId = FigureId ".composition.Bonus"
+      , figure = Compositions.bonus
       }
   ]
 

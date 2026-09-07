@@ -4,158 +4,301 @@ module Dessins.Figures where
 
 import qualified Dessins.Utils.Grid as U
 
-import qualified Dessins.Const as Const
-
 import qualified Dessins.Types as T
 
-import qualified Dessins.Build.Registry as R
+import qualified Dessins.Figures.PolygonesReguliers.Figure001 as F001
+import qualified Dessins.Figures.PolygonesReguliers.Figure002 as F002
+import qualified Dessins.Figures.PolygonesReguliers.Figure003 as F003
+import qualified Dessins.Figures.PolygonesReguliers.Figure004 as F004
+import qualified Dessins.Figures.PolygonesReguliers.Figure005 as F005
+import qualified Dessins.Figures.PolygonesReguliers.Figure006 as F006
+
+import qualified Dessins.Figures.EtoilesRegulieres.Figure007 as F007
+import qualified Dessins.Figures.EtoilesRegulieres.Figure008 as F008
+import qualified Dessins.Figures.EtoilesRegulieres.Figure009 as F009
+import qualified Dessins.Figures.EtoilesRegulieres.Figure010 as F010
+import qualified Dessins.Figures.EtoilesRegulieres.Figure011 as F011
+import qualified Dessins.Figures.EtoilesRegulieres.Figure012 as F012
+
+import qualified Dessins.Figures.Composition1.Figure013 as F013
+import qualified Dessins.Figures.Composition1.Figure014 as F014
+import qualified Dessins.Figures.Composition1.Figure015 as F015
+import qualified Dessins.Figures.Composition1.Figure016 as F016
+import qualified Dessins.Figures.Composition1.Figure017 as F017
+import qualified Dessins.Figures.Composition1.Figure018 as F018
+import qualified Dessins.Figures.Composition1.Figure019 as F019
+
+import qualified Dessins.Figures.Composition2.Figure020 as F020
+import qualified Dessins.Figures.Composition2.Figure021 as F021
+import qualified Dessins.Figures.Composition2.Figure022 as F022
+import qualified Dessins.Figures.Composition2.Figure023 as F023
+import qualified Dessins.Figures.Composition2.Figure024 as F024
+import qualified Dessins.Figures.Composition2.Figure025 as F025
+
+import qualified Dessins.Figures.Joligones.Figure026 as F026
+import qualified Dessins.Figures.Joligones.Figure027 as F027
+import qualified Dessins.Figures.Joligones.Figure028 as F028
+import qualified Dessins.Figures.Joligones.Figure029 as F029
+import qualified Dessins.Figures.Joligones.Figure030 as F030
+import qualified Dessins.Figures.Joligones.Figure031 as F031
+import qualified Dessins.Figures.Joligones.Figure032 as F032
+import qualified Dessins.Figures.Joligones.Figure033 as F033
+
+import qualified Dessins.Figures.Cheval.Figure034 as F034
+import qualified Dessins.Figures.Cheval.Figure035 as F035
+import qualified Dessins.Figures.Cheval.Figure036 as F036
+import qualified Dessins.Figures.Cheval.Figure037 as F037
+import qualified Dessins.Figures.Cheval.Figure038 as F038
+import qualified Dessins.Figures.Cheval.Figure039 as F039
+import qualified Dessins.Figures.Cheval.Figure040 as F040
+import qualified Dessins.Figures.Cheval.Figure041 as F041
+import qualified Dessins.Figures.Cheval.Figure042 as F042
+import qualified Dessins.Figures.Cheval.Figure043 as F043
+
+import qualified Dessins.Figures.Lion.Figure044 as F044
+import qualified Dessins.Figures.Lion.Figure045 as F045
+
+import qualified Dessins.Figures.OiseauxPoissons.Figure046 as F046
+import qualified Dessins.Figures.OiseauxPoissons.Figure047 as F047
+
+import qualified Dessins.Figures.Smurf.Figure048 as F048
+import qualified Dessins.Figures.Smurf.Figure049 as F049
+
+import qualified Dessins.Figures.Dragon.Figure050 as F050
+import qualified Dessins.Figures.Dragon.Figure051 as F051
+import qualified Dessins.Figures.Dragon.Figure052 as F052
+
+import qualified Dessins.Figures.Bonus.BonusI as BI
+import qualified Dessins.Figures.Bonus.BonusII as BII
+import qualified Dessins.Figures.Bonus.BonusIII as BIII
+import qualified Dessins.Figures.Bonus.BonusIV as BIV
+import qualified Dessins.Figures.Bonus.BonusV as BV
+
+import qualified Diagrams as D
+import Diagrams.Prelude ((#))
 
 polygonesReguliers :: (T.Render n b) => T.TDiagram n b
 polygonesReguliers =
   U.group
     "POLYGONES RÉGULIERS"
-    [ R.getFigureById (R.FigureId "001")
-    , R.getFigureById (R.FigureId "002")
-    , R.getFigureById (R.FigureId "003")
-    , R.getFigureById (R.FigureId "004")
-    , R.getFigureById (R.FigureId "005")
-    , R.getFigureById (R.FigureId "006")
+    [ D.alignL $
+        U.ver
+          0
+          [ U.hor
+              0
+              [ F001.figure # D.scale 4
+              , F002.figure # D.scale 4
+              , F003.figure # D.scale 4
+              ]
+          , U.hor
+              0
+              [ F004.figure # D.scale 4
+              , F005.figure # D.scale 4
+              , F006.figure # D.scale 4
+              ]
+          ]
     ]
 
 etoilesRegulieres :: (T.Render n b) => T.TDiagram n b
 etoilesRegulieres =
   U.group
     "ÉTOILES RÉGULIÈRES"
-    [ R.getFigureById (R.FigureId "007")
-    , R.getFigureById (R.FigureId "008")
-    , R.getFigureById (R.FigureId "009")
-    , R.getFigureById (R.FigureId "010")
-    , R.getFigureById (R.FigureId "011")
-    , R.getFigureById (R.FigureId "012")
+    [ D.alignL $
+        U.ver
+          0
+          [ U.hor
+              0
+              [ F007.figure # D.scale 4
+              , F008.figure # D.scale 4
+              , F009.figure # D.scale 4
+              ]
+          , U.hor
+              0
+              [ F010.figure # D.scale 4
+              , F011.figure # D.scale 4
+              , F012.figure # D.scale 4
+              ]
+          ]
     ]
 
 composition1 :: (T.Render n b) => T.TDiagram n b
 composition1 =
   U.group
     "COMPOSITION 1"
-    [ U.ver
-        (Const.getRemSizeDiv (/ 2))
-        [ row13to18
-        , R.getFigureById (R.FigureId "019")
-        ]
+    [ D.alignL $
+        U.ver
+          0
+          [ r1 # D.alignL
+          , r2 # D.alignL
+          ]
     ]
   where
-    row13to18 =
+    r1 =
       U.hor
-        (Const.getRemSizeDiv (/ 2))
-        [ R.getFigureById (R.FigureId "013")
-        , R.getFigureById (R.FigureId "014")
-        , R.getFigureById (R.FigureId "015")
-        , R.getFigureById (R.FigureId "016")
-        , R.getFigureById (R.FigureId "017")
-        , R.getFigureById (R.FigureId "018")
+        0
+        [ F013.figure # D.scale 3
+        , F014.figure # D.scale 3
+        , F015.figure # D.scale 3
+        , F016.figure # D.scale 3
+        ]
+    r2 =
+      U.hor
+        0
+        [ F017.figure # D.scale 4
+        , F018.figure # D.scale 4
+        , F019.figure # D.scale 4
         ]
 
 composition2 :: (T.Render n b) => T.TDiagram n b
 composition2 =
   U.group
     "COMPOSITION 2"
-    [ R.getFigureById (R.FigureId "020")
-    , R.getFigureById (R.FigureId "021")
-    , R.getFigureById (R.FigureId "022")
-    , R.getFigureById (R.FigureId "023")
-    , R.getFigureById (R.FigureId "024")
-    , R.getFigureById (R.FigureId "025")
+    [ D.alignL $
+        U.ver
+          0
+          [ U.hor
+              0
+              [ F020.figure # D.scale 4
+              , F021.figure # D.scale 4
+              , F022.figure # D.scale 4
+              ]
+          , U.hor
+              0
+              [ F023.figure # D.scale 4
+              , F024.figure # D.scale 4
+              , F025.figure # D.scale 4
+              ]
+          ]
     ]
 
 joligones :: (T.Render n b) => T.TDiagram n b
 joligones =
   U.group
     "JOLIGONES"
-    [ U.ver
-        (Const.getRemSizeDiv (/ 2))
-        [ row1
-        , row2
-        ]
+    [ D.alignL $
+        U.ver
+          0
+          [ row1
+          , row2
+          ]
     ]
   where
     row1 =
       U.hor
-        (Const.getRemSizeDiv (/ 2))
-        [ R.getFigureById (R.FigureId "026")
-        , R.getFigureById (R.FigureId "027")
-        , R.getFigureById (R.FigureId "028")
-        , R.getFigureById (R.FigureId "029")
-        , R.getFigureById (R.FigureId "030")
-        , R.getFigureById (R.FigureId "031")
+        0
+        [ F026.figure # D.scale 3
+        , F027.figure # D.scale 3
+        , F028.figure # D.scale 3
+        , F029.figure # D.scale 3
         ]
     row2 =
       U.hor
-        (Const.getRemSizeDiv (/ 2))
-        [ R.getFigureById (R.FigureId "032")
-        , R.getFigureById (R.FigureId "033")
+        0
+        [ F030.figure # D.scale 3
+        , F031.figure # D.scale 3
+        , F032.figure # D.scale 3
+        , F033.figure # D.scale 3
         ]
 
 cheval :: (T.Render n b) => T.TDiagram n b
 cheval =
   U.group
     "CHEVAL"
-    [ U.ver
-        (Const.getRemSizeDiv (/ 2))
-        [ row1
-        , row2
-        ]
+    [ D.alignL $
+        U.ver
+          0
+          [ row1 # D.alignBL
+          , row2 # D.alignBL
+          , row3 # D.alignBL
+          ]
     ]
   where
     row1 =
       U.hor
-        (Const.getRemSizeDiv (/ 2))
-        [ R.getFigureById (R.FigureId "034")
-        , R.getFigureById (R.FigureId "035")
-        , R.getFigureById (R.FigureId "036")
-        , R.getFigureById (R.FigureId "037")
-        , R.getFigureById (R.FigureId "038")
-        , R.getFigureById (R.FigureId "039")
+        0
+        [ F034.figure # D.scale 4
+        , F035.figure # D.scale 4
+        , F036.figure # D.scale 4
         ]
     row2 =
       U.hor
-        (Const.getRemSizeDiv (/ 2))
-        [ R.getFigureById (R.FigureId "040")
-        , R.getFigureById (R.FigureId "041")
-        , R.getFigureById (R.FigureId "042")
-        , R.getFigureById (R.FigureId "043")
+        0
+        [ U.ver
+            0
+            [ F037.figure # D.scale 4
+            , F038.figure # D.scale 4
+            ]
+            # D.alignBL
+        , F039.figure # D.scale 8 # D.alignBL
+        ]
+    row3 =
+      U.hor
+        0
+        [ D.alignBL $ F042.figure # D.scale 9
+        , D.alignBL $
+            U.ver
+              0
+              [ F040.figure # D.scale 3
+              , F041.figure # D.scale 3
+              , F043.figure # D.scale 3
+              ]
         ]
 
 lion :: (T.Render n b) => T.TDiagram n b
 lion =
-  U.group
-    "LION"
-    [ R.getFigureById (R.FigureId "044")
-    , R.getFigureById (R.FigureId "045")
-    ]
+  D.alignL $
+    U.group
+      "LION"
+      [ F044.figure # D.scale 6
+      , F045.figure # D.scale 6
+      ]
 
 oiseauxPoissons :: (T.Render n b) => T.TDiagram n b
 oiseauxPoissons =
-  U.group
-    "OISEAUX-POISSONS"
-    [ R.getFigureById (R.FigureId "046")
-    , R.getFigureById (R.FigureId "047")
-    ]
+  D.alignL $
+    U.group
+      "OISEAUX-POISSONS"
+      [ F046.figure # D.scale 6
+      , F047.figure # D.scale 6
+      ]
 
 smurf :: (T.Render n b) => T.TDiagram n b
 smurf =
-  U.group
-    "SMURF"
-    [ R.getFigureById (R.FigureId "048")
-    , R.getFigureById (R.FigureId "049")
-    ]
+  D.alignL $
+    U.group
+      "SMURF"
+      [ F048.figure # D.scale 6
+      , F049.figure # D.scale 6
+      ]
+
+dragons :: (T.Render n b) => T.TDiagram n b
+dragons =
+  D.alignL $
+    U.group
+      "DRAGONS"
+      [ U.ver
+          0
+          [ U.hor
+              0
+              [ F050.figure # D.scale 6
+              , F051.figure # D.scale 6
+              ]
+              # D.alignBL
+          , F052.figure # D.scale 12 # D.alignBL
+          ]
+      ]
 
 bonus :: (T.Render n b) => T.TDiagram n b
 bonus =
-  U.group
-    "OISEAUX-POISSONS"
-    [ R.getFigureById (R.FigureId "II")
-    , R.getFigureById (R.FigureId "III")
-    , R.getFigureById (R.FigureId "IV")
-    , R.getFigureById (R.FigureId "I")
-    ]
+  D.alignL $
+    U.group
+      "Bonus"
+      [ U.ver
+          0
+          [ BI.figure # D.scale 12
+          , BII.figure # D.scale 12
+          , BIII.figure # D.scale 12
+          , BIV.figure # D.scale 12
+          , BV.figure # D.scale 12
+          ]
+      ]
