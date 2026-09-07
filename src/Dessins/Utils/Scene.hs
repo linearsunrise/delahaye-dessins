@@ -32,7 +32,7 @@ squareFrame ::
 squareFrame s content =
   content
     <> DP.square s
-      -- # DP.fc (DP.sRGB24read "#d0d0d0")
+      # DP.fc (DP.sRGB24read "#f0f0f0")
       # DP.lw DP.none
 
 renderSquareFrame ::
