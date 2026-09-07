@@ -19,7 +19,7 @@ renderTrail v =
   DP.fromVertices v
     # closePath
     # DP.strokePath
-    # DP.lw (DP.global 0.045)
+    # DP.lw (DP.global 0.75)
 
 squareFrame ::
   ( DP.HasStyle a
@@ -34,6 +34,7 @@ squareFrame s content =
     <> DP.square s
       # DP.fc (DP.sRGB24read "#f0f0f0")
       # DP.lw DP.none
+      # DP.lw (DP.global 0.75)
 
 renderSquareFrame ::
   (T.Render n b) => [DP.Point DP.V2 n] -> T.TDiagram n b

@@ -45,7 +45,7 @@ renderFigure params =
         map calcVectors vectors
           # D.trailFromVertices
           # D.strokeTrail
-          # D.lw (D.global 0.045)
+          # D.lw (D.global 0.75)
    in figure
 
 renderPipe ::
