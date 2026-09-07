@@ -7,7 +7,7 @@ import Diagrams (SizeSpec, V2, mkWidth)
 import Diagrams.Backend.SVG (renderSVG)
 
 width :: SizeSpec V2 Double
-width = mkWidth 480
+width = mkWidth 720
 
 createPath :: R.FigureId -> FilePath
 createPath (R.FigureId unId) = "build/figure" ++ unId ++ ".svg"
