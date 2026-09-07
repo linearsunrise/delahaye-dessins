@@ -3,7 +3,7 @@
 Recode of the book "Dessins géométriques et artistiques avec votre micro-ordinateur" on Haskell. This code using `diagrams-lib`.
 
 ## POLYGONES RÉGULIERS
-<section class="grid">
+<div class="grid">
   <figure class="m4">
     <img src="assets/figure001.svg" alt="" />
     <figcaption class="num">001</figcaption>
@@ -28,11 +28,11 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figure006.svg" alt="" />
     <figcaption class="num">006</figcaption>
   </figure>
-</section>
+</div>
 
 
 ## ÉTOILES RÉGULIÈRES
-<section class="grid">
+<div class="grid">
   <figure class="m4">
     <img src="assets/figure007.svg" alt="" />
     <figcaption class="num">007</figcaption>
@@ -57,11 +57,11 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figure012.svg" alt="" />
     <figcaption class="num">012</figcaption>
   </figure>
-</section>
+</div>
 
 
 ## COMPOSITION 1
-<section class="grid">
+<div class="grid">
   <figure class="m3">
     <img src="assets/figure013.svg" alt="" />
     <figcaption class="num">013</figcaption>
@@ -90,11 +90,11 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figure019.svg" alt="" />
     <figcaption class="num">019</figcaption>
   </figure>
-</section>
+</div>
 
 
 ## COMPOSITION 2
-<section class="grid">
+<div class="grid">
   <figure class="m4">
     <img src="assets/figure020.svg" alt="" />
     <figcaption class="num">020</figcaption>
@@ -119,11 +119,11 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figure025.svg" alt="" />
     <figcaption class="num">025</figcaption>
   </figure>
-</section>
+</div>
 
 
 ## JOLIGONES
-<section class="grid">
+<div class="grid">
   <figure class="m3">
     <img src="assets/figure026.svg" alt="" />
     <figcaption class="num">026</figcaption>
@@ -156,11 +156,11 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figure033.svg" alt="" />
     <figcaption class="num">033</figcaption>
   </figure>
-</section>
+</div>
 
 
 ## CHEVAL
-<section class="grid">
+<div class="grid">
   <figure class="m4">
     <img src="assets/figure034.svg" alt="" />
     <figcaption class="num">034</figcaption>
@@ -201,11 +201,11 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figure043.svg" alt="" />
     <figcaption class="num">043</figcaption>
   </figure>
-</section>
+</div>
 
 
 ## LION
-<section class="grid">
+<div class="grid">
   <figure class="m6">
     <img src="assets/figure044.svg" alt="" />
     <figcaption class="num">044</figcaption>
@@ -214,11 +214,11 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figure045.svg" alt="" />
     <figcaption class="num">045</figcaption>
   </figure>
-</section>
+</div>
 
 
 ## OISEAUX-POISSONS
-<section class="grid">
+<div class="grid">
   <figure class="m6">
     <img src="assets/figure046.svg" alt="" />
     <figcaption class="num">046</figcaption>
@@ -227,11 +227,11 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figure047.svg" alt="" />
     <figcaption class="num">047</figcaption>
   </figure>
-</section>
+</div>
 
 
 ## SMURF
-<section class="grid">
+<div class="grid">
   <figure class="m6">
     <img src="assets/figure048.svg" alt="" />
     <figcaption class="num">048</figcaption>
@@ -240,11 +240,11 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figure049.svg" alt="" />
     <figcaption class="num">049</figcaption>
   </figure>
-</section>
+</div>
 
 
 ## DRAGONS
-<section class="grid">
+<div class="grid">
   <figure class="m6">
     <img src="assets/figure050.svg" alt="" />
     <figcaption class="num">050</figcaption>
@@ -257,11 +257,11 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figure052.svg" alt="" />
     <figcaption class="num">052</figcaption>
   </figure>
-</section>
+</div>
 
 
 ## Bonus
-<section class="grid">
+<div class="grid">
   <figure class="m12">
     <img src="assets/figureI.svg" alt="" />
     <figcaption class="num">I</figcaption>
@@ -282,7 +282,7 @@ Recode of the book "Dessins géométriques et artistiques avec votre micro-ordin
     <img src="assets/figureV.svg" alt="" />
     <figcaption class="num">V</figcaption>
   </figure>
-</section>
+</div>
 
 <style>
     * {
