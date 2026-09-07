@@ -68,6 +68,7 @@ import qualified Dessins.Figures.Dragon.Figure050 as F050
 import qualified Dessins.Figures.Dragon.Figure051 as F051
 import qualified Dessins.Figures.Dragon.Figure052 as F052
 import qualified Dessins.Figures.Dragon.Figure053 as F053
+import qualified Dessins.Figures.Dragon.Figure054 as F054
 
 import qualified Dessins.Figures.Bonus.BonusI as BI
 import qualified Dessins.Figures.Bonus.BonusII as BII
@@ -301,6 +302,7 @@ dragons =
           , U.hor
               0
               [ F053.figure # D.scale 6 # renderText "F053"
+              , F054.figure # D.scale 6 # renderText "F054"
               ]
               # D.alignBL
           ]

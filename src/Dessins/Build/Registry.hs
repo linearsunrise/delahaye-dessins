@@ -67,6 +67,7 @@ import qualified Dessins.Figures.Dragon.Figure050 as F050
 import qualified Dessins.Figures.Dragon.Figure051 as F051
 import qualified Dessins.Figures.Dragon.Figure052 as F052
 import qualified Dessins.Figures.Dragon.Figure053 as F053
+import qualified Dessins.Figures.Dragon.Figure054 as F054
 
 import qualified Dessins.Figures.Bonus.BonusI as BI
 import qualified Dessins.Figures.Bonus.BonusII as BII
@@ -306,6 +307,10 @@ figures =
   , FigureSpec
       { figureId = FigureId "053"
       , figure = F053.figure
+      }
+  , FigureSpec
+      { figureId = FigureId "054"
+      , figure = F054.figure
       }
   , FigureSpec
       { figureId = FigureId "I"

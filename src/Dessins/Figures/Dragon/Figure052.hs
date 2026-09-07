@@ -12,7 +12,6 @@ import qualified Dessins.Types.Convertable as Convertable
 
 import qualified Dessins.Figures.Dragon.Common as C
 
-import qualified Dessins.Types.Geometry.Path as G
 import qualified Dessins.Types.Geometry.Transformable as G
 
 import qualified Diagrams as D
@@ -23,9 +22,7 @@ figure =
   let repeats = 14
       path = C.dragon C.dragonInitCurve repeats (const 0)
    in path
-        # (\(G.Path xs) -> take (length xs - 1) xs)
-        # G.Path
-        # G.flipX
+        # G.flipXY
         # Convertable.toDessinFrame
         # D.centerXY
         # D.scaleUToY (getRemSizeDiv (* 3))
